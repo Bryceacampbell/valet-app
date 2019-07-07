@@ -4,7 +4,7 @@ import { AuthConsumer } from "../auth/authContext";
 
 import Can from "../components/auth-components/Can";
 import NavBar from "../components/NavBar/Navbar";
-import LeftMenu from "../components/LeftMenu/LeftMenu";
+import LeftMenu from "../components/client/LeftMenu/LeftMenu";
 import Container from "../components/Container/Container";
 // import Profile from "../components/Profile";
 
