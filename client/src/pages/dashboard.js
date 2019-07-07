@@ -5,7 +5,8 @@ import { AuthConsumer } from "../auth/authContext";
 import Can from "../components/auth-components/Can";
 import NavBar from "../components/NavBar/Navbar";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
-import Profile from "../components/Profile";
+import Container from "../components/Container/Container";
+// import Profile from "../components/Profile";
 
 const DashboardPage = () => (
   <AuthConsumer>
@@ -17,7 +18,9 @@ const DashboardPage = () => (
           <div>
             <NavBar/>
             <LeftMenu/>
-            <Profile/>
+            <Container>
+              
+            </Container>
           </div>
         )}
         no={() => <Redirect to="/" />}
