@@ -5,6 +5,7 @@ import { AuthConsumer } from "../auth/authContext";
 import Can from "../components/auth-components/Can";
 import NavBar from "../components/NavBar/Navbar";
 import LeftMenu from "../components/LeftMenu/LeftMenu";
+import Container from "../components/Container/Container";
 
 const AdminPage = () => (
   <AuthConsumer>
@@ -16,6 +17,9 @@ const AdminPage = () => (
           <div>
             <NavBar/>
             <LeftMenu/>
+            <Container>
+              
+            </Container>
           </div>
         )}
         no={() => <Redirect to="/" />}
