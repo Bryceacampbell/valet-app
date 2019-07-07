@@ -1,3 +1,5 @@
 module.exports = {
-  Book: require("./book")
+  Admin: require("./admin"),
+  Asset: require("./asset"),
+  Customer: require("./customer")
 };
