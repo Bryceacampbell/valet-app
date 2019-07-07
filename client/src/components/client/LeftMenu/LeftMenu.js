@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import Home from "../../pages/home";
+import Home from "../../../pages/home";
 import "./style.css";
 
 export default class SideBar extends Component {
@@ -13,27 +13,41 @@ export default class SideBar extends Component {
                     <React.Fragment>
                         <SideNav
                             onSelect={(selected) => {
-                                const to = '/' + selected;
+                                const to = '/dashboard/' + selected;
                                 if (location.pathname !== to) {
                                     history.push(to);
                                 }
                             }}
                         >
                             <SideNav.Toggle />
-                            <SideNav.Nav defaultSelected="home">
+                            <SideNav.Nav defaultSelected="main">
 
-                                <NavItem eventKey="home">
+                                <NavItem eventKey="">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
-                                    <NavText> Home</NavText>
+                                    <NavText> Main Dashboard</NavText>
                                 </NavItem>
 
-                                <NavItem eventKey="devices">
+                                <NavItem eventKey="schedule">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
-                                    <NavText>Devices</NavText>
+                                    <NavText>Schedule a Service</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey="requests">
+                                    <NavIcon>
+                                        <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
+                                    </NavIcon>
+                                    <NavText>View Current Requests</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey="bills">
+                                    <NavIcon>
+                                        <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
+                                    </NavIcon>
+                                    <NavText>View Bills</NavText>
                                 </NavItem>
 
                             </SideNav.Nav>
