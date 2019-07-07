@@ -6,21 +6,28 @@ const Schema = mongoose.Schema;
 
 // Creates the Customer Schema
 const customerSchema = new Schema({
-    date: { type: Date, default: Date.now },
-    firstName: { type: String, required: true, trim: true },
-    lastName: { type: String, required: true, trim: true },
-    userName: { type: String, required: true, trim: true  },
-    addressLineOne: { type: String, required: true, trim: true  },
-    addressLineTwo: { type: String, required: true, trim: true  },
-    phoneNumber: { type: Number, min: 10, max: 10},
-    emailAddress: { type: String, required: true, trim: true  },
-    pickupCurrentlyRequested: Boolean,
+    dateCreated: { type: Date, default: Date.now },
+    information: {
+        firstName: { type: String, required: true, trim: true },
+        lastName: { type: String, required: true, trim: true },
+        userName: { type: String, required: true, trim: true  },
+        phoneNumber: { type: Number, min: 10, max: 10},
+        email: { type: String, required: true, trim: true  },
+        address: {
+            lineOne: { type: String, required: true, trim: true  },
+            lineTwo: { type: String, required: false, trim: true  },
+            city: { type: String, required: true, trim: true  },
+            state: { type: String, required: true, trim: true  },
+            zip: { type: Number, required: true, min: 5, max: 5 }
+        }
+    },
+    pickupCurrentlyRequested: { type: Boolean, default: false },
     // asset collection connection
     asset: {
         type: Schema.Types.ObjectId,
         ref: "Asset"
     }
-    // messages
+    // messages would go... here?
 });
 
 // Employs the above schema & mongoose's model method to, well, create a model
