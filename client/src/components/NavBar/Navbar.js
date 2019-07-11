@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
-import Login from "../auth-components/Login";
+import Login from "../auth-components/Login/Login";
+// import Logout from "../auth-components/Logout";
+
 
 
 class NavBar extends Component {
@@ -12,7 +14,7 @@ class NavBar extends Component {
           <li className="brand"><a href="/">202 Valet</a></li>
           <li></li>
           <li>
-            <Login />
+            <Login {...this.props}/>
           </li>
         </ul>
       </nav>

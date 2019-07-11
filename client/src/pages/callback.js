@@ -1,23 +1,18 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React, {Component} from "react";
 
-import { AuthConsumer } from "../auth/authContext";
+import Auth from "../components/auth-components/Auth";
 
-const Callback = props => (
-  <AuthConsumer>
-    {({ handleAuthentication, user }) => {
-      if (/access_token|id_token|error/.test(props.location.hash)) {
-        handleAuthentication();
-      }
-      console.log(user)
-      if (user.role === "admin") {
-        return <Redirect to="/admin" />
-      }
-      else if (user.role === "writer") {
-        return <Redirect to="/dashboard" />;
-      }
-    }}
-  </AuthConsumer>
-);
+class CallBack extends Component {
 
-export default Callback;
+  componentDidMount() {
+      const auth = new Auth();
+      auth.handleAuthentication();
+  }
+  render() {
+      return(
+          <div>Loading...</div>
+      )
+  }
+}
+
+export default CallBack;
