@@ -11,7 +11,7 @@ class DashboardPage extends Component {
   render() {
     return (
       <div>
-        
+        <NavBar {...this.props} />
         <LeftMenu />
         <Container>
 
