@@ -9,6 +9,7 @@ import Container from "../components/Container/Container";
 class DashboardPage extends Component {
 
   render() {
+    console.log(this.props.auth.getProfile());
     return (
       <div>
         <NavBar {...this.props} />
