@@ -12,11 +12,13 @@ window.setState = (changes) => {
     ReactDOM.render(<App {...state} />, document.getElementById('root'));
 };
 
+let user = auth.getProfile();
 
 let initialState = {
     // eslint-disable-next-line no-restricted-globals
     location: location.pathname.replace(/^\/?|\/$/g, ""),
-    auth
+    auth,
+    user
 };
 
 window.setState(initialState);
