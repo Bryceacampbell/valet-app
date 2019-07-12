@@ -12,7 +12,11 @@ class NavBar extends Component {
       <nav className="navbar">
         <ul>
           <li className="brand"><a href="/">202 Valet</a></li>
-          <li></li>
+          <li>
+            {this.props.auth.isAuthenticated() &&
+              <h3>Welcome, {this.props.user.given_name}</h3>
+            }
+          </li>
           <li>
             {!this.props.auth.isAuthenticated() &&
               <Login {...this.props} />
