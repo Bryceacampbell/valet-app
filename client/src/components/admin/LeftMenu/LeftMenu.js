@@ -20,16 +20,16 @@ export default class SideBar extends Component {
                             }}
                         >
                             <SideNav.Toggle />
-                            <SideNav.Nav defaultSelected="customers">
+                            <SideNav.Nav defaultSelected="main">
 
-                            <NavItem eventKey="">
+                                <NavItem eventKey="main">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
                                     <NavText> Main Dashboard</NavText>
                                 </NavItem>
 
-                               <NavItem eventKey="customers">
+                                <NavItem eventKey="customers">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
@@ -40,14 +40,14 @@ export default class SideBar extends Component {
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
-                                    <NavText>Requests</NavText>
+                                    <NavText> Requests</NavText>
                                 </NavItem>
 
                                 <NavItem eventKey="calendar">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
-                                    <NavText>Calendar</NavText>
+                                    <NavText> Calendar</NavText>
                                 </NavItem>
 
                             </SideNav.Nav>

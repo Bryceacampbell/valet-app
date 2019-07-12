@@ -1,78 +1,63 @@
-import React, {Component} from "react";
+/* eslint-disable no-restricted-globals */
 import auth0 from "auth0-js";
+import { AUTH_CONFIG } from "../../auth/auth0-variables";
+import jwtDecode from "jwt-decode";
 
-import {AUTH_CONFIG} from "../../auth/auth0-variables";
-import {AuthProvider} from "../../auth/authContext";
+const LOGIN_SUCCESS_PAGE = "/dashboard";
+const LOGIN_FAILURE_PAGE = "/";
 
-const auth = new auth0.WebAuth({
-  domain: AUTH_CONFIG.domain,
-  clientID: AUTH_CONFIG.clientId,
-  redirectUri: AUTH_CONFIG.callbackUrl,
-  audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-  responseType: "token id_token"
-});
+export default class Auth {
+    auth0 = new auth0.WebAuth({
+        domain: AUTH_CONFIG.domain,
+        clientID: AUTH_CONFIG.clientId,
+        redirectUri: AUTH_CONFIG.callbackUrl,
+        audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+        responseType: "token id_token",
+        scope: "openid profile"
+    });
 
-class Auth extends Component {
-  state = {
-    authenticated: false,
-    user: {
-      role: "visitor"
-    },
-    accessToken: ""
-  };
-
-  initiateLogin = () => {
-      auth.authorize();
-  };
-
-  logout = () => {
-    this.setState({
-        authenticated: false,
-        user: {
-          role: "visitor"
-        },
-        accessToken: ""
-      });
-  };
-
-  handleAuthentication = () => {
-    auth.parseHash((error, authResult) => {
-        if (error) {
-          console.log(error);
-          console.log(`Error ${error.error} occured`);
-          return;
-        }
-    
-        this.setSession(authResult.idTokenPayload);
-      });
-  };
-
-  setSession(data) {
-    const user = {
-        id: data.sub,
-        email: data.email,
-        role: data[AUTH_CONFIG.roleUrl]
-      };
-      this.setState({
-        authenticated: true,
-        accessToken: data.accessToken,
-        user
-      });
-  }
-
-  render() {
-    const authProviderValue = {
-      ...this.state,
-      initiateLogin: this.initiateLogin,
-      handleAuthentication: this.handleAuthentication,
-      logout: this.logout
+    constructor() {
+        this.login = this.login.bind(this);
     };
-    return (
-      <AuthProvider value={authProviderValue}>
-        {this.props.children}
-      </AuthProvider>
-    );
-  }
-}
 
-export default Auth;
+    login() {
+        this.auth0.authorize();
+    };
+
+    logout() {
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("id_token");
+        localStorage.removeItem("expires_at");
+        location.pathname = LOGIN_FAILURE_PAGE;
+    };
+
+    handleAuthentication() {
+        this.auth0.parseHash((error, authResults) => {
+            if (authResults && authResults.accessToken && authResults.idToken) {
+                let expiresAt = JSON.stringify((authResults.expiresIn) * 1000 + new Date().getTime());
+                localStorage.setItem("access_token", authResults.accessToken);
+                localStorage.setItem("id_token", authResults.idToken);
+                localStorage.setItem("expires_at", expiresAt);
+                location.hash = "";
+                location.pathname = LOGIN_SUCCESS_PAGE;
+
+            } else if (error) {
+                location.pathname = LOGIN_FAILURE_PAGE;
+                console.log(error);
+            }
+        })
+    };
+
+    isAuthenticated() {
+        let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+        return new Date().getTime() < expiresAt;
+    };
+
+    getProfile() {
+        if (localStorage.getItem("id_token")) {
+            return jwtDecode(localStorage.getItem("id_token"))
+        } else {
+            return {};
+        }
+    };
+};
