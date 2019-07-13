@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 
 import NavBar from "../components/NavBar/Navbar";
-import LeftMenu from "../components/client/LeftMenu/LeftMenu";
+import LeftMenu from "../components/Customer/LeftMenu";
 import Container from "../components/Container/Container";
 
 class DashboardPage extends Component {
