@@ -29,6 +29,7 @@ export default class SideBar extends Component {
                                     <NavText> Main Dashboard</NavText>
                                 </NavItem>
 
+
                                 <NavItem eventKey="schedule">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
@@ -49,6 +50,10 @@ export default class SideBar extends Component {
                                     </NavIcon>
                                     <NavText>View Bills</NavText>
                                 </NavItem>
+
+
+
+                                
 
                             </SideNav.Nav>
                         </SideNav>

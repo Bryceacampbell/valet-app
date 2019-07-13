@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import NavBar from "../components/NavBar/Navbar";
 import LeftMenu from "../components/admin/LeftMenu/LeftMenu";
 import Container from "../components/Container/Container";
+import NewUser from "../components/admin/Customers/newUser";
 
 class AdminPage extends Component {
   render() {
@@ -14,6 +15,8 @@ class AdminPage extends Component {
         <Container>
 
         </Container>
+
+        {/* <NewUser></NewUser> */}
       </div>
     )
   }

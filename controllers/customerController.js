@@ -3,12 +3,13 @@ const db = require("../models");
 
 // Defining methods for the customerController
 module.exports = {
-  findAll: function(req, res) {
-    db.Customer
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  findAllRequests: function(req, res) {
+    // db.Customer
+    //   .find(req.query)
+    //   .sort({ date: -1 })
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => res.status(422).json(err));
+    res.send("Here is a request");
   },
   findById: function(req, res) {
     db.Customer

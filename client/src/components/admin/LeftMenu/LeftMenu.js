@@ -29,6 +29,13 @@ export default class SideBar extends Component {
                                     <NavText> Main Dashboard</NavText>
                                 </NavItem>
 
+                                <NavItem eventKey="newUser">
+                                    <NavIcon>
+                                        <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                    </NavIcon>
+                                    <NavText> Add New User</NavText>
+                                </NavItem>
+
                                 <NavItem eventKey="customers">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
