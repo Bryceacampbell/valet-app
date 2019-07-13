@@ -1,8 +1,6 @@
 import React from "react";
 import "./style.css";
 
-import Customers from "../admin/Customers/Customers";
-
 function Container() {
     return (
         <div className="container card text-center">
@@ -12,7 +10,7 @@ function Container() {
             </div>
 
             <div className="card-body">
-                <Customers />
+                
             </div>
             
         </div>

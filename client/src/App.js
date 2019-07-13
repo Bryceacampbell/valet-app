@@ -9,16 +9,16 @@ import AdminPage from "./pages/admin";
 class App extends Component {
   render() {
     return (
-          <div className="">
-            <Router>
-              <Switch>
-                <Route exact path="/" render={() => <HomePage {...this.props}/>}/>
-                <Route exact path="/dashboard" render={() => <DashboardPage {...this.props}/>} />
-                <Route exact path="/admin" render={() => <AdminPage {...this.props}/>}/>
-                <Route exact path="/callback" component={CallbackPage} />
-              </Switch>
-            </Router>
-          </div>
+      <div className="">
+        <Router>
+          <Switch>
+            <Route exact path="/" render={() => <HomePage {...this.props} />} />
+            <Route exact path="/dashboard" render={() => <DashboardPage {...this.props} />} />
+            <Route exact path="/admin" render={() => <AdminPage {...this.props} />} />
+            <Route exact path="/callback" render={() => <CallbackPage {...this.props} />} />
+          </Switch>
+        </Router>
+      </div>
     );
   }
 };
