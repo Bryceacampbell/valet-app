@@ -14,11 +14,12 @@ window.setState = (changes) => {
 
 let user = auth.getProfile();
 
+
 let initialState = {
     // eslint-disable-next-line no-restricted-globals
     location: location.pathname.replace(/^\/?|\/$/g, ""),
     auth,
-    user
+    user,
 };
 
 window.setState(initialState);

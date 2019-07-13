@@ -3,7 +3,8 @@ import React, { Component } from "react";
 
 import NavBar from "../components/NavBar/Navbar";
 import LeftMenu from "../components/admin/LeftMenu/LeftMenu";
-import Container from "../components/Container/Container";
+// import Customers from "../components/admin/Customers/Customers";
+import Requests from "../components/admin/Requests/Requests";
 
 class AdminPage extends Component {
   render() {
@@ -11,9 +12,7 @@ class AdminPage extends Component {
       <div>
         <NavBar {...this.props}/>
         <LeftMenu />
-        <Container>
-
-        </Container>
+        <Requests/>
       </div>
     )
   }
