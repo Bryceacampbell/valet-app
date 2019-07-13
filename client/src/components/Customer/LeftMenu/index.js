@@ -26,14 +26,14 @@ export default class SideBar extends Component {
                                     <NavIcon>
                                         <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
-                                    <NavText> Main Dashboard</NavText>
+                                    <NavText> Home</NavText>
                                 </NavItem>
 
                                 <NavItem eventKey="schedule">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
-                                    <NavText>Schedule a Service</NavText>
+                                    <NavText>Currently Scheduled</NavText>
                                 </NavItem>
 
                                 <NavItem eventKey="requests">
