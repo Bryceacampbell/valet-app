@@ -2,15 +2,14 @@ const router = require("express").Router();
 const customerController = require("../../controllers/customerController");
 
 
-// router.route("/schedule")
-//   .post(customerController.createSchedule);
+router.route("/dashboard/schedule")
+  .post(customerController.createSchedule);
 
-//:id
-router.route("/requests")
- .get(customerController.findAllRequests);
+router.route("/dashboard/requests:id")
+  .get(customerController.findAllRequests);
 
-//  router.route("/bills")
-//   .get(customerController.findBills);
+router.route("/dashboard/bills")
+  .get(customerController.findBills);
 
 module.exports = router;
 
