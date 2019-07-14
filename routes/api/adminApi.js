@@ -15,8 +15,8 @@ router.route("/customers")
 //   router.route("/customers/add")
 //   .post(adminController.createUser);
 
-//   router.route("/requests")
-//   .get(adminController.findAllRequests);
+  router.route("/requests")
+  .get(adminController.findAllRequests);
 
 //   router.route("/requests/:id")
 //   .get(adminController.findOneRequest)

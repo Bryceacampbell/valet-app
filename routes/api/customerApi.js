@@ -6,8 +6,8 @@ const customerController = require("../../controllers/customerController");
 //   .post(customerController.createSchedule);
 
 //:id
-router.route("/requests")
- .get(customerController.findAllRequests);
+// router.route("/requests")
+//  .get(customerController.findAllRequests);
 
 //  router.route("/bills")
 //   .get(customerController.findBills);

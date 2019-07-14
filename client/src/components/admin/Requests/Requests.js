@@ -1,8 +1,26 @@
 import React, { Component } from "react";
+import API from "../../../utils/API"
 
 import "./style.css";
 
 class Requests extends Component {
+
+    state = {
+        requests: [],
+    };
+
+    componentDidMount() {
+        this.loadRequests();
+    }
+
+    loadRequests = () => {
+        API.getRequests()
+            .then(res =>
+                this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+            )
+            .catch(err => console.log(err));
+    };
+
 
     render() {
         return (
