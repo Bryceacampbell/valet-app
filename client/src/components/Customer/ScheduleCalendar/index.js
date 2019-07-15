@@ -13,23 +13,22 @@ class ScheduleCalendar extends Component {
   }
 
   handleChange(date) {
+    const dateInfo = date;
     this.setState({
       startDate: date
     });
+    this.props.dateFromCalendar(dateInfo);
   }
 
   render() {
     return (
-      <div>
-        <DatePicker
-            placeholderText="Click to Select Pickup Time and Date"
-            isClearable={true}
-            selected={this.state.date}
-            onChange={this.handleChange}
-            showTimeSelect
-            dateFormat="Pp"
-        />
-      </div>
+      <DatePicker
+        name="pickupRequestedDate"
+        onChange={this.handleChange}
+        showTimeSelect
+        dateFormat="Pp"
+        withPortal
+      />
     );
   }
 }
