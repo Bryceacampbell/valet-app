@@ -7,6 +7,9 @@ router.route("/dashboard/schedule")
 
 router.route("/dashboard/requests:id")
   .get(customerController.findAllRequests);
+//:id
+// router.route("/requests")
+//  .get(customerController.findAllRequests);
 
 router.route("/dashboard/bills")
   .get(customerController.findBills);

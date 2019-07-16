@@ -14,7 +14,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <HomePage {...this.props} />} />
             <Route exact path="/dashboard" render={() => <DashboardPage {...this.props} />} />
-            <Route exact path="/admin" render={() => <AdminPage {...this.props} />} />
+            <Route path="/admin" render={() => <AdminPage {...this.props} />} />
             <Route exact path="/callback" render={() => <CallbackPage {...this.props} />} />
           </Switch>
         </Router>

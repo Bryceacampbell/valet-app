@@ -19,6 +19,14 @@ router.route("/admin/customers")
 
   router.route("/admin/calendar")
   .get(adminController.calendar);
+  router.route("/requests")
+  .get(adminController.findAllRequests);
+
+//   router.route("/requests/:id")
+//   .get(adminController.findOneRequest)
+
+//   router.route("/calendar")
+//   .get(adminController.calendar);
 
 
 
