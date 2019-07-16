@@ -22,7 +22,6 @@ const customerSeed = [
         zip: 12345
       }
     },
-    pickupCurrentlyRequested: false
     // asset: {
     //     type: Schema.Types.ObjectId,
     //     ref: "Asset"
@@ -44,7 +43,6 @@ const customerSeed = [
         zip: 12345
       }
     },
-    pickupCurrentlyRequested: false,
     // asset: {
     //   type: Schema.Types.ObjectId,
     //   ref: "Asset"
@@ -100,7 +98,7 @@ const assetSeed = [
     },
     pickupDetails: {
       request: {
-        pickupCurrentlyRequested: false
+        pickupCurrentlyRequested: true
       },
       pickupRequestOriginDate: Date.now,
       pickupRequestedDate: Date.now,
