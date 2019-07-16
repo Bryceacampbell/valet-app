@@ -27,7 +27,7 @@ module.exports = {
       .populate({
         path: 'customer',
         select: 'firstName lastName',
-        match: { color: 'black' },
+        match: { _id: 'black' },
         options: { sort: { name: -1 } }
       .then(dbModel => res.json(dbModel))
     })

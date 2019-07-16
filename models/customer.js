@@ -10,23 +10,27 @@ const customerSchema = new Schema({
     information: {
         firstName: { type: String, required: true, trim: true },
         lastName: { type: String, required: true, trim: true },
-        userName: { type: String, required: true, trim: true  },
-        phoneNumber: { type: Number, min: 10, max: 10},
-        email: { type: String, required: true, trim: true  },
+        userName: { type: String, required: true, trim: true },
+        phoneNumber: { type: Number, min: 10, max: 10 },
+        email: { type: String, required: true, trim: true },
         address: {
-            lineOne: { type: String, required: true, trim: true  },
-            lineTwo: { type: String, required: false, trim: true  },
-            city: { type: String, required: true, trim: true  },
-            state: { type: String, required: true, trim: true  },
+            lineOne: { type: String, required: true, trim: true },
+            lineTwo: { type: String, required: false, trim: true },
+            city: { type: String, required: true, trim: true },
+            state: { type: String, required: true, trim: true },
             zip: { type: Number, required: true, min: 5, max: 5 }
         }
     },
     // pickupCurrentlyRequested: { type: Boolean, default: false },
+
+    // I believe the connection needs to go into the Asset, pointing to the Customer, rather than here.
     // asset collection connection
-    asset: {
-        type: Schema.Types.ObjectId,
-        ref: "Asset"
-    }
+    // asset: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Asset"
+    // }
+
+
     // messages would go... here?
 });
 
