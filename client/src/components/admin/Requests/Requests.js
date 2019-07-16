@@ -35,7 +35,7 @@ class Requests extends Component {
 
                     {this.state.requests.map(request => (
 
-                        <div className="card request" key={request}>
+                        <div className="card request" key={request._id}>
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-3">
@@ -44,7 +44,7 @@ class Requests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Customer Name: </p>
-                                        <p>{request.storageInfo.location}</p>
+                                        <p>{request.firstName + " " + request.lastName}</p>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Date Requested:</p>
