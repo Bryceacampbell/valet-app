@@ -21,7 +21,7 @@ const customerSchema = new Schema({
             zip: { type: Number, required: true, min: 5, max: 5 }
         }
     },
-    pickupCurrentlyRequested: { type: Boolean, default: false },
+    // pickupCurrentlyRequested: { type: Boolean, default: false },
     // asset collection connection
     asset: {
         type: Schema.Types.ObjectId,
