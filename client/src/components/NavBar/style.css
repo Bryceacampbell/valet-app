@@ -18,17 +18,20 @@ ul {
 
 .brand {
     font-size: 2rem;
+    margin-left: 40px;
 }
+
+.auth-btn {
+    text-align: right;
+}
+
 .navbar li {
     display: inline-block;
-    width: 33.3%;
-    text-align: center;
 }
 
 .navbar a {
     text-decoration: none;
     font-weight: 900;
-
 }
 
 a {

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import NavBar from "../components/NavBar/Navbar";
-import CustomerHome from "../components/Customer/CustomerHome";
+import Hero from "../components/Hero/Hero";
+
 
 class HomePage extends Component {
 
@@ -9,7 +10,7 @@ class HomePage extends Component {
     return (
       <div>
         <NavBar {...this.props} />
-        <CustomerHome />
+        <Hero />
       </div>
     )
 
