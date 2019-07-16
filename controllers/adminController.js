@@ -24,8 +24,13 @@ module.exports = {
   findAllRequests: function(req, res) {
     db.Asset
       .find(req.query)
-      .sort({ date: -1 })
+      .populate({
+        path: 'customer',
+        select: 'firstName lastName',
+        match: { color: 'black' },
+        options: { sort: { name: -1 } }
       .then(dbModel => res.json(dbModel))
+    })
       .catch(err => res.status(422).json(err));
   },
   findOneRequest: function(req, res) {
