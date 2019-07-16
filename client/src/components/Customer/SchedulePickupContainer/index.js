@@ -3,17 +3,27 @@ import "./style.css";
 import ScheduleForm from "../ScheduleForm";
 
 class SchedulePickupContainer extends Component {
-    
-    render(){
-        return(
-            <div className="text-center align-content-center mt-5">
-                <button className="btn-info btn-block my-2">Request Pickup</button>
-                <ScheduleForm />
-            </div>
+    state = {
+        isRequested: false
+    };
 
-        );
+    handleScheduleRequest = () => {
+        this.setState({isRequested: true}) 
     }
 
+    render() {
+    const isRequested = this.state.isRequested;
+    return (
+      <div>
+        
+        {isRequested ? <ScheduleForm /> : <div className="text-center align-content-center mt-5">
+          <button 
+            onClick={this.handleScheduleRequest} 
+            className="btn-info btn-block my-2">Request Pickup</button>
+        </div>}
+      </div>
+    );
+  }
 }
 
 export default SchedulePickupContainer;
