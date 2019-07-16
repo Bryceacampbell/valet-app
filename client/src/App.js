@@ -15,20 +15,9 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <HomePage {...this.props} />} />
-            {this.props.auth.isAuthenticated() &&
-              <Route
-                exact path="/dashboard"
-                render={() => <DashboardPage {...this.props} />}
-              />
-            }
-
-            {this.props.auth.isAuthenticated() &&
-              <Route
-                exact path="/admin"
-                render={() => <AdminPage {...this.props} />}
-              />
-            }
-            <Route exact path="/callback" component={CallbackPage} />
+            <Route exact path="/dashboard" render={() => <DashboardPage {...this.props} />} />
+            <Route path="/admin" render={() => <AdminPage {...this.props} />} />
+            <Route exact path="/callback" render={() => <CallbackPage {...this.props} />} />
           </Switch>
         </Router>
       </div>
