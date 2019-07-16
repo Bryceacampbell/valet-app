@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HomePage from './pages/home';
-import DashboardPage from './pages/dashboard';
+import DashboardPage from './pages/client/dashboard';
 import CallbackPage from "./pages/callback";
-import AdminPage from "./pages/admin";
+import AdminPage from "./pages/admin/admin";
+import Container from "./components/Container/Container";
+import Schedule from "./pages/client/schedule";
 
 class App extends Component {
   render() {
@@ -22,5 +24,4 @@ class App extends Component {
     );
   }
 };
-
 export default App;

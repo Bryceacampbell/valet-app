@@ -1,20 +1,22 @@
-import React from "react";
+import React, {Component} from "react";
 import "./style.css";
 
-function Container() {
-    return (
-        <div className="container card text-center">
-
-            <div className="card-header">
-                <h1>Container Header</h1>
-            </div>
-
-            <div className="card-body">
+class Container extends Component {
+    render() {
+        return (
+            <div className="container card text-center">
+    
+                <div className="card-header">
+                    <h1>Container Header</h1>
+                </div>
+    
+                <div className="card-body">
+                    
+                </div>
                 
             </div>
-            
-        </div>
-    )
+        )
+    }
 };
 
 export default Container;
