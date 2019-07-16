@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { Redirect } from "react-router-dom";
 
 import NavBar from "../components/NavBar/Navbar";
@@ -12,7 +13,8 @@ class AdminPage extends Component {
       <div>
         <NavBar {...this.props}/>
         <LeftMenu />
-        <Requests/>
+        <Route exact path="/admin/requests" render={() => <Requests {...this.props} />} />
+        {/* <Requests/> */}
       </div>
     )
   }

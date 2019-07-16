@@ -6,6 +6,6 @@ const customerRoutes = require("./customerApi");
 // Book routes
 //router.use("/books", bookRoutes);
 router.use("/admin", adminRoutes);
-router.use("/customer", customerRoutes);
+router.use("/dashboard", customerRoutes);
 
 module.exports = router;

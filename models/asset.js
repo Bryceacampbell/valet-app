@@ -39,6 +39,10 @@ const assetSchema = new Schema({
             pickupComplete: { type: Boolean, default: false },
             // Records the date of the pickup
             pickupCompleteDate: { type: Date }
+        },
+        customerID: {
+            type: Schema.Types.ObjectId,
+            ref: "Customer"
         }
     }
 });
