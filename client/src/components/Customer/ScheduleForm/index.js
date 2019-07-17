@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./style.css";
 import ScheduleCalendar from "../ScheduleCalendar"
+import API from "../../../utils/API"
 
 
 class ScheduleForm extends Component {
   state = {
-    // assets: "",
+    assets: [],
     pickupCurrentlyRequested: false,
     pickupRequestedDate: "",
     dateToConfirm: "",
@@ -14,6 +15,19 @@ class ScheduleForm extends Component {
   // Uses call-B func to retrieve selected date from date-picker component
   dateUpdate = (dateInfo) => {
     this.setState({ pickupRequestedDate: dateInfo });
+  }
+
+  componentDidMount(){
+    this.loadAssets();
+  };
+
+  loadAssets = () => {
+    API.getAssets()
+      .then(res => {
+        this.setState({ assets: res.data });
+        console.log(this.state.assets);
+      })
+      .catch(err => console.log(err));
   }
 
   handleFormSubmit = (event) => {
@@ -46,6 +60,21 @@ class ScheduleForm extends Component {
             Confirm
           </button>
         </form>
+        <div className="container">
+        {this.state.assets.map(asset => (
+          <div className="card-body" key={asset._id}>
+            <div className="card">
+              <div col-8>
+                <p>Year:</p>
+                <p>{asset.description.year}</p>
+                <p>Make:</p>
+                <p>{asset.description.make}</p>
+                <p>Model:</p>
+                <p>{asset.description.model}</p>
+              </div>
+            </div>
+          </div>
+        ))}</div>
       </div>
     );
   }
