@@ -28,11 +28,11 @@ module.exports = {
       .find(req.query)
       // .where({ pickupDetails: { request: { pickupCurrentlyRequested: true } } })
       .populate({
-        path: "customers",
+        path: "customerId",
         select: 'firstName lastName',
       })
       .then(dbModel => {
-        console.log(dbModel.customers);        
+        console.log(dbModel);        
         res.json(dbModel)
       })
       .catch(err => res.status(422).json(err));

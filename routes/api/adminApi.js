@@ -11,7 +11,7 @@ const adminController = require("../../controllers/adminController");
   router.route("/admin/customers/add")
   .post(adminController.createUser);
 
-  router.route("/admin/requests")
+  router.route("/api/admin/requests")
   .get(adminController.findAllRequests);
 
   router.route("/admin/requests/:id")
