@@ -9,6 +9,10 @@ export default {
     console.log("Ajax called being made");
     return axios.get("/api/admin/customers");
   },
+  getAssets: function() {
+    console.log("Ajax on Assets made!");
+    return axios.get("/api/dashboard/assets");
+  },
   // Gets the book with the given id
   getBook: function(id) {
     return axios.get("/api/books/" + id);
