@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 // import { Redirect } from "react-router-dom";
 
-import NavBar from "../../components/NavBar/Navbar";
+import NavBar from "../../components/shared/NavBar/Navbar";
 import Customers from "../../components/admin/Customers/Customers"
-import Backdrop from "../../components/Backdrop/Backdrop";
+import Backdrop from "../../components/shared/Backdrop/Backdrop";
 import ToggleButton from "../../components/admin/SideNav/ToggleButton";
 import SideNav from "../../components/admin/SideNav/SideNav";
 import Requests from "../../components/admin/Requests/Requests";
@@ -40,6 +40,7 @@ class AdminPage extends Component {
         <SideNav show={this.state.sideNavOpen} />
         <Route exact path="/admin/requests" render={() => <Requests {...this.props} />} />
         <Route exact path="/admin/customers" render={() => <Customers {...this.props} />} />
+        
         {backdrop}
       </div>
     )

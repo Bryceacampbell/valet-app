@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import NavBar from "../components/NavBar/Navbar";
-import Hero from "../components/Hero/Hero";
+import NavBar from "../components/shared/NavBar/Navbar";
+import Hero from "../components/shared/Hero/Hero";
 
 
 class HomePage extends Component {

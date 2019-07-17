@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
-import Login from "../auth-components/Login/Login";
-import Logout from "../auth-components/Logout/Logout";
-import ToggleButton from "../Customer/SideNav/ToggleButton";
+import Login from "../../auth-components/Login/Login";
+import Logout from "../../auth-components/Logout/Logout";
+import ToggleButton from "../../Customer/SideNav/ToggleButton";
 
 class NavBar extends Component {
 
