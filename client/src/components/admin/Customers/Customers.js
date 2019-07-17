@@ -8,7 +8,7 @@ class Customers extends Component {
         return (
             <div className="container card text-center">
                 <div className="card-header">
-                    <h1>Container Header</h1>
+                    <h3>Customers</h3>
                 </div>
                 <div className="card-body">
                     <div className="row">

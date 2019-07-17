@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 
-import { Route } from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 
 import NavBar from "../../components/NavBar/Navbar";
 
 import SideNav from "../../components/Customer/SideNav/SideNav";
 import Backdrop from "../../components/Backdrop/Backdrop";
 import ToggleButton from "../../components/Customer/SideNav/ToggleButton";
-import CustomerHome from "../../components/Customer/CustomerHome";
-
-import Schedule from "../../pages/client/schedule";
+import CustomerHome from "../../components/Customer/CustomerHome/index";
 
 class DashboardPage extends Component {
 
@@ -43,19 +41,8 @@ class DashboardPage extends Component {
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
         <ToggleButton />
         <SideNav show={this.state.sideNavOpen} {...this.props} />
+        <Route exact path="/dashboard/schedule" render={() => <CustomerHome {...this.props} />} />
         {backdrop}
-        <CustomerHome />
-
-        <Route
-          path="dashboard/home"
-          render={() => <DashboardPage {...this.props} />}
-        />
-
-        <Route
-          path="/dashboard/schedule"
-          render={() => <Schedule {...this.props} />}
-        />
-
       </div>
     )
   }

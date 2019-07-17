@@ -12,10 +12,10 @@ const SideNav = props => {
     return(
         <nav className={sideNavClasses} >
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/">View Requests</a></li>
-            <li><a href="/">Customers</a></li>
-            <li><a href="/">Calendar</a></li>
+            <li><a href="/admin">Home</a></li>
+            <li><a href="/admin/requests">View Requests</a></li>
+            <li><a href="/admin/customers">Customers</a></li>
+            <li><a href="/admin/calendar">Calendar</a></li>
         </ul>
     </nav>
     )
