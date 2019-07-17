@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { Redirect } from "react-router-dom";
 
 import NavBar from "../../components/NavBar/Navbar";
@@ -6,6 +7,7 @@ import NavBar from "../../components/NavBar/Navbar";
 import Backdrop from "../../components/Backdrop/Backdrop";
 import ToggleButton from "../../components/admin/SideNav/ToggleButton";
 import SideNav from "../../components/admin/SideNav/SideNav";
+import Requests from "../../components/admin/Requests/Requests";
 
 class AdminPage extends Component {
   state = {
@@ -36,6 +38,7 @@ class AdminPage extends Component {
         <NavBar {...this.props } navClickHandler={this.sideNavToggleClickHandler}/>
         <ToggleButton/>
         <SideNav show={this.state.sideNavOpen}/>
+        <Route exact path="/admin/requests" render={() => <Requests {...this.props} />} />
         {backdrop}       
       </div>
     )
