@@ -26,11 +26,12 @@ module.exports = {
     
     db.Asset
       .find(req.query)
-      // .where({ pickupDetails: { request: { pickupCurrentlyRequested: true } } })
-      .populate({
-        path: "customerId",
-        select: 'firstName lastName',
-      })
+      .where({ pickupDetails: { request: { pickupCurrentlyRequested: true } } })
+      // .populate({
+      //   path: "customerId",
+      //   select: 'firstName lastName'
+      // })
+      .populate("customerId")
       .then(dbModel => {
         console.log(dbModel);        
         res.json(dbModel)

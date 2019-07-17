@@ -20,7 +20,7 @@ const customerSchema = new Schema({
             state: { type: String, required: true, trim: true },
             zip: { type: Number, required: true, min: 5, max: 5 }
         }
-    },
+    }
     // pickupCurrentlyRequested: { type: Boolean, default: false },
 
     // I believe the connection needs to go into the Asset, pointing to the Customer, rather than here.
