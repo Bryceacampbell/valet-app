@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -13,10 +13,10 @@ const SideNav = props => {
     return (
         <nav className={sideNavClasses} >
             <ul>
-                <li><Link to="dashboard/home">Home</Link></li>
-                <li><Link to="dashboard/schedule">Schedule A Service</Link></li>
-                <li><Link to="dashboard/requests">Current Requests</Link></li>
-                <li><Link to="dashboard/bills">View Bills</Link></li>
+                <li><a href="/dashboard/home">Home</a></li>
+                <li><a href="/dashboard/schedule">Schedule A Service</a></li>
+                <li><a href="/dashboard/requests">Current Requests</a></li>
+                <li><a href="/dashboard/bills">View Bills</a></li>
             </ul>
         </nav>
     )

@@ -5,8 +5,6 @@ import HomePage from './pages/home';
 import DashboardPage from './pages/client/dashboard';
 import CallbackPage from "./pages/callback";
 import AdminPage from "./pages/admin/admin";
-import Container from "./components/Container/Container";
-import Schedule from "./pages/client/schedule";
 
 class App extends Component {
   render() {
@@ -15,7 +13,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <HomePage {...this.props} />} />
-            <Route exact path="/dashboard" render={() => <DashboardPage {...this.props} />} />
+            <Route path="/dashboard" render={() => <DashboardPage {...this.props} />} />
             <Route path="/admin" render={() => <AdminPage {...this.props} />} />
             <Route exact path="/callback" render={() => <CallbackPage {...this.props} />} />
           </Switch>
