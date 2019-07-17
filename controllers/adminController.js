@@ -2,10 +2,10 @@ const db = require("../models");
 
 // Defining methods for the adminController
 module.exports = {
-  findAll: function (req, res) {
+  findAllUsers: function (req, res) {
+    console.log("findAllUsers was called in adminController.js");
     db.Customer
       .find(req.query)
-      .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -23,7 +23,7 @@ module.exports = {
   },
   findAllRequests: function (req, res) {
     console.log("findAllRequests in adminController.js was called");
-    
+
     db.Asset
       .find(req.query)
       .find({pickupDetails: { request: { pickupCurrentlyRequested: true } } })
@@ -34,7 +34,7 @@ module.exports = {
       // })
       .populate("customerId")
       .then(dbModel => {
-        console.log(dbModel);        
+        console.log(dbModel);
         res.json(dbModel)
       })
       .catch(err => res.status(422).json(err));
