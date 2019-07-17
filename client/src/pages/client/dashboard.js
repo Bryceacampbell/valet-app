@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Route } from "react-router-dom";
+import { Route } from 'react-router-dom';
 
 import NavBar from "../../components/shared/NavBar/Navbar";
 
