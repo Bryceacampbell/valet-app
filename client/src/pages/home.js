@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import NavBar from "../components/NavBar/Navbar";
+import NavBar from "../components/shared/NavBar/Navbar";
 import Hero from "../components/Hero/Hero";
 
 

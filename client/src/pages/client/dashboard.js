@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 import { BrowserRouter as Route } from "react-router-dom";
 
-import NavBar from "../../components/NavBar/Navbar";
+import NavBar from "../../components/shared/NavBar/Navbar";
 
 import SideNav from "../../components/Customer/SideNav/SideNav";
-import Backdrop from "../../components/Backdrop/Backdrop";
+import Backdrop from "../../components/shared/Backdrop/Backdrop";
 import ToggleButton from "../../components/Customer/SideNav/ToggleButton";
 import CustomerHome from "../../components/Customer/CustomerHome/index";
 
@@ -34,13 +34,12 @@ class DashboardPage extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
-
     return (
-
       <div style={{ height: "100%" }}>
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
         <ToggleButton />
         <SideNav show={this.state.sideNavOpen} {...this.props} />
+        
         <Route exact path="/dashboard/schedule" render={() => <CustomerHome {...this.props} />} />
         {backdrop}
       </div>
