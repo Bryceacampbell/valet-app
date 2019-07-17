@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+
   getRequests: function() {
     return axios.get("/api/admin/requests");
+  },
+  getAllCustomers: function() {
+    console.log("Ajax called being made");
+    return axios.get("/api/admin/customers");
   },
   // Gets the book with the given id
   getBook: function(id) {
