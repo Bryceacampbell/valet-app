@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../../utils/API";
+import { Table } from "react-bootstrap";
 
 import "./style.css";
 
@@ -36,15 +37,27 @@ class Customers extends Component {
                                 <input type="text" className="form-control" placeholder="Search"></input>
                             </div>
                         </div>
-                        <div>
-                            <ul>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Phone #</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 {this.state.customers.map(customer => (
-                                    <div key={customer._id}>
-                                        <li>{customer.information.firstName}</li>
-                                    </div>
+                                    <tr key="customer._id">
+                                        <td>{customer.information.firstName}</td>
+                                        <td>{customer.information.lastName}</td>
+                                        <td>{customer.information.phoneNumber}</td>
+                                        <td>{customer.information.email}</td>
+                                    </tr>
                                 ))}
-                            </ul>
-                        </div>
+                            </tbody>
+                        </Table>
                     </div>
                 </div>
             </div>
