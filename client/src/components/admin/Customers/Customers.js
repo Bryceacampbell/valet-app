@@ -37,7 +37,8 @@ class Customers extends Component {
                                 <input type="text" className="form-control" placeholder="Search"></input>
                             </div>
                         </div>
-                        <Table striped bordered hover>
+                    </div>
+                    <Table striped bordered hover>
                             <thead>
                                 <tr>
 
@@ -58,7 +59,6 @@ class Customers extends Component {
                                 ))}
                             </tbody>
                         </Table>
-                    </div>
                 </div>
             </div>
 
