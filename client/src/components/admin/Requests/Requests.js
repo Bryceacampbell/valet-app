@@ -44,7 +44,9 @@ class Requests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Customer Name: </p>
-                                        <p>{request.firstName + " " + request.lastName}</p>
+                                        {console.log("request in map function")}
+                                        {console.log(request)}
+                                        <p>{request.customerId.information.firstName + " " + request.customerId.information.lastName}</p>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Date Requested:</p>
