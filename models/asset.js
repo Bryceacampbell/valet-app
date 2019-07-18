@@ -19,14 +19,14 @@ const assetSchema = new Schema({
     },
     pickupDetails: {
         request: {
-        // Is there an open request to pickup an asset?
-        pickupCurrentlyRequested: { type: Boolean, default: false },
-        // Date of the pickup request was made (for first-come, first-served, if necessary)
-        pickupRequestOriginDate: { type: Date },
-        // Date that the asset is to be picked up, per customer's request
-        pickupRequestedDate: { type: Date },
-        // Was the pickup request Approved/Denied?
-        pickupRequestConfirmed: { type: Boolean, default: false },
+            // Is there an open request to pickup an asset?
+            pickupCurrentlyRequested: { type: Boolean, default: false },
+            // Date of the pickup request was made (for first-come, first-served, if necessary)
+            pickupRequestOriginDate: { type: Date },
+            // Date that the asset is to be picked up, per customer's request
+            pickupRequestedDate: { type: Date },
+            // Was the pickup request Approved/Denied?
+            pickupRequestConfirmed: { type: Boolean, default: false },
         },
         confirmation: {
             // name/_id of admin who approved/denied the request... just the name for now
@@ -39,11 +39,11 @@ const assetSchema = new Schema({
             pickupComplete: { type: Boolean, default: false },
             // Records the date of the pickup
             pickupCompleteDate: { type: Date }
-        },
-        customerID: {
-            type: Schema.Types.ObjectId,
-            ref: "Customer"
         }
+    },
+    customerId: {
+        type: Schema.Types.ObjectId,
+        ref: "Customer"
     }
 });
 
