@@ -8,16 +8,17 @@ const SideNav = props => {
     if (props.show) {
         sideNavClasses = "side-nav open";
     }
-    
-    return(
+
+    return (
         <nav className={sideNavClasses} >
-        <ul>
-            <li><a href="/admin">Home</a></li>
-            <li><a href="/admin/requests">View Requests</a></li>
-            <li><a href="/admin/customers">Customers</a></li>
-            <li><a href="/admin/calendar">Calendar</a></li>
-        </ul>
-    </nav>
+            <img className="logo" src="http://www.dev202valet.com.php72-35.phx1-1.websitetestlink.com/assets/images/svg/202_valet_white.svg" alt="202 valet logo"></img>
+            <ul>
+                <li><a href="/admin">Home</a></li>
+                <li><a href="/admin/requests">View Requests</a></li>
+                <li><a href="/admin/customers">Customers</a></li>
+                <li><a href="/admin/calendar">Calendar</a></li>
+            </ul>
+        </nav>
     )
 };
 
