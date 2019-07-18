@@ -16,6 +16,7 @@ const SideNav = props => {
             <li><a href="/admin/requests">View Requests</a></li>
             <li><a href="/admin/customers">Customers</a></li>
             <li><a href="/admin/calendar">Calendar</a></li>
+            <li><a href="/admin/newUser">New Customer</a></li>
         </ul>
     </nav>
     )
