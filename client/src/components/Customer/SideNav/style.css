@@ -26,16 +26,21 @@
 
 .side-nav {
     height: 100%;
-    background: #777777;
+    background: linear-gradient(to right, #000 -50%, #4b4c4f 20%, #4b4c4f 80%, #000 150%);
     box-shadow: 1px 0 7px rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
     width: 70%;
-    max-width: 300px;
+    max-width: 310px;
     z-index: 200;
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
+}
+
+.logo {
+    max-width: 250px;
+    margin: 25px 25px 25px;
 }
 
 .side-nav.open {
@@ -51,10 +56,11 @@
 }
 .side-nav li {
     margin: 0.5rem 0;
+    padding: 5px;
 }
 
 .side-nav li:hover {
-    background-color: grey
+    background-color: #777777;
 }
 
 .side-nav a {
@@ -68,3 +74,8 @@
     color: #ffffff;
 }
 
+.nav-icons {
+    color: #ffffff;
+    margin: 5px 10px 5px 5px;
+    font-size: 20px;
+}

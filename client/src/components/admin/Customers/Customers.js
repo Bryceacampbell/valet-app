@@ -25,7 +25,7 @@ class Customers extends Component {
 
     render() {
         return (
-            <div className="container card text-center">
+            <div className="container-fluid card text-center">
                 <div className="card-header">
                     <h3>Customers</h3>
                 </div>

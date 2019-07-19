@@ -1,11 +1,11 @@
 .navbar {
-
-    background: #563d7c;
+    background: linear-gradient(to right, #000 -50%, #4b4c4f 20%, #4b4c4f 80%, #000 150%);
     width: 100%;
     -webkit-box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
     box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
     z-index: 99;
     white-space: nowrap;
+    max-height: 68px;
 }
 ul {
     width: 100%;
@@ -19,6 +19,13 @@ ul {
 .brand {
     font-size: 2rem;
     margin-left: 40px;
+}
+.brand img {
+    height: 70px;
+}
+
+.user-welcome {
+    color: #ffffff;
 }
 
 .auth-btn {
