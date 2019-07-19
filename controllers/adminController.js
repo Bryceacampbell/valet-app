@@ -75,7 +75,8 @@ module.exports = {
     //   console.log(error);
     // });
 
-    res.status(200).send(req.body);
+    res.status(200)
+    // .send(req.body);
   },
   findAllRequests: function (req, res) {
     console.log("findAllRequests in adminController.js was called");
@@ -83,6 +84,7 @@ module.exports = {
     db.Asset
       .find(req.query)
       // .find({pickupDetails: { request: { pickupCurrentlyRequested: true } } })
+      .find({"pickupDetails.request.pickupCurrentlyRequested": true})      
       .populate("customerId")
       .then(dbModel => {
         console.log(dbModel);
