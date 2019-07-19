@@ -28,6 +28,7 @@ class Customers extends Component {
             <div className="container-fluid card text-center">
                 <div className="card-header">
                     <h3>Customers</h3>
+                    <a href="/admin/newuser"><button className="btn btn-primary add-btn">Add</button></a>
                 </div>
                 <div className="card-body">
                     <div className="row">
