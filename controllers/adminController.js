@@ -75,8 +75,7 @@ module.exports = {
     //   console.log(error);
     // });
 
-    res.status(200)
-    // .send(req.body);
+    res.redirect("/admin/customers");
   },
   findAllRequests: function (req, res) {
     console.log("findAllRequests in adminController.js was called");
