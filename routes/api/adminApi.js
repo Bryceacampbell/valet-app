@@ -7,13 +7,13 @@ router.route("/customers")
 // router.route("/admin/customers/:id")
 // .get(adminController.findOneUser);
 
-router.route("/api/admin/customers/add")
+router.route("/customers/add")
   .post(adminController.createUser);
 
-router.route("/api/admin/requests")
+router.route("/requests")
   .get(adminController.findAllRequests);
 
-router.route("/admin/requests/:id")
+router.route("/requests/:id")
   .get(adminController.findOneRequest)
 
 // router.route("/admin/calendar")
