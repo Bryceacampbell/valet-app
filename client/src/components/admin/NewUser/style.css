@@ -1,0 +1,37 @@
+.container {
+    margin-top: 25px;
+    padding: 15px;
+    width: 30%;
+    border: rgb(112, 12, 112) 8px solid;
+    border-radius: 5%;
+ }
+
+ .form-group {
+
+    font-size: 15px;
+    font-weight: bold;
+
+
+
+ }
+
+ input {
+
+    height: 30px;
+    font-size: 15px;
+ }
+
+ .button {
+
+    position:relative;
+
+
+
+ }
+
+ .button:hover {
+
+
+    border:  rgb(112, 12, 112) 2px solid;
+
+ } 
