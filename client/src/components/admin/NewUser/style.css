@@ -1,31 +1,28 @@
+.form-group {
+   font-size: 15px;
+   font-weight: bold;
+}
 
+input {
+   height: 30px;
+   font-size: 15px;
+}
 
- .form-group {
+.button {
+   position:relative;
+}
 
-    font-size: 15px;
-    font-weight: bold;
+.back-btn {
+   font-size: 25px;
+   color: #4b4c4f;
+   margin-top: 10px;
+}
 
-
-
+.back-btn:hover {
+   color: #777777
  }
 
- input {
 
-    height: 30px;
-    font-size: 15px;
- }
-
- .button {
-
-    position:relative;
-
-
-
- }
-
- .button:hover {
-
-
+.button:hover {
     border:  rgb(112, 12, 112) 2px solid;
-
  } 

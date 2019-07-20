@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import API from "../../../utils/API";
-import { Table } from "react-bootstrap";
-
 import "./style.css";
+
+import { Table } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
+
 
 class Customers extends Component {
 
@@ -26,40 +29,46 @@ class Customers extends Component {
     render() {
         return (
             <div className="container-fluid card text-center">
-                <div className="card-header">
-                    <h3>Customers</h3>
-                    <a href="/admin/newuser"><button className="btn btn-primary add-btn">Add</button></a>
+                <div className="card-header row">
+                <div className="col-lg-1">
+                    </div>
+                    <div className="col-lg-10">
+                        <h3>Customers</h3>
+                    </div>
+                    <div className="col-lg-1">
+                        <a href="/admin/newuser"><FontAwesomeIcon icon={faPlusCircle} className="add-btn"/></a>
+                    </div>
                 </div>
                 <div className="card-body">
                     <div className="row">
-                        <div className="col-lg-12">
+                        <div className="col-lg-12 search-bar">
                             <div className="form-group has-search">
-                                <span className="fa fa-search form-control-feedback"></span>
+                                <span className="form-control-feedback"><FontAwesomeIcon icon={faSearch}/></span>
                                 <input type="text" className="form-control" placeholder="Search"></input>
                             </div>
                         </div>
                     </div>
                     <Table striped bordered hover>
-                            <thead>
-                                <tr>
+                        <thead>
+                            <tr>
 
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Phone #</th>
-                                    <th>Email</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone #</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.customers.map(customer => (
+                                <tr key="customer._id">
+                                    <td>{customer.information.firstName}</td>
+                                    <td>{customer.information.lastName}</td>
+                                    <td>{customer.information.phoneNumber}</td>
+                                    <td>{customer.information.email}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.customers.map(customer => (
-                                    <tr key="customer._id">
-                                        <td>{customer.information.firstName}</td>
-                                        <td>{customer.information.lastName}</td>
-                                        <td>{customer.information.phoneNumber}</td>
-                                        <td>{customer.information.email}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
+                            ))}
+                        </tbody>
+                    </Table>
                 </div>
             </div>
 
