@@ -1,14 +1,25 @@
 import React, { Component } from "react";
 import "./style.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 
 class NewUser extends Component {
 
     render() {
         return (
             <div className="container card">
-                <div className="card-header text-center">
-                    <h3>Add Customer</h3>
+                <div className="card-header row">
+                <div className="col-lg-1">
+                        <a href="/admin/customers"><FontAwesomeIcon icon={faArrowLeft} className="back-btn"/></a>
+                    </div>
+                    <div className="col-lg-10 text-center">
+                        <h3>Add Customer</h3>
+                    </div>
+                    <div className="col-lg-1">
+                    </div>
+
                 </div>
 
                 <div className="card-body">

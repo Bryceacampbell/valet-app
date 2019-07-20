@@ -1,3 +1,6 @@
+.search-bar {
+  padding: 0px;
+}
 .has-search .form-control {
   padding-left: 2.375rem;
   }
@@ -20,6 +23,16 @@
 }
 
 .add-btn {
-  float: right;
-  clear: both;
+  font-size: 30px;
+  color: #4b4c4f;
+  margin-top: 5px;
+}
+
+.add-btn:hover {
+  color: #777777
+}
+
+.card-header,
+.row {
+  margin: 0px;
 }
