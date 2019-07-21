@@ -34,5 +34,16 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  findAllAssets: function (req, res) {
+    console.log("findAllAssets has been called via customerController.js'");
+    db.Asset
+        .find(req.query)
+        .populate("customerId")
+        .then(dbModel => {
+          console.log(dbModel);
+          res.json(dbModel)
+        })
+        .catch(err => res.status(422).json(err));
+    }
 };

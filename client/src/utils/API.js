@@ -11,7 +11,7 @@ export default {
   },
   getAssets: function() {
     console.log("Ajax on Assets made!");
-    return axios.get("/api/dashboard/assets");
+    return axios.get("/api/dashboard/schedule");
   },
   // Gets the book with the given id
   getBook: function(id) {

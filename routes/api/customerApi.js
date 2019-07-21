@@ -14,5 +14,8 @@ const customerController = require("../../controllers/customerController");
 // router.route("/dashboard/bills")
 //   .get(customerController.findBills);
 
+router.route("/schedule")
+    .get(customerController.findAllAssets);
+
 module.exports = router;
 
