@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../../utils/API";
-
 import "./style.css";
+const moment = require("moment");
 
 class Requests extends Component {
 
@@ -50,7 +50,7 @@ class Requests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Date Requested:</p>
-                                        <p>7/15/19</p>
+                                        <p>{moment(request.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Request Type:</p>

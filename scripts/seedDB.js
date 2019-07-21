@@ -177,7 +177,8 @@ function seedAssets(customerIds, cb) {
   db.Asset.deleteMany({})
     .then(() => {
       for (i = 0; i < assetSeed.length; i++) {
-        assetSeed[i].customerId = "ObjectId(\"" + custIdArr[i] + "\")"
+        assetSeed[i].customerId = mongoose.Types.ObjectId(custIdArr[i])
+        // "ObjectId(\"" + custIdArr[i] + "\")"
       };
       console.log("------------------------------");
       console.log(assetSeed);
