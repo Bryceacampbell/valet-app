@@ -83,6 +83,7 @@ module.exports = {
     db.Asset
       .find(req.query)
       // .find({pickupDetails: { request: { pickupCurrentlyRequested: true } } })
+      .find({"pickupDetails.request.pickupCurrentlyRequested": true})      
       .populate("customerId")
       .then(dbModel => {
         console.log(dbModel);
