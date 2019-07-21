@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const customerController = require("../../controllers/customerController");
-
+const assetController = require("../../controllers/assetController");
 
 // router.route("/dashboard/schedule")
 //   .post(customerController.createSchedule);
@@ -13,6 +13,9 @@ const customerController = require("../../controllers/customerController");
 
 // router.route("/dashboard/bills")
 //   .get(customerController.findBills);
+
+router.route("/schedule/assets")
+    .get(assetController.findAllAssets);
 
 module.exports = router;
 
