@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+const moment = require("moment");
 
 // This file empties the Books collection and inserts the books below
 
@@ -52,7 +53,7 @@ const customerSeed = [
 
 const assetSeed = [
   {
-    dateAdded: Date.now,
+    dateAdded: "2019-02-15",
     storageInfo: {
       currentlyStored: true,
       location: "Unit 420"
@@ -67,23 +68,23 @@ const assetSeed = [
     },
     pickupDetails: {
       request: {
-        pickupCurrentlyRequested: false
+        pickupCurrentlyRequested: false,
+        pickupRequestOriginDate: null,
+        pickupRequestedDate: null,
+        pickupRequestConfirmed: false
       },
-      pickupRequestOriginDate: Date.now,
-      pickupRequestedDate: Date.now,
-      pickupRequestConfirmed: false
+      confirmation: {
+        pickupConfirmedBy: "AdminAngie",
+        pickupConfirmDate: null
+      },
+      completion: {
+        pickupComplete: false,
+        pickupCompleteDate: null
+      }
     },
-    confirmation: {
-      pickupConfirmedBy: "AdminAngie",
-      pickupConfirmDate: Date.now
-    },
-    completion: {
-      pickupComplete: false,
-      pickupCompleteDate: Date.now
-    }
   },
   {
-    dateAdded: Date.now,
+    dateAdded: "2019-01-01",
     storageInfo: {
       currentlyStored: true,
       location: "Unit 69"
@@ -98,20 +99,20 @@ const assetSeed = [
     },
     pickupDetails: {
       request: {
-        pickupCurrentlyRequested: true
+        pickupCurrentlyRequested: true,
+        pickupRequestOriginDate: moment(new Date(), "YYY-MM-DD").creationData().input,
+        pickupRequestedDate: "2019-09-01",
+        pickupRequestConfirmed: false
       },
-      pickupRequestOriginDate: Date.now,
-      pickupRequestedDate: Date.now,
-      pickupRequestConfirmed: false
+      confirmation: {
+        pickupConfirmedBy: "AdminTommy",
+        pickupConfirmDate: null
+      },
+      completion: {
+        pickupComplete: false,
+        pickupCompleteDate: null
+      }
     },
-    confirmation: {
-      pickupConfirmedBy: "AdminTommy",
-      pickupConfirmDate: Date.now
-    },
-    completion: {
-      pickupComplete: false,
-      pickupCompleteDate: Date.now
-    }
   }
 ];
 
@@ -132,35 +133,85 @@ const adminSeed = [
   }
 ];
 
-db.Customer.remove({})
-  .then(() => db.Customer.collection.insertMany(customerSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+function seedCustomers(cb) {
+  let customerIds = {};
+  db.Customer.deleteMany({})
+    .then(() => db.Customer.collection.insertMany(customerSeed))
+    .then(data => {
+      // console.log(data);
+      console.log(data.result.n + " customer records inserted!");
+      customerIds = data.insertedIds;
+      console.log("------------------------------");
+      console.log("CustomerIds in seedCustomers");
+      console.log(customerIds);
+      console.log("------------------------------");
+      return (customerIds);
+    })
+    .then(customerIds => {
+      seedAssets(customerIds, cb);
+      // cb();
+    })
+    // .then(customerIds => { return (customerIds) })
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+};
 
-db.Asset.remove({})
-  .then(() => db.Asset.collection.insertMany(assetSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+function seedAssets(customerIds, cb) {
 
-db.Admin.remove({})
-  .then(() => db.Admin.collection.insertMany(adminSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
+  let custIdArr = [];
+  console.log("------------------------------");
+  console.log("customerIds in seedAssets");
+  console.log(customerIds);
+  console.log("------------------------------");
+  Object.keys(customerIds).forEach(element => {
+    custIdArr.push(customerIds[element])
   });
+  console.log("------------------------------");
+  console.log("CustIdArr");
+  console.log(custIdArr);
+  console.log("------------------------------");
+
+
+  db.Asset.deleteMany({})
+    .then(() => {
+      for (i = 0; i < assetSeed.length; i++) {
+        assetSeed[i].customerId = "ObjectId(\"" + custIdArr[i] + "\")"
+      };
+      console.log("------------------------------");
+      console.log(assetSeed);
+      console.log("------------------------------");
+      data = db.Asset.collection.insertMany(assetSeed);
+      return (data);
+    })
+    .then(data => {
+      console.log(data.result.n + " asset records inserted!");
+      cb();
+    })
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+}
+
+function seedAdmins() {
+  db.Admin.deleteMany({})
+    .then(() => db.Admin.collection.insertMany(adminSeed))
+    .then(data => {
+      console.log(data.result.n + " admin records inserted!");
+      process.exit(0);
+    })
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+}
+
+function seedAll() {
+  seedCustomers(() => {
+    seedAdmins();
+  });
+}
+
+seedAll();
