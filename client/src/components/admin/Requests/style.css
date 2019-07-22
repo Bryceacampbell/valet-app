@@ -2,10 +2,28 @@
     transform: scale(1.02);
     background: #F7F7F7;
 }
+
 .request {
     margin-bottom: 20px;
 }
+
 .container {
     margin-top: 25px;
     padding: 0px;
+}
+
+.modal {
+    width: 90%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    position: fixed;
+    top: 20px;
+    left: 5%
+}
+
+@media (min-width: 768px) {
+    .modal {
+        width: 50rem;
+        left: calc((100% - 50rem) /2);
+    }
 }

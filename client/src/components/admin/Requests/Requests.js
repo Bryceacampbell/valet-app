@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Modal, Button } from "react";
 import API from "../../../utils/API";
 import "./style.css";
 const moment = require("moment");
@@ -22,6 +22,13 @@ class Requests extends Component {
             .catch(err => console.log(err));
     };
 
+    pickupConfirmed = (confirmed) => {
+        if (confirmed) {
+            return (<p>Yes</p>)
+        } else {
+            return (<p>No</p>)
+        }
+    };
 
     render() {
         return (
@@ -35,7 +42,7 @@ class Requests extends Component {
 
                     {this.state.requests.map(request => (
 
-                        <div className="card request" key={request._id}>
+                        <div className="card request" onClick="do cool stuff" key={request._id}>
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-3">
@@ -53,8 +60,8 @@ class Requests extends Component {
                                         <p>{moment(request.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
                                     </div>
                                     <div className="col-lg-3">
-                                        <p>Request Type:</p>
-                                        <p>NEW</p>
+                                        <p>Request Confirmed:</p>
+                                        {this.pickupConfirmed(request.pickupDetails.request.pickupRequestConfirmed)}
                                     </div>
                                 </div>
                             </div>
