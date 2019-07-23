@@ -38,16 +38,6 @@
   box-sizing: border-box;
 }
 
-body {
-    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--text-color);
-    background: var(--bg-color);
-    position: relative;
-}
-
 header {
   display: block;
   width: 100%;
@@ -77,14 +67,6 @@ main {
 
 /* GRID */
 
-.row {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
 
 .row-middle {
   align-items: center;
@@ -115,6 +97,7 @@ main {
 /* Calendar */
 
 .calendar {
+  margin-top: 30px;
   display: block;
   position: relative;
   width: 100%;
