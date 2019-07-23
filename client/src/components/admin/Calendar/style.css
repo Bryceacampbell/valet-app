@@ -24,9 +24,9 @@
 
 :root {
   --main-color: rgb(230,33,33);
-  --text-color: #777;
-  --text-color-light: #ccc;
-  --border-color: #eee;
+  --text-color: #4b4c4f;
+  --text-color-light: #f9f9f9;
+  --border-color: rgba(0,0,0,0.125);
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
@@ -133,6 +133,7 @@ main {
 }
 
 .calendar .days {
+  background: rgb(230,33,33);
   text-transform: uppercase;
   font-weight: 400;
   color: var(--text-color-light);
