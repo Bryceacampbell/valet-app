@@ -41,17 +41,12 @@ export default class Auth {
                 localStorage.setItem("expires_at", expiresAt);
                 location.hash = "";
 
-                let currentUser = this.getProfile();
-                console.log(currentUser);
+                const role = this.getUserRole();
 
-                let valuesArray = Object.values(currentUser);
-                let userRole = valuesArray[0];
-                console.log(userRole.role);
-
-                if (userRole.role === "admin") {
+                if (role === "admin") {
                     location.pathname = LOGIN_SUCCESS_ADMIN;
                 }
-                else if (userRole.role === "client") {
+                else if (role === "client") {
                     location.pathname = LOGIN_SUCCESS_PAGE;
                 }
 
@@ -74,4 +69,11 @@ export default class Auth {
             return {};
         }
     };
+
+    getUserRole() {
+        let currentUser = this.getProfile();
+        let valuesArray = Object.values(currentUser);
+        let userRole = valuesArray[0];
+        return (userRole.role);
+    }
 };
