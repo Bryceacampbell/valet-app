@@ -1,4 +1,5 @@
 const db = require("../models");
+const axios = require("axios");
 
 // Defining methods for the adminController
 module.exports = {
@@ -17,21 +18,20 @@ module.exports = {
   },
   createUser: function (req, res) {
     console.log("got here");
+    const body = req.body;
 
     let customerObj = {
 
-      firstName: req.body.firstName,
+      dateCreated: "now",
 
-      lastName: req.body.lastName,
-
-      userName: req.body.username,
-
-      phoneNumber: req.body.phoneNumber,
-
-      email: req.body.email,
-
-      address: req.body.address
-
+      information: {
+        firstName: body.firstName,
+        lastName: body.lastName,
+        userName: body.userName,
+        phoneNumber: body.phoneNumber,
+        email: body.email,
+        address: body.address
+      }
     }
 
     console.log(customerObj);
@@ -39,13 +39,14 @@ module.exports = {
     db.Customer
       .create(customerObj)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(422).json(err))
+
 
     console.log("adding new user to database: ");
     console.log("-------------------------------");
 
     console.log(req.body);
-    console.log(req.body.pass);
+    
 
 
     const client_id = "b3MTC80Frslwa1jungIpq65noxzGJ22B";
@@ -53,29 +54,29 @@ module.exports = {
     const user_metadata = { "role": "writer" };
 
 
-    // axios
-    // .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
-    // {
-    //   client_id : client_id,
-    //   email : req.body.email,
-    //   password : req.body.pass,
-    //   connection : connection,
-    //   given_name : req.body.firstName,
-    //   family_name : req.body.lastName,
-    //   username : req.body.username,
-    //   address : req.body.address,
-    //   phoneNumber : req.body.phoneNumber,
-    //   user_metadata : user_metadata
+    axios
+    .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
+    {
+      client_id : client_id,
+      email : req.body.email,
+      password : req.body.pass,
+      connection : connection,
+      given_name : req.body.firstName,
+      family_name : req.body.lastName,
+      username : req.body.username,
+      address : req.body.address,
+      phoneNumber : req.body.phoneNumber,
+      user_metadata : user_metadata
 
-    //  })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
+     })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-    res.redirect("/admin/customers");
+     res.redirect('/admin/customers');
   },
   findAllRequests: function (req, res) {
     console.log("findAllRequests in adminController.js was called");

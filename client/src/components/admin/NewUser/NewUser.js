@@ -34,7 +34,7 @@ class NewUser extends Component {
                         </div>
                         <div class="form-group">
                             <label >Username</label>
-                            <input name="username" type="username" class="form-control" placeholder="Boats632"></input>
+                            <input name="userName" type="userName" class="form-control" placeholder="Boats632"></input>
                         </div>
                         <div class="form-group">
                             <label >Phone Number</label>
