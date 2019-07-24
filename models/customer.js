@@ -6,20 +6,21 @@ const Schema = mongoose.Schema;
 
 // Creates the Customer Schema
 const customerSchema = new Schema({
-    dateCreated: { type: Date, default: Date.now },
+   // dateCreated: { type: Date, default: Date.now },
     information: {
         firstName: { type: String, required: true, trim: true },
         lastName: { type: String, required: true, trim: true },
         userName: { type: String, required: true, trim: true },
-        phoneNumber: { type: Number, min: 10, max: 10 },
+        phoneNumber: { type: String },
         email: { type: String, required: true, trim: true },
-        address: {
-            lineOne: { type: String, required: true, trim: true },
-            lineTwo: { type: String, required: false, trim: true },
-            city: { type: String, required: true, trim: true },
-            state: { type: String, required: true, trim: true },
-            zip: { type: Number, required: true, min: 5, max: 5 }
-        }
+        address: {type:String, required: true, trim: true}
+        // address: {
+        //     lineOne: { type: String, required: true, trim: true },
+        //     lineTwo: { type: String, required: false, trim: true },
+        //     city: { type: String, required: true, trim: true },
+        //     state: { type: String, required: true, trim: true },
+        //     zip: { type: Number, required: true, min: 5, max: 5 }
+        // }
     }
     // pickupCurrentlyRequested: { type: Boolean, default: false },
 
