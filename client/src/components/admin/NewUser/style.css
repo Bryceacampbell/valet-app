@@ -25,4 +25,9 @@ input {
 
 .button:hover {
     border:  rgb(112, 12, 112) 2px solid;
- } 
+ }
+
+ .container{
+   margin-top: 30px;
+   padding: 0px;
+ }

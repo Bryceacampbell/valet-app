@@ -51,7 +51,7 @@ class Requests extends Component {
 
     render() {
         return (
-            <div className="container card text-center">
+            <div className="container-fluid card text-center">
 
                 {this.state.requestFocus && <Backdrop />}
                 {this.state.requestFocus && <Modal title="Individual Request">

@@ -9,6 +9,7 @@ import ToggleButton from "../../components/admin/SideNav/ToggleButton";
 import SideNav from "../../components/admin/SideNav/SideNav";
 import Requests from "../../components/admin/Requests/Requests";
 import NewUser from "../../components/admin/NewUser/NewUser";
+import Calendar from "../../components/admin/Calendar/Calendar";
 
 class AdminPage extends Component {
   state = {
@@ -42,6 +43,7 @@ class AdminPage extends Component {
         <Route exact path="/admin/requests" render={() => <Requests {...this.props} />} />
         <Route exact path="/admin/customers" render={() => <Customers {...this.props} />} />
         <Route exact path="/admin/newUser" render={() => <NewUser {...this.props} />} />
+        <Route exact path="/admin/calendar" render={() => <Calendar {...this.props} />} />
         
         {backdrop}
       </div>

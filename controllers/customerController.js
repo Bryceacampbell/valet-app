@@ -1,49 +1,58 @@
 const db = require("../models");
 
-
 // Defining methods for the customerController
 module.exports = {
   findAll: function(req, res) {
-    db.Customer
-      .find(req.query)
+    db.Customer.find(req.query)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.Customer
-      .findById(req.params.id)
+    db.Customer.findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Customer
-      .create(req.body)
+    db.Customer.create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Book
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Book.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Book
-      .findById({ _id: req.params.id })
+    db.Book.findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findAllAssets: function (req, res) {
+  findAllAssets: function(req, res) {
     console.log("findAllAssets has been called via customerController.js'");
-    db.Asset
-        .find(req.query)
-        .populate("customerId")
-        .then(dbModel => {
-          console.log(dbModel);
-          res.json(dbModel)
-        })
-        .catch(err => res.status(422).json(err));
-    }
+    db.Asset.find(req.query)
+      .populate("customerId")
+      .then(dbModel => {
+        console.log(dbModel);
+        res.json(dbModel);
+      })
+      .catch(err => res.status(422).json(err));
+  },
+  pickupRequest: function(req, res) {
+    console.log("pickupRequest has been called via customerController.js");
+    db.Asset.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          "pickupDetails.request.pickupCurrentlyRequested":
+            req.body.pickupCurrentlyRequested,
+          pickupRequestOriginDate: Date.now,
+          "pickupRequestedDate": req.body.pickupRequestedDate
+        }
+      }
+    )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
 };

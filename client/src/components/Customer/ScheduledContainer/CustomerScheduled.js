@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-import ScheduledContainer from "../CustomerScheduled";
+import ScheduledContainer from "./CustomerScheduled";
 
 class CustomerScheduled extends Component {
   render() {

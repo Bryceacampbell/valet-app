@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default {
-
   getRequests: function() {
     return axios.get("/api/admin/requests");
   },
@@ -13,6 +12,12 @@ export default {
     console.log("Ajax on Assets made!");
     return axios.get("/api/dashboard/schedule");
   },
+
+  makeRequest: function(id) {
+    console.log("Ajax pickup request made");
+    return axios.post("/api/dashboard/pickup" + id);
+  },
+  // =====================BOOKS!===============
   // Gets the book with the given id
   getBook: function(id) {
     return axios.get("/api/books/" + id);
