@@ -33,7 +33,7 @@ class AdminPage extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
-    console.log(this.props.auth.getProfile());
+    // console.log(this.props.auth.getProfile());
 
     return (
       <div style={{ height: "100%" }}>
@@ -44,7 +44,7 @@ class AdminPage extends Component {
         <Route exact path="/admin/customers" render={() => <Customers {...this.props} />} />
         <Route exact path="/admin/newUser" render={() => <NewUser {...this.props} />} />
         <Route exact path="/admin/calendar" render={() => <Calendar {...this.props} />} />
-        
+
         {backdrop}
       </div>
     )

@@ -26,7 +26,6 @@ class DashboardPage extends Component {
   }
 
   render() {
-    console.log(this.props.auth.getProfile());
 
     let backdrop;
 
