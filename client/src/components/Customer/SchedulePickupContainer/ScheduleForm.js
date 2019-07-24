@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-import ScheduleCalendar from "../ScheduleCalendar"
+import ScheduleCalendar from "./ScheduleCalendar";
 import API from "../../../utils/API"
 
 
@@ -66,7 +66,7 @@ class ScheduleForm extends Component {
           {this.state.assets.map(asset => (
             <div className="card" key={asset._id}>
               <div className="card-body">
-                <div col-8>
+                <div className="col-8">
                   <p>Year:</p>
                   <p>{asset.description.year}</p>
                   <p>Make:</p>
