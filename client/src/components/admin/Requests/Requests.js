@@ -1,12 +1,17 @@
-import React, { Component, Modal, Button } from "react";
+import React, { Component } from "react";
 import API from "../../../utils/API";
 import "./style.css";
+import Modal from "../RequestModal/RequestModal";
+import Backdrop from "./backdrop";
+
 const moment = require("moment");
 
 class Requests extends Component {
 
     state = {
         requests: [],
+        requestFocus: false,
+        currentRequest: {}
     };
 
     componentDidMount() {
@@ -30,9 +35,28 @@ class Requests extends Component {
         }
     };
 
+    requestClicked = (id) => {
+        // event.persist();
+        this.setState({
+            requestFocus: true,
+            currentRequest: id
+        });
+
+        console.log(id)
+
+        console.log("state from clicking request");
+        console.log(this.state);
+
+    }
+
     render() {
         return (
             <div className="container card text-center">
+
+                {this.state.requestFocus && <Backdrop />}
+                {this.state.requestFocus && <Modal title="Individual Request">
+                    <p>Modal Content</p>
+                </Modal>}
 
                 <div className="card-header">
                     <h3>View Requests</h3>
@@ -42,7 +66,7 @@ class Requests extends Component {
 
                     {this.state.requests.map(request => (
 
-                        <div className="card request" onClick="do cool stuff" key={request._id}>
+                        <div className="card request" onClick={() => this.requestClicked(request._id)} data-id={request._id} key={request._id}>
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-3">

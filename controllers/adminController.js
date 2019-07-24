@@ -86,7 +86,7 @@ module.exports = {
       .find({"pickupDetails.request.pickupCurrentlyRequested": true})      
       .populate("customerId")
       .then(dbModel => {
-        console.log(dbModel);
+        // console.log(dbModel);
         res.json(dbModel)
       })
       .catch(err => res.status(422).json(err));
