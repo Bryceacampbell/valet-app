@@ -54,7 +54,7 @@ class Requests extends Component {
             <div className="container-fluid card text-center">
 
                 {this.state.requestFocus && <Backdrop />}
-                {this.state.requestFocus && <Modal title="Individual Request">
+                {this.state.requestFocus && <Modal title="Individual Request" id={this.state.currentRequest}>
                     <p>Modal Content</p>
                 </Modal>}
 
@@ -75,8 +75,8 @@ class Requests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Customer Name: </p>
-                                        {console.log("request in map function")}
-                                        {console.log(request)}
+                                        {/* {console.log("request in map function")}
+                                        {console.log(request)} */}
                                         <p>{request.customerId.information.firstName + " " + request.customerId.information.lastName}</p>
                                     </div>
                                     <div className="col-lg-3">

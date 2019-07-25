@@ -46,7 +46,7 @@ module.exports = {
     console.log("-------------------------------");
 
     console.log(req.body);
-    
+
 
 
     const client_id = "b3MTC80Frslwa1jungIpq65noxzGJ22B";
@@ -55,28 +55,28 @@ module.exports = {
 
 
     axios
-    .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
-    {
-      client_id : client_id,
-      email : req.body.email,
-      password : req.body.pass,
-      connection : connection,
-      given_name : req.body.firstName,
-      family_name : req.body.lastName,
-      username : req.body.username,
-      address : req.body.address,
-      phoneNumber : req.body.phoneNumber,
-      user_metadata : user_metadata
+      .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
+        {
+          client_id: client_id,
+          email: req.body.email,
+          password: req.body.pass,
+          connection: connection,
+          given_name: req.body.firstName,
+          family_name: req.body.lastName,
+          username: req.body.username,
+          address: req.body.address,
+          phoneNumber: req.body.phoneNumber,
+          user_metadata: user_metadata
 
-     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+        })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
-     res.redirect('/admin/customers');
+    res.redirect('/admin/customers');
   },
   findAllRequests: function (req, res) {
     console.log("findAllRequests in adminController.js was called");
@@ -84,7 +84,7 @@ module.exports = {
     db.Asset
       .find(req.query)
       // .find({pickupDetails: { request: { pickupCurrentlyRequested: true } } })
-      .find({"pickupDetails.request.pickupCurrentlyRequested": true})      
+      .find({ "pickupDetails.request.pickupCurrentlyRequested": true })
       .populate("customerId")
       .then(dbModel => {
         // console.log(dbModel);
@@ -93,8 +93,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOneRequest: function (req, res) {
+
     db.Asset
-      .findById(req.params.id)
+      .findById({ _id: req.params.id })
+      .populate("customerId")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
