@@ -4,6 +4,9 @@ export default {
   getRequests: function() {
     return axios.get("/api/admin/requests");
   },
+  getRequest: function(id) {
+    return axios.get("/api/admin/requests/" + id);
+  },
   getAllCustomers: function() {
     console.log("Ajax called being made");
     return axios.get("/api/admin/customers");

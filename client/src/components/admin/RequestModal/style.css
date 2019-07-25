@@ -1,45 +1,50 @@
-.request:hover {
+/* .req:hover {
     transform: scale(1.02);
     background: #F7F7F7;
 }
 
-.request {
+.req {
     margin-bottom: 20px;
 }
 
 .container {
     margin-top: 25px;
     padding: 0px;
-}
+} */
 
-.modal {
+.req-modal {
     width: 90%;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     position: fixed;
-    top: 20px;
-    left: 5%
+    top: 20vh;
+    left: 5%;
+    z-index: 100;
 }
 
-.modal-header {
+.req-modal-header {
     padding: 1rem;
-    background: 5101d1;
+    background: #5101d1;
     color: white;
 }
 
-.modal-header h1 {
+.req-modal-header h1 {
     margin: 0;
     font-size: 1.25rem;
 }
 
-.modal-content {
+.req-modal-content {
     padding: 1rem;
 }
 
-.modal-actions {
+.req-modal-actions {
     display: flex;
     justify-content: flex-end;
     padding: 1rem;
+}
+
+.btn {
+    margin: .5rem;
 }
 
 .backdrop {
@@ -54,11 +59,6 @@
 @media (min-width: 768px) {
     .modal {
         width: 30rem;
-        left: calc((100% - 30rem) /2);
+        left: calc((100% - 30rem) / 2);
     }
 }
-.container-fluid{
-    margin-top: 30px;
-    max-width: 80%;
-    padding: 0px;
-  }

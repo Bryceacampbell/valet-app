@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import API from "../../../utils/API";
 import "./style.css";
+import Modal from "../RequestModal/RequestModal";
+import Backdrop from "./backdrop";
+
 const moment = require("moment");
 
 class Requests extends Component {
 
     state = {
         requests: [],
+        requestFocus: false,
+        currentRequest: {}
     };
 
     componentDidMount() {
@@ -22,10 +27,36 @@ class Requests extends Component {
             .catch(err => console.log(err));
     };
 
+    pickupConfirmed = (confirmed) => {
+        if (confirmed) {
+            return (<p>Yes</p>)
+        } else {
+            return (<p>No</p>)
+        }
+    };
+
+    requestClicked = (id) => {
+        // event.persist();
+        this.setState({
+            requestFocus: true,
+            currentRequest: id
+        });
+
+        console.log(id)
+
+        console.log("state from clicking request");
+        console.log(this.state);
+
+    }
 
     render() {
         return (
             <div className="container-fluid card text-center">
+
+                {this.state.requestFocus && <Backdrop />}
+                {this.state.requestFocus && <Modal title="Individual Request" id={this.state.currentRequest}>
+                    <p>Modal Content</p>
+                </Modal>}
 
                 <div className="card-header">
                     <h3>View Requests</h3>
@@ -35,7 +66,7 @@ class Requests extends Component {
 
                     {this.state.requests.map(request => (
 
-                        <div className="card request" key={request._id}>
+                        <div className="card request" onClick={() => this.requestClicked(request._id)} data-id={request._id} key={request._id}>
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-3">
@@ -44,8 +75,8 @@ class Requests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Customer Name: </p>
-                                        {console.log("request in map function")}
-                                        {console.log(request)}
+                                        {/* {console.log("request in map function")}
+                                        {console.log(request)} */}
                                         <p>{request.customerId.information.firstName + " " + request.customerId.information.lastName}</p>
                                     </div>
                                     <div className="col-lg-3">
@@ -53,8 +84,8 @@ class Requests extends Component {
                                         <p>{moment(request.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
                                     </div>
                                     <div className="col-lg-3">
-                                        <p>Request Type:</p>
-                                        <p>NEW</p>
+                                        <p>Request Confirmed:</p>
+                                        {this.pickupConfirmed(request.pickupDetails.request.pickupRequestConfirmed)}
                                     </div>
                                 </div>
                             </div>
