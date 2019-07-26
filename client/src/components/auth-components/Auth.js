@@ -76,4 +76,10 @@ export default class Auth {
         let userRole = valuesArray[0];
         return (userRole.role);
     }
+    getAcctNum() {
+        let currentUser = this.getProfile();
+        let valuesArray = Object.values(currentUser);
+        let acctNum = valuesArray[0];
+        return (acctNum.acctNum);
+    };
 };
