@@ -25,6 +25,8 @@ const assetSchema = new Schema({
             pickupRequestOriginDate: { type: Date },
             // Date that the asset is to be picked up, per customer's request
             pickupRequestedDate: { type: Date },
+            // Date that the asset is to be picked up, per customer's request
+            pickupRequestedTime: { type: Date },
             // Was the pickup request Approved/Denied?
             pickupRequestConfirmed: { type: Boolean, default: false },
         },

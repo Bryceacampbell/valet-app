@@ -29,9 +29,9 @@ class RequestModal extends Component {
 
     pickupConfirmed = (confirmed) => {
         if (confirmed) {
-            return (<p>Yes</p>)
+            return (<h4>Yes</h4>)
         } else {
-            return (<p>No</p>)
+            return (<h4>No</h4>)
         }
     };
 
@@ -49,7 +49,7 @@ class RequestModal extends Component {
                                 <div className="row">
                                     <div className="col-lg-3">
                                         <p>Unit #:</p>
-                                        <p>{this.state.currentRequest.storageInfo.location}</p>
+                                        <h4>{this.state.currentRequest.storageInfo.location}</h4>
                                     </div>
                                     {/* <div className="col-lg-3">
                                         <p>Customer Name: </p>
@@ -59,7 +59,11 @@ class RequestModal extends Component {
                                     </div> */}
                                     <div className="col-lg-3">
                                         <p>Date Requested:</p>
-                                        <p>{moment(this.state.currentRequest.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
+                                        <h4>{moment(this.state.currentRequest.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</h4>
+                                    </div>
+                                    <div className="col-lg-3">
+                                        <p>Time Requested:</p>
+                                        <h4>{moment(this.state.currentRequest.pickupDetails.request.pickupRequestedTime).format("hh:mm A")}</h4>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Request Confirmed:</p>

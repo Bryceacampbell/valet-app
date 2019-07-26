@@ -100,8 +100,9 @@ const assetSeed = [
     pickupDetails: {
       request: {
         pickupCurrentlyRequested: true,
-        pickupRequestOriginDate: moment(new Date(), "YYY-MM-DD").creationData().input,
-        pickupRequestedDate: "2019-09-01",
+        pickupRequestOriginDate: moment(new Date(), "YYYY-MM-DD").creationData().input,
+        pickupRequestedDate: moment("2019-09-01", "YYYY-MM-DD").creationData().input,
+        pickupRequestedTime: moment("10:00 AM", "hh:mm A").creationData().input,
         pickupRequestConfirmed: false
       },
       confirmation: {
