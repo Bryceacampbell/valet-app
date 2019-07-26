@@ -133,6 +133,7 @@ const adminSeed = [
   }
 ];
 
+
 function seedCustomers(cb) {
   let customerIds = {};
   db.Customer.deleteMany({})
