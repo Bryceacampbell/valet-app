@@ -4,6 +4,7 @@ import { AUTH_CONFIG } from "../../auth/auth0-variables";
 import jwtDecode from "jwt-decode";
 
 const LOGIN_SUCCESS_PAGE = "/dashboard";
+const LOGIN_SUCCESS_ADMIN = "/admin";
 const LOGIN_FAILURE_PAGE = "/";
 
 export default class Auth {
@@ -39,7 +40,15 @@ export default class Auth {
                 localStorage.setItem("id_token", authResults.idToken);
                 localStorage.setItem("expires_at", expiresAt);
                 location.hash = "";
-                location.pathname = LOGIN_SUCCESS_PAGE;
+
+                const role = this.getUserRole();
+
+                if (role === "admin") {
+                    location.pathname = LOGIN_SUCCESS_ADMIN;
+                }
+                else if (role === "client") {
+                    location.pathname = LOGIN_SUCCESS_PAGE;
+                }
 
             } else if (error) {
                 location.pathname = LOGIN_FAILURE_PAGE;
@@ -59,5 +68,18 @@ export default class Auth {
         } else {
             return {};
         }
+    };
+
+    getUserRole() {
+        let currentUser = this.getProfile();
+        let valuesArray = Object.values(currentUser);
+        let userRole = valuesArray[0];
+        return (userRole.role);
+    }
+    getAcctNum() {
+        let currentUser = this.getProfile();
+        let valuesArray = Object.values(currentUser);
+        let acctNum = valuesArray[0];
+        return (acctNum.acctNum);
     };
 };
