@@ -19,6 +19,7 @@ export default class Auth {
 
     constructor() {
         this.login = this.login.bind(this);
+        this.isAuthenticated = this.isAuthenticated.bind(this);
     };
 
     login() {
@@ -60,6 +61,12 @@ export default class Auth {
     isAuthenticated() {
         let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
         return new Date().getTime() < expiresAt;
+    };
+
+    getAuth() {
+        let value = this.isAuthenticated();
+        console.log(value);
+        return value;
     };
 
     getProfile() {
