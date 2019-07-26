@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { PrivateRoute } from "./components/PrivateRoute";
 
 import HomePage from './pages/home';
 import DashboardPage from './pages/client/dashboard';
@@ -13,8 +14,12 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <HomePage {...this.props} />} />
-            <Route path="/dashboard" render={() => <DashboardPage {...this.props} />} />
-            <Route path="/admin" render={() => <AdminPage {...this.props} />} />
+            <PrivateRoute path="/dashboard" {...this.props}>
+              <DashboardPage {...this.props} />
+            </PrivateRoute>
+            <PrivateRoute path="/admin" {...this.props}>
+              <AdminPage {...this.props} />
+            </PrivateRoute>
             <Route exact path="/callback" render={() => <CallbackPage {...this.props} />} />
           </Switch>
         </Router>
