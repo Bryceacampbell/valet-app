@@ -17,8 +17,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   createUser: function (req, res) {
-    console.log("got here");
+
     const body = req.body;
+
 
     let customerObj = {
 
@@ -30,51 +31,52 @@ module.exports = {
         userName: body.userName,
         phoneNumber: body.phoneNumber,
         email: body.email,
-        address: body.address
+        address: body.address,
+        
       }
     }
 
-    console.log(customerObj);
-
     db.Customer
       .create(customerObj)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
+      .then(data => {
 
 
-    console.log("adding new user to database: ");
-    console.log("-------------------------------");
+        let customerID = data._id;
 
-    console.log(req.body);
-
-
-
-    const client_id = "b3MTC80Frslwa1jungIpq65noxzGJ22B";
-    const connection = "Username-Password-Authentication";
-    const user_metadata = { "role": "writer" };
-
-
-    axios
-      .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
-        {
-          client_id: client_id,
-          email: req.body.email,
-          password: req.body.pass,
-          connection: connection,
-          given_name: req.body.firstName,
-          family_name: req.body.lastName,
-          username: req.body.username,
-          address: req.body.address,
-          phoneNumber: req.body.phoneNumber,
-          user_metadata: user_metadata
-
-        })
-      .then(function (response) {
-        console.log(response);
+        return customerID
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .then(customerID => {
+
+        const client_id = "b3MTC80Frslwa1jungIpq65noxzGJ22B";
+        const connection = "Username-Password-Authentication";
+        const user_metadata = {
+          "role": "client",
+          "clientID": customerID
+        };
+
+        axios
+          .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
+            {
+              client_id: client_id,
+              email: req.body.email,
+              password: req.body.pass,
+              connection: connection,
+              given_name: req.body.firstName,
+              family_name: req.body.lastName,
+              username: req.body.username,
+              address: req.body.address,
+              phoneNumber: req.body.phoneNumber,
+              user_metadata: user_metadata
+
+            })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
+      .catch(err => res.status(422).json(err))
 
     res.redirect('/admin/customers');
   },
@@ -106,5 +108,35 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  auth0Creation: function (customerID) {
+    const client_id = "b3MTC80Frslwa1jungIpq65noxzGJ22B";
+    const connection = "Username-Password-Authentication";
+    const user_metadata = {
+      "role": "writer",
+      "clientID": clientID
+    };
+
+    axios
+      .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
+        {
+          client_id: client_id,
+          email: req.body.email,
+          password: req.body.pass,
+          connection: connection,
+          given_name: req.body.firstName,
+          family_name: req.body.lastName,
+          username: req.body.username,
+          address: req.body.address,
+          phoneNumber: req.body.phoneNumber,
+          user_metadata: user_metadata
+
+        })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 };

@@ -14,6 +14,7 @@ const customerSchema = new Schema({
         phoneNumber: { type: String },
         email: { type: String, required: true, trim: true },
         address: {type:String, required: true, trim: true}
+      
         // address: {
         //     lineOne: { type: String, required: true, trim: true },
         //     lineTwo: { type: String, required: false, trim: true },

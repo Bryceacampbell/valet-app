@@ -1,11 +1,12 @@
 import React from "react";
-import { BrowserRouter as Route, Redirect } from 'react-router-dom';
-import Auth from "../components/auth-components/Auth";
+import { Route, Redirect } from 'react-router-dom';
 
-export const PrivateRoute = ({ component: Component, path}) => (
-    <Route path={path} render={(props) => (
-      Auth.isAuthenticated() === true
-      ? <Component/>
-      : <Redirect to="/" />
-    )}/>
-  );
+export const PrivateRoute = ({ children, ...rest }) => {
+  return (
+    <Route {...rest} render={() => (
+      rest.auth.isAuthenticated()
+        ? children
+        : <Redirect to="/" />
+    )} />
+  )
+};
