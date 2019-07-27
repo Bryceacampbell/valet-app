@@ -17,7 +17,7 @@ const SideNav = props => {
             <ul>
                 <li className="row">
                     <FontAwesomeIcon icon={faHome} className="nav-icons" />
-                    <a href="/dashboard/home">Home</a>
+                    <a href="/dashboard">Home</a>
                 </li>
                 <li className="row">
                     <FontAwesomeIcon icon={faWrench} className="nav-icons" />

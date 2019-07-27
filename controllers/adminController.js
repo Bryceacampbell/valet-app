@@ -32,7 +32,7 @@ module.exports = {
         phoneNumber: body.phoneNumber,
         email: body.email,
         address: body.address,
-        
+
       }
     }
 

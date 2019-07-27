@@ -1,0 +1,11 @@
+.schedule-btn {
+    width: 90%;
+    height: 200px;
+    background: #ffffff;
+    border-color: #777777;
+    color: black;
+};
+
+:hover {
+    background-color: rgb(230,33,33);
+};
