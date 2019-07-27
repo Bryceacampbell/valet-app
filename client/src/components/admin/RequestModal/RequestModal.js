@@ -51,12 +51,6 @@ class RequestModal extends Component {
                                         <p>Unit #:</p>
                                         <h4>{this.state.currentRequest.storageInfo.location}</h4>
                                     </div>
-                                    {/* <div className="col-lg-3">
-                                        <p>Customer Name: </p>
-                                        {/* {console.log("request in map function")}
-                                        {console.log(request)} */}
-                                        {/* <p>{request.customerId.information.firstName + " " + request.customerId.information.lastName}</p>
-                                    </div> */}
                                     <div className="col-lg-3">
                                         <p>Date Requested:</p>
                                         <h4>{moment(this.state.currentRequest.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</h4>
@@ -70,6 +64,8 @@ class RequestModal extends Component {
                                         {this.pickupConfirmed(this.state.currentRequest.pickupDetails.request.pickupRequestConfirmed)}
                                     </div>
                                 </div>
+                                <div className="row"></div>
+
                             </div>
                         </section>
                         <section className="req-modal-actions">
