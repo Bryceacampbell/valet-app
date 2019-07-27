@@ -28,7 +28,10 @@ const assetSchema = new Schema({
             // Date that the asset is to be picked up, per customer's request
             pickupRequestedTime: { type: Date },
             // Was the pickup request Approved/Denied?
-            pickupRequestConfirmed: { type: Boolean, default: false },
+            pickupRequestApproved: { type: Boolean, default: false },
+            pickupRequestDenied: { type: Boolean, default: false },
+            // Reason for Approval/Denial
+            pickupRequestNote: { type: String},
         },
         confirmation: {
             // name/_id of admin who approved/denied the request... just the name for now
