@@ -10,9 +10,9 @@ export const PrivateRoute = ({ children, ...rest }) => {
   let userRole = rest.auth.getUserRole();
 
   const userPath = roleMap[userRole];
-   console.log(rest.path, userPath)
+  
   if (userPath !== rest.path) {
-     return ( <Redirect to={userPath}/> )
+    return (<Redirect to={userPath} />)
   }
   return (
     <Route {...rest} render={() => (
