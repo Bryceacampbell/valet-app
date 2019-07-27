@@ -14,12 +14,15 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <HomePage {...this.props} />} />
+
             <PrivateRoute path="/dashboard" {...this.props}>
               <DashboardPage {...this.props} />
             </PrivateRoute>
+
             <PrivateRoute path="/admin" {...this.props}>
               <AdminPage {...this.props} />
             </PrivateRoute>
+            
             <Route exact path="/callback" render={() => <CallbackPage {...this.props} />} />
           </Switch>
         </Router>
