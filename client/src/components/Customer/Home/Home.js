@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-
 import "./style.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 
 class Home extends Component {
 
@@ -18,9 +20,12 @@ class Home extends Component {
                 <div className="card-body">
                     <div className="row">
                         <div className="col-lg-6">
-                            <a href="/dashboard/schedule"><button className="btn schedule-btn">
-                                <h4>Schedule Pick Up</h4>
-                            </button></a>
+                            <a href="/dashboard/schedule">
+                                <div className="btn btn-primary schedule-btn">
+                                <FontAwesomeIcon icon={faCalendarCheck} className="calendar-icon" />
+                                    <h4>Schedule Pick Up</h4>
+                                </div>
+                            </a>
                         </div>
                         <div className="col-lg-6">
                             <div>
