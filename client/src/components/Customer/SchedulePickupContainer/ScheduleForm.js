@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import ScheduleCalendar from "./ScheduleCalendar";
-import API from "../../../utils/API"
-
+import API from "../../../utils/API";
 
 class ScheduleForm extends Component {
   state = {
@@ -14,57 +13,58 @@ class ScheduleForm extends Component {
   };
 
   // Uses call-B func to retrieve selected date from date-picker component
-  dateUpdate = (dateInfo) => {
+  dateUpdate = dateInfo => {
     this.setState({ pickupRequestedDate: dateInfo });
-  }
-
-  componentDidMount() {
-    const acctNum = this.props.auth.getAcctNum()
-    console.log(acctNum);
-    this.loadAssets(acctNum);
   };
 
-  loadAssets = (id) => {
+  componentDidMount() {
+    const acctNum = this.props.auth.getAcctNum();
+    console.log(acctNum);
+    this.loadAssets(acctNum);
+  }
+
+  loadAssets = id => {
     API.findClientAssets(id)
       .then(res => {
         this.setState({ assets: res.data });
         console.log(res.data);
       })
       .catch(err => console.log(err.response));
-  }
-
-  handleFormSubmit = (_id) => {
-    // event.preventDefault();    
-    API.makeRequest()
-    .then(res => {
-      this.setState({
-        pickupCurrentlyRequested: true,
-        pickupRequestedDate: this.state.pickupRequestedDate
-      });
-    }).catch(err => console.log(err));
-    console.log(this.state)
   };
+
+  handleFormSubmit = event => {
+    console.log(event.target);
+    const id = event.target.id;
+    // event.preventDefault();
+    // const action = event.target.value;
+    // let pickupObj = this.state.assets;
+
+    // switch (action) {
+    //   case "approve":
+    //     pickupObj.pickupDetails.request.pickupCurrentlyRequested = true;
+    //     pickupObj.pickupDetails.request.pickupRequestedDate = this.assets.pickupRequestedDate;
+    //     console.log(pickupObj);
+    //     break;
+    // };
   
+    // API.makeRequest({pickupObj})
+    // .then(res => {
+    //   alert("Your pickup request is complete! \n Please note: it may take up to 24 hours for a response. \n Than you for your patience!")
+    // }).catch(err => console.log(err));
+    // console.log(this.state);
+
+    API.makeRequest({
+      currentAsset: id,
+      pickupCurrentlyRequested: this.state.pickupCurrentlyRequested,
+      pickupRequestedDate: this.state.pickupRequestedDate
+    })
+    .catch(err => console.log(err));
+
+  };
+
   render() {
     return (
       <div>
-        <form className="align-content-center">
-          <ScheduleCalendar
-            dateFromCalendar={this.dateUpdate} 
-          />
-          <br />
-          <button 
-            className="btn-light btn-block"
-          >
-            Cancel
-          </button>
-          <button
-            className="btn success btn-block"
-            onClick={this.handleFormSubmit}
-          >
-            Confirm
-          </button>
-        </form>
         <div className="container">
           <h1>Assets:</h1>
           {this.state.assets.map(asset => (
@@ -78,9 +78,21 @@ class ScheduleForm extends Component {
                   <p>Model:</p>
                   <p>{asset.description.model}</p>
                 </div>
+                <ScheduleCalendar dateFromCalendar={this.dateUpdate} />
+                <br />
+                <button className="btn-light btn-block">Cancel</button>
+                <button
+                  className="btn success btn-block"
+                  value="confirm"
+                  id={asset._id}
+                  onClick={this.handleFormSubmit}
+                  // requestedDate={this.state.pickupRequestedDate}
+                >
+                  Confirm
+                </button>
               </div>
             </div>
-         ))}
+          ))}
         </div>
       </div>
     );

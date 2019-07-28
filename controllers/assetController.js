@@ -21,15 +21,13 @@ module.exports = {
     makeRequest: function(req, res) {
         console.log("makeRequest has been called via assetController.js");
          db.Asset
-          .findByIdAndUpdate( req.body._id, req.body,
-            // {          
-            //     "pickupDetails.request.pickupCurrentlyRequested":
-            //     req.body.pickupCurrentlyRequested,
-            //     "pickupRequestOriginDate": Date.now,
-            //     "pickupRequestedDate": req.body.pickupRequestedDate
-            // },
-            {new: true}
-          )
+          .findByIdAndUpdate({ _id: req.body._id}, {
+                "pickupDetails.request.pickupCurrentlyRequested":
+                req.body.pickupCurrentlyRequested,
+                // "pickupRequestOriginDate": Date.now,
+                "pickupDetails.request.pickupRequestedDate": req.body.pickupRequestedDate
+            // {new: true}
+            })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
       }
