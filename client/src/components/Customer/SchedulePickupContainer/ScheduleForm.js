@@ -34,7 +34,7 @@ class ScheduleForm extends Component {
 
   handleFormSubmit = event => {
     console.log(event.target);
-    const id = event.target.id;
+    const assetId = event.target._id;
     // event.preventDefault();
     // const action = event.target.value;
     // let pickupObj = this.state.assets;
@@ -53,11 +53,12 @@ class ScheduleForm extends Component {
     // }).catch(err => console.log(err));
     // console.log(this.state);
 
-    API.makeRequest({
-      currentAsset: id,
+    
+    const pickupObj = {currentAsset: assetId,
       pickupCurrentlyRequested: this.state.pickupCurrentlyRequested,
       pickupRequestedDate: this.state.pickupRequestedDate
-    })
+    }
+    API.makeRequest({pickupObj})
     .catch(err => console.log(err));
 
   };
