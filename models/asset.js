@@ -25,8 +25,12 @@ const assetSchema = new Schema({
             pickupRequestOriginDate: { type: Date },
             // Date that the asset is to be picked up, per customer's request
             pickupRequestedDate: { type: Date },
-            // Was the pickup request Approved/Denied?
-            pickupRequestConfirmed: { type: Boolean, default: false },
+            // Date that the asset is to be picked up, per customer's request
+            pickupRequestedTime: { type: Date },
+            // Is the pickup request Pending/Approved/Denied?
+            pickupRequestStatus: { type: String, default: "" },
+            // Reason for Approval/Denial
+            pickupRequestNote: { type: String},
         },
         confirmation: {
             // name/_id of admin who approved/denied the request... just the name for now
@@ -38,7 +42,9 @@ const assetSchema = new Schema({
             // Records if the pickup been completed
             pickupComplete: { type: Boolean, default: false },
             // Records the date of the pickup
-            pickupCompleteDate: { type: Date }
+            pickupCompleteDate: { type: Date },
+            // Notation of pickup completed
+            pickupCompleteNote: { type: String}
         }
     },
     customerId: {

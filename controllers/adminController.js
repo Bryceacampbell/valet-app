@@ -32,7 +32,7 @@ module.exports = {
         phoneNumber: body.phoneNumber,
         email: body.email,
         address: body.address,
-        
+
       }
     }
 
@@ -101,6 +101,19 @@ module.exports = {
       .populate("customerId")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  updateRequest: function (req, res) {
+
+    db.Asset
+      .findByIdAndUpdate(
+        req.body._id,
+        req.body,
+        { new: true },
+        (err, asset) => {
+          if (err) return res.status(500).send(err);
+          return res.send(asset);
+        }
+      )
   },
   remove: function (req, res) {
     db.Customer
