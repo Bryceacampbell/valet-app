@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class Logout extends Component {
   render() {
     return (
-      <div>
-        <button className="btn btn-sm btn-default" onClick={this.props.auth.logout}>
-          Logout
+      <button className="btn logout-btn" onClick={this.props.auth.logout}>
+        Logout
       </button>
-      </div>
     )
   }
 
