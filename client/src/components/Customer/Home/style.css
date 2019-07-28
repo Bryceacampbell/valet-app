@@ -1,0 +1,18 @@
+.schedule-btn {
+    width: 100%;
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.125);
+    color: rgb(230,33,33);
+    font-size: 60px;
+    padding: 20px;
+};
+
+.btn-primary:hover {
+    background: rgb(230,33,33);
+};
+
+.calendar-icon {
+    color: #ffffff;
+    margin: 5px 10px 5px 5px;
+    font-size: 20px
+};

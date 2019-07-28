@@ -38,7 +38,6 @@ class AdminPage extends Component {
     return (
       <div style={{ height: "100%" }}>
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
-        <ToggleButton />
         <SideNav show={this.state.sideNavOpen} />
         <Route exact path="/admin/requests" render={() => <Requests {...this.props} />} />
         <Route exact path="/admin/customers" render={() => <Customers {...this.props} />} />
