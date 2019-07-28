@@ -41,7 +41,6 @@ class DashboardPage extends Component {
     return (
       <div style={{ height: "100%" }}>
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
-        <ToggleButton />
         <SideNav show={this.state.sideNavOpen} {...this.props} />
         
         <Route exact path="/dashboard/schedule" render={() => <CustomerHome {...this.props} />} />

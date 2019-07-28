@@ -1,8 +1,8 @@
 .schedule-btn {
     width: 100%;
     background: #ffffff;
-    border-color: #777777;
-    color: #222;
+    border-color: rgba(0,0,0,0.125);
+    color: rgb(230,33,33);
     font-size: 60px;
     padding: 20px;
 };
