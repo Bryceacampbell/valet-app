@@ -1,36 +1,39 @@
 import axios from "axios";
 
 export default {
-  getRequests: function() {
+  getRequests: function () {
     return axios.get("/api/admin/requests");
   },
-  getRequest: function(id) {
+  getRequest: function (id) {
     return axios.get("/api/admin/requests/" + id);
   },
-  getAllCustomers: function() {
+  updateRequest: function (requestData) {
+    return axios.put("/api/admin/requests/", requestData)
+  },
+  getAllCustomers: function () {
     console.log("Ajax called being made");
     return axios.get("/api/admin/customers");
   },
-  getAssets: function() {
+  getAssets: function () {
     console.log("Ajax on Assets made!");
     return axios.get("/api/dashboard/schedule");
   },
 
-  makeRequest: function(id) {
+  makeRequest: function (id) {
     console.log("Ajax pickup request made");
     return axios.post("/api/dashboard/pickup" + id);
   },
   // =====================BOOKS!===============
   // Gets the book with the given id
-  getBook: function(id) {
+  getBook: function (id) {
     return axios.get("/api/books/" + id);
   },
   // Deletes the book with the given id
-  deleteBook: function(id) {
+  deleteBook: function (id) {
     return axios.delete("/api/books/" + id);
   },
   // Saves a book to the database
-  saveBook: function(bookData) {
+  saveBook: function (bookData) {
     return axios.post("/api/books", bookData);
   }
 };

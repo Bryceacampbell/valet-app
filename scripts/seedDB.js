@@ -71,7 +71,8 @@ const assetSeed = [
         pickupCurrentlyRequested: false,
         pickupRequestOriginDate: null,
         pickupRequestedDate: null,
-        pickupRequestConfirmed: false
+        pickupRequestStatus: "",
+        pickupRequestNote: "",
       },
       confirmation: {
         pickupConfirmedBy: "AdminAngie",
@@ -79,7 +80,8 @@ const assetSeed = [
       },
       completion: {
         pickupComplete: false,
-        pickupCompleteDate: null
+        pickupCompleteDate: null,
+        pickupCompleteNote: null
       }
     },
   },
@@ -103,7 +105,8 @@ const assetSeed = [
         pickupRequestOriginDate: moment(new Date(), "YYYY-MM-DD").creationData().input,
         pickupRequestedDate: moment("2019-09-01", "YYYY-MM-DD").creationData().input,
         pickupRequestedTime: moment("10:00 AM", "hh:mm A").creationData().input,
-        pickupRequestConfirmed: false
+        pickupRequestStatus: "Pending",
+        pickupRequestNote: "",
       },
       confirmation: {
         pickupConfirmedBy: "AdminTommy",
@@ -111,7 +114,8 @@ const assetSeed = [
       },
       completion: {
         pickupComplete: false,
-        pickupCompleteDate: null
+        pickupCompleteDate: null,
+        pickupCompleteNote: null
       }
     },
   }
