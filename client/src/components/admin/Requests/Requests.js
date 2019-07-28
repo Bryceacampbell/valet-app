@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../../../utils/API";
 import "./style.css";
 import Modal from "../RequestModal/RequestModal";
-import Backdrop from "./backdrop";
+import RequestBackdrop from "./RequestBackdrop";
 
 const moment = require("moment");
 
@@ -16,7 +16,13 @@ class Requests extends Component {
 
     componentDidMount() {
         this.loadRequests();
-    }
+    };
+
+    componentDidUpdate() 
+    {
+        console.log("State after update:");
+        console.log(this.state);
+    };
 
     loadRequests = () => {
         API.getRequests()
@@ -47,16 +53,23 @@ class Requests extends Component {
         console.log("state from clicking request");
         console.log(this.state);
 
+    };
+
+    handleModalClose = () => {
+        console.log("handleModalClose was called");
+        this.setState({requestFocus: false});
     }
 
     render() {
         return (
             <div className="container-fluid card text-center">
 
-                {this.state.requestFocus && <Backdrop />}
-                {this.state.requestFocus && <Modal title="Individual Request" id={this.state.currentRequest}>
-                    <p>Modal Content</p>
-                </Modal>}
+                {this.state.requestFocus && <RequestBackdrop />}
+                {this.state.requestFocus && <Modal
+                    title="Individual Request"
+                    id={this.state.currentRequest}
+                    onCancel={this.handleModalClose}
+                />}
 
                 <div className="card-header">
                     <h3>View Requests</h3>
@@ -84,8 +97,8 @@ class Requests extends Component {
                                         <p>{moment(request.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
                                     </div>
                                     <div className="col-lg-3">
-                                        <p>Request Confirmed:</p>
-                                        {this.pickupConfirmed(request.pickupDetails.request.pickupRequestConfirmed)}
+                                        <p>Request Status:</p>
+                                        {request.pickupDetails.request.pickupRequestStatus}
                                     </div>
                                 </div>
                             </div>

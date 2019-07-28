@@ -22,6 +22,9 @@ router.route("/requests/:id")
 router.route("/requests")
   .get(adminController.findAllRequests);
 
+router.route("/requests")
+  .put(adminController.updateRequest);
+
 //   router.route("/requests/:id")
 //   .get(adminController.findOneRequest)
 
