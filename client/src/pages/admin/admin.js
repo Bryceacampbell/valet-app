@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { Route } from 'react-router-dom';
-// import { Redirect } from "react-router-dom";
 
 import NavBar from "../../components/shared/NavBar/Navbar";
 import Customers from "../../components/admin/Customers/Customers"
 import Backdrop from "../../components/shared/Backdrop/Backdrop";
-import ToggleButton from "../../components/admin/SideNav/ToggleButton";
 import SideNav from "../../components/admin/SideNav/SideNav";
 import Requests from "../../components/admin/Requests/Requests";
 import NewUser from "../../components/admin/NewUser/NewUser";
@@ -33,7 +31,7 @@ class AdminPage extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
-    // console.log(this.props.auth.getProfile());
+    console.log(this.props.auth.getProfile());
 
     return (
       <div style={{ height: "100%" }}>
