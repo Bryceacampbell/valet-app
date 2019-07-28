@@ -7,6 +7,8 @@ import API from "../../../utils/API"
 class ScheduleForm extends Component {
   state = {
     assets: [],
+    currentClient: "",
+    currentAsset: "",
     pickupCurrentlyRequested: false,
     pickupRequestedDate: "",
   };
@@ -17,11 +19,13 @@ class ScheduleForm extends Component {
   }
 
   componentDidMount() {
-    this.loadAssets();
+    const acctNum = this.props.auth.getAcctNum()
+    console.log(acctNum);
+    this.loadAssets(acctNum);
   };
 
-  loadAssets = () => {
-    API.getAssets()
+  loadAssets = (id) => {
+    API.findClientAssets(id)
       .then(res => {
         this.setState({ assets: res.data });
         console.log(res.data);

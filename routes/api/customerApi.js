@@ -14,11 +14,11 @@ const customerController = require("../../controllers/customerController");
 // router.route("/dashboard/bills")
 //   .get(customerController.findBills);
 
-router.route("/pickup")
-    .post(customerController.pickupRequest);
+// router.route("/pickup")
+//     .post(customerController.pickupRequest);
 
-router.route("/schedule")
-    .get(customerController.findAllAssets);
+// router.route("/schedule")
+//     .get(customerController.findAllAssets);
 
 module.exports = router;
 

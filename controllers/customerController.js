@@ -29,16 +29,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findAllAssets: function(req, res) {
-    console.log("findAllAssets has been called via customerController.js'");
-    db.Asset.find(req.query)
-      .populate("customerId")
-      .then(dbModel => {
-        console.log(dbModel);
-        res.json(dbModel);
-      })
-      .catch(err => res.status(422).json(err));
-  },
   pickupRequest: function(req, res) {
     console.log("pickupRequest has been called via customerController.js");
     db.Asset.findOneAndUpdate(
