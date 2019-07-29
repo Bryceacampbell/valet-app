@@ -68,6 +68,7 @@ class Requests extends Component {
                 {this.state.requestFocus && <Modal
                     title="Individual Request"
                     id={this.state.currentRequest}
+                    onUpdate={this.loadRequests}
                     onCancel={this.handleModalClose}
                 />}
 
@@ -76,6 +77,8 @@ class Requests extends Component {
                 </div>
 
                 <div className="card-body">
+
+                {this.state.requests.length === 0 && <h3>There are no current pickup requests.</h3>}
 
                     {this.state.requests.map(request => (
 

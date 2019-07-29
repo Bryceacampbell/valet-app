@@ -59,15 +59,36 @@ class RequestModal extends Component {
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 console.log(updateObj);
                 break;
+            case "decline":
+                updateObj.pickupDetails.request.pickupRequestStatus = "Declined";
+                updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
+                break;
+            case "complete":
+                console.log("complete was clicked");                
+                updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
+                updateObj.pickupDetails.completion.pickupComplete = true;
+                updateObj.pickupDetails.completion.pickupCompleteDate = moment().format("YYYY-MM-DD");
+                updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
+                break;
+            case "cancel":
+                updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
+                updateObj.pickupDetails.completion.pickupComplete = false;
+                updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
+                break;
         };
 
         API.updateRequest(updateObj)
             .then(res => {
                 alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
-                this.props.onCancel();
+                this.handleClose();
             })
             .catch(err => console.log(err));
     };
+
+    handleClose = () => {
+        this.props.onUpdate();
+        this.props.onCancel();
+    }
 
     render() {
         return (
@@ -138,7 +159,7 @@ class RequestModal extends Component {
                                         />
                                         <FormBtn
                                             className="btn btn-success"
-                                            disabled={!this.state.pickupCompleteNote}
+                                            disabled={!this.state.pickupCompleteNote || this.state.currentRequest.pickupDetails.request.pickupRequestStatus !== "Approved"}
                                             // || this.state.currentRequest.pickupDetails.request.pickupRequestStatus != "Approved"
                                             onClick={this.handleFormSubmit}
                                             value="complete"
@@ -147,7 +168,7 @@ class RequestModal extends Component {
                                         </FormBtn>
                                         <FormBtn
                                             className="btn btn-cancel"
-                                            disabled={!this.state.pickupCompleteNote}
+                                            disabled={!this.state.pickupCompleteNote || this.state.currentRequest.pickupDetails.request.pickupRequestStatus !== "Approved"}
                                             value="cancel"
                                             onClick={this.handleFormSubmit}
                                         >
