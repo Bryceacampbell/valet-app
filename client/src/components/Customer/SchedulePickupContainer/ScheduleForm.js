@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import "./style.css";
 import ScheduleCalendar from "./ScheduleCalendar";
 import API from "../../../utils/API";

@@ -22,11 +22,12 @@ class ScheduleCalendar extends Component {
   render() {
     return (
       <DatePicker
+        selected={this.state.startDate}
         name="pickupRequestedDate"
         onChange={this.handleChange}
         showTimeSelect
-        dateFormat="Pp"
-        withPortal
+        dateFormat="MMMM d, yyyy h:mm aa"
+        timeCaption="time"
       />
     );
   }
