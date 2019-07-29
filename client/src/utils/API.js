@@ -17,14 +17,14 @@ export default {
   //============Calls From Customer=============
   findClientAssets: function(id){
     console.log("Ajax call called via Assets axios Util/API.js");
-    return axios.get("/api/assets/findassets" + id);
+    return axios.get("/api/assets/findassets/" + id);
   },
-  makeRequest: function (id) {
+  makeRequest: function (pickupData) {
     console.log("Ajax pickup request made");
-    return axios.post("/api/assets/pickup/" + id);
+    return axios.put("/api/assets/pickup", pickupData);
   },
   // ===========Calls From Customer[END]=======
-  //===========================================
+  // ===========================================
   // =====================BOOKS!===============
   // Gets the book with the given id
   getBook: function (id) {

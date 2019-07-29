@@ -15,7 +15,7 @@ class CustomerHome extends Component {
           <div className="card-body">
             <div className="row my-2 align-content-center">
               <div className="col-6 my-2 mx-auto">
-                <SchedulePickupContainer />
+                <SchedulePickupContainer {...this.props} />
               </div>
             </div>
           </div>
