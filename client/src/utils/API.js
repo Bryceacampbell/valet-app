@@ -15,7 +15,7 @@ export default {
     return axios.get("/api/admin/customers");
   },
   //============Calls From Customer=============
-  findClientAssets: function(id){
+  findClientAssets: function(id){ 
     console.log("Ajax call called via Assets axios Util/API.js");
     return axios.get("/api/assets/findassets/" + id);
   },
