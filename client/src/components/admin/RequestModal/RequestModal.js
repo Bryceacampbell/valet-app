@@ -100,7 +100,7 @@ class RequestModal extends Component {
                             <div className="row m-6 modal-row">
                                 <div className="col-1" />
                                 <div className="col-5">
-                                    <h2>Request Handling</h2>
+                                    <h3>Request Handling</h3>
                                     <form>
                                         <TextArea
                                             // className="col-12"
@@ -109,25 +109,32 @@ class RequestModal extends Component {
                                             name="pickupRequestNote"
                                             placeholder="Note (required if denying request)"
                                         />
-                                        <FormBtn
-                                            className="btn btn-success"
-                                            onClick={this.handleFormSubmit}
-                                            value="approve"
-                                        >
-                                            Approve
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <FormBtn
+                                                    className="btn btn-success approve-btn"
+                                                    onClick={this.handleFormSubmit}
+                                                    value="approve"
+                                                >
+                                                    Approve
                                         </FormBtn>
-                                        <FormBtn
-                                            className="btn btn-cancel"
-                                            disabled={!this.state.pickupRequestNote}
-                                            value="decline"
-                                            onClick={this.handleFormSubmit}
-                                        >
-                                            Decline
+                                            </div>
+                                            <div class="col-6">
+                                                <FormBtn
+                                                    className="btn btn-cancel decline-btn"
+                                                    disabled={!this.state.pickupRequestNote}
+                                                    value="decline"
+                                                    onClick={this.handleFormSubmit}
+                                                >
+                                                    Decline
                                         </FormBtn>
+                                            </div>
+
+                                        </div>
                                     </form>
                                 </div>
                                 <div className="col-5">
-                                    <h2>Pickup Handling</h2>
+                                    <h3>Pickup Handling</h3>
                                     <form>
                                         <TextArea
                                             // className="col-12"
@@ -136,23 +143,29 @@ class RequestModal extends Component {
                                             name="pickupCompleteNote"
                                             placeholder="Note (required) ----- Request must be approved"
                                         />
-                                        <FormBtn
-                                            className="btn btn-success"
-                                            disabled={!this.state.pickupCompleteNote}
-                                            // || this.state.currentRequest.pickupDetails.request.pickupRequestStatus != "Approved"
-                                            onClick={this.handleFormSubmit}
-                                            value="complete"
-                                        >
-                                            Complete
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <FormBtn
+                                                    className="btn btn-success approve-btn"
+                                                    disabled={!this.state.pickupCompleteNote}
+                                                    // || this.state.currentRequest.pickupDetails.request.pickupRequestStatus != "Approved"
+                                                    onClick={this.handleFormSubmit}
+                                                    value="complete"
+                                                >
+                                                    Complete
                                         </FormBtn>
-                                        <FormBtn
-                                            className="btn btn-cancel"
-                                            disabled={!this.state.pickupCompleteNote}
-                                            value="cancel"
-                                            onClick={this.handleFormSubmit}
-                                        >
-                                            Cancel Pickup
+                                            </div>
+                                            <div class="col-6">
+                                                <FormBtn
+                                                    className="btn btn-cancel decline-btn"
+                                                    disabled={!this.state.pickupCompleteNote}
+                                                    value="cancel"
+                                                    onClick={this.handleFormSubmit}
+                                                >
+                                                    Cancel Pickup
                                         </FormBtn>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                                 <div className="col-1" />
@@ -163,7 +176,7 @@ class RequestModal extends Component {
                             onClick={this.props.onCancel}
                         >
                             Close
-                                        </FormBtn>
+                        </FormBtn>
                     </React.Fragment>
                 }
             </div>
