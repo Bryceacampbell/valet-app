@@ -7,4 +7,7 @@ router.route("/findassets/:id")
 router.route("/pickup")
     .put(assetController.makeRequest);
 
+router.route("/add/:id")
+    .post(assetController.createAsset)
+
 module.exports = router;

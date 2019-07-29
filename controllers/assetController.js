@@ -1,4 +1,5 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 
 module.exports = {
     findAllAssets: function (req, res) {
@@ -31,5 +32,47 @@ module.exports = {
           })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+      },
+
+      createAsset: function (req, res) {
+    
+        const body = req.body;
+    
+        console.log(req.params.id);
+    
+        let customerID = req.params.id;
+    
+        console.log(body);
+    
+        let assetObj = {
+    
+          dateAdded: req.body.date,
+    
+          storageInfo: {
+            currentlyStored: req.body.approved,
+            location: req.body.location
+          },
+    
+          description: {
+            year: req.body.year,
+            make: req.body.make,
+            model: req.body.model,
+            hullID: req.body.hullID,
+            lineTwo: req.body.notes
+    
+          },
+    
+          customerId: mongoose.Types.ObjectId(customerID)
+    
+        }
+    
+        db.Asset
+          .create(assetObj)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(err => res.status(422).json(err))
+    
+        res.redirect('/admin/customers');
       }
 };

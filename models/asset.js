@@ -13,7 +13,7 @@ const assetSchema = new Schema({
         model: { type: String, required: true, trim: true },
         hullID: { type: String, required: true, trim: true },
         // lineOne: for brief description: color, asset name, etc
-        lineOne: { type: String, required: true, trim: true },
+        // lineOne: { type: String, required: true, trim: true },
         // lineTwo: for any other relevant information: "Window was already broken, etc"
         lineTwo: { type: String, required: false, trim: true }
     },
@@ -34,7 +34,7 @@ const assetSchema = new Schema({
         },
         confirmation: {
             // name/_id of admin who approved/denied the request... just the name for now
-            pickupConfirmedBy: { type: String, required: true, trim: true },
+            pickupConfirmedBy: { type: String, trim: true },
             // Date the pickup was confirmed
             pickupConfirmDate: { type: Date },
         },
@@ -47,9 +47,11 @@ const assetSchema = new Schema({
             pickupCompleteNote: { type: String}
         }
     },
+
     customerId: {
         type: Schema.Types.ObjectId,
-        ref: "Customer"
+        ref: "Customer",
+
     }
 });
 
