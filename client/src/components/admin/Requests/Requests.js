@@ -81,7 +81,6 @@ class Requests extends Component {
                 {this.state.requests.length === 0 && <h3>There are no current pickup requests.</h3>}
 
                     {this.state.requests.map(request => (
-
                         <div className="card request" onClick={() => this.requestClicked(request._id)} data-id={request._id} key={request._id}>
                             <div className="card-body">
                                 <div className="row">
@@ -106,55 +105,7 @@ class Requests extends Component {
                                 </div>
                             </div>
                         </div>
-
                     ))}
-
-                    {/* <div className="card request">
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-lg-3">
-                                    <p>Unit #:</p>
-                                    <p>A66</p>
-                                </div>
-                                <div className="col-lg-3">
-                                    <p>Customer Name: </p>
-                                    <p>Bryce Campbell</p>
-                                </div>
-                                <div className="col-lg-3">
-                                    <p>Date Requested:</p>
-                                    <p>7/15/19</p>
-                                </div>
-                                <div className="col-lg-3">
-                                    <p>Request Type:</p>
-                                    <p>NEW</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="card request">
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-lg-3">
-                                    <p>Unit #:</p>
-                                    <p>C11</p>
-                                </div>
-                                <div className="col-lg-3">
-                                    <p>Customer Name: </p>
-                                    <p>Chesley Calloway</p>
-                                </div>
-                                <div className="col-lg-3">
-                                    <p>Date Requested:</p>
-                                    <p>7/17/19</p>
-                                </div>
-                                <div className="col-lg-3">
-                                    <p>Request Type:</p>
-                                    <p>NEW</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-
                 </div>
             </div>
         )
