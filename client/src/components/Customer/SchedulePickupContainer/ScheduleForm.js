@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import "./style.css";
 import ScheduleCalendar from "./ScheduleCalendar";
 import API from "../../../utils/API";
@@ -34,7 +35,8 @@ class ScheduleForm extends Component {
 
   handleFormSubmit = event => {
     console.log(event.target);
-    const assetId = event.target._id;
+    const assetId = event.target.id;
+    console.log(assetId);
     // event.preventDefault();
     // const action = event.target.value;
     // let pickupObj = this.state.assets;
@@ -53,14 +55,18 @@ class ScheduleForm extends Component {
     // }).catch(err => console.log(err));
     // console.log(this.state);
 
-    
-    const pickupObj = {currentAsset: assetId,
-      pickupCurrentlyRequested: this.state.pickupCurrentlyRequested,
+
+    const pickupObj = {
+      currentAsset: assetId,
+      pickupCurrentlyRequested: true,
       pickupRequestedDate: this.state.pickupRequestedDate
     }
-    API.makeRequest({pickupObj})
-    .catch(err => console.log(err));
-
+    console.log(pickupObj);
+    API.makeRequest(pickupObj)
+    .then(
+      alert("Your pickup request is complete! \n Please note: it may take up to 24 hours for a response. \n Than you for your patience!")
+    ).catch(err => console.log(err));
+    console.log(this.state);
   };
 
   render() {
@@ -69,6 +75,7 @@ class ScheduleForm extends Component {
         <div className="container">
           <h1>Assets:</h1>
           {this.state.assets.map(asset => (
+            <div className="form-group">
             <div className="card" key={asset._id}>
               <div className="card-body">
                 <div className="col-8">
@@ -92,6 +99,7 @@ class ScheduleForm extends Component {
                   Confirm
                 </button>
               </div>
+            </div>
             </div>
           ))}
         </div>
