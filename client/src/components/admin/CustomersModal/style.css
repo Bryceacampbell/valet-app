@@ -1,99 +1,84 @@
-/* .req:hover {
-    transform: scale(1.02);
-    background: #F7F7F7;
-}
-
-.req {
-    margin-bottom: 20px;
-}
-
-.container {
-    margin-top: 25px;
-    padding: 0px;
-} */
-
 .customer-modal {
     width: 90%;
+    height: 75%;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     position: fixed;
     top: 20vh;
     left: 5%;
     z-index: 100;
-}
-
-.customer-modal-header {
+ }
+ .customer-modal-header {
     padding: 1rem;
     background: #5101d1;
     color: white;
-}
-
-.customer-modal-header h1 {
+ }
+ .customer-modal-header h1 {
     margin: 0;
     font-size: 1.25rem;
-}
-
-.customer-modal-content {
+ }
+ .customer-modal-content {
     padding: 1rem;
-}
-
-.customer-modal-actions {
+ }
+ .customer-modal-actions {
     display: flex;
     justify-content: flex-end;
     padding: 1rem;
-}
-
-.btn {
+ }
+ .btn {
     margin: .5rem;
-}
-
-.customerbackdrop {
+ }
+ .customerLabel {
+    display: flex;
+    justify-content: left;
+ }
+ .customerbackdrop {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100%;
     background: rgba(0, 0, 0, .75);
-}
-
-
-.form-group {
+ }
+ /* .form-group {
     font-size: 15px;
     font-weight: bold;
- }
- 
- input {
-    height: 30px;
+    height: 15px;
+    padding: 1.5rem;
+ } */
+ .asset-form-control {
     font-size: 15px;
+    font-weight: bold;
+    height: 20px;
+    
+ }
+ .formheader {
+    display: flex;
+    justify-content: left;
+    font-style: oblique;
  }
  
  .button {
     position:relative;
  }
- 
  .back-btn {
     font-size: 25px;
     color: #4b4c4f;
     margin-top: 10px;
  }
- 
  .back-btn:hover {
     color: #777777
   }
- 
- 
  .button:hover {
-     border:  rgb(112, 12, 112) 2px solid;
+     border:  rgb(15, 8, 15) 2px solid;
   }
- 
   .container{
     margin-top: 30px;
     padding: 0px;
   }
-
-@media (min-width: 768px) {
+ @media (min-width: 768px) {
     .modal {
         width: 30rem;
         left: calc((100% - 30rem) / 2);
     }
-}
+ }

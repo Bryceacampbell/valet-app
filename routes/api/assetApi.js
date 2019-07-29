@@ -5,6 +5,9 @@ router.route("/findassets/:id")
     .get(assetController.findClientAssets);
 
 router.route("/pickup")
-    .put(assetController.makeRequest);    
+    .put(assetController.makeRequest);
+
+router.route("/add/:id")
+    .post(assetController.createAsset)
 
 module.exports = router;
