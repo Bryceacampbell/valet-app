@@ -3,59 +3,61 @@ import API from "../../../utils/API";
 import "./style.css";
 import CustomerModal from "../CustomersModal/CustomersModal.js";
 import CustomerBackdrop from "./backdrop";
-
 import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
-
-
 class Customers extends Component {
-
     state = {
         customers: [],
         modalSwitch: false,
+        targetUser: {}
     };
-
     componentDidMount() {
         this.loadCustomers();
     };
-
     loadCustomers = () => {
         API.getAllCustomers()
             .then(res => {
                 this.setState({ customers: res.data });
-                console.log(res.data);
+                console.log(this.state.customers);
+                
+                
             })
             .catch(err => console.log(err.response));
     };
-
-    customerClicked = () => {
+    customerClicked = (id, name) => {
         // event.persist();
         this.setState({
-            modalSwitch: true
+            modalSwitch: true,
+            targetUser: {
+                id : id,
+                name : name
 
+            }
         });
 
 
-
-        console.log("state from clicking request");
-        console.log(this.state);
-
     }
+
+    handleModalClose = () => {
+        console.log("handleModalClose was called");
+        this.setState({modalSwitch: false});
+    }
+
 
     render() {
         return (
-
             <div className="container-fluid card text-center">
-
-
-
-
-
                 {this.state.modalSwitch && <CustomerBackdrop />}
-                {this.state.modalSwitch && <CustomerModal>
-                    <p>Modal Content</p>
-                </CustomerModal>}
+                {this.state.modalSwitch && <CustomerModal
+
+                    title="Target User"
+                    id={this.state.targetUser.id}
+                    name={this.state.targetUser.name}
+                    onCancel={this.handleModalClose}
+
+                />}
+
 
 
 
@@ -70,9 +72,6 @@ class Customers extends Component {
                     </div>
                 </div>
                 <div className="card-body">
-
-
-
                     <div className="row">
                         <div className="col-lg-12 search-bar">
                             <div className="form-group has-search">
@@ -84,7 +83,6 @@ class Customers extends Component {
                     <Table striped bordered hover>
                         <thead>
                             <tr >
-
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone #</th>
@@ -93,7 +91,7 @@ class Customers extends Component {
                         </thead>
                         <tbody>
                             {this.state.customers.map(customer => (
-                                <tr onClick={() => this.customerClicked()} key="customer._id">
+                                <tr onClick={() => this.customerClicked(customer._id, customer.information.firstName)} data-id={customer._id} key={customer._id}>
                                     <td>{customer.information.firstName}</td>
                                     <td>{customer.information.lastName}</td>
                                     <td>{customer.information.phoneNumber}</td>
@@ -104,10 +102,7 @@ class Customers extends Component {
                     </Table>
                 </div>
             </div>
-
-
         )
     }
 }
-
 export default Customers;
