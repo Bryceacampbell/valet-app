@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import ScheduleCalendar from "./ScheduleCalendar";
-import API from "../../../utils/API"
-
+import API from "../../../utils/API";
 
 class ScheduleForm extends Component {
   state = {
@@ -14,60 +13,52 @@ class ScheduleForm extends Component {
   };
 
   // Uses call-B func to retrieve selected date from date-picker component
-  dateUpdate = (dateInfo) => {
+  dateUpdate = dateInfo => {
     this.setState({ pickupRequestedDate: dateInfo });
-  }
-
-  componentDidMount() {
-    const acctNum = this.props.auth.getAcctNum()
-    console.log(acctNum);
-    this.loadAssets(acctNum);
   };
 
-  loadAssets = (id) => {
+  componentDidMount() {
+    const acctNum = this.props.auth.getAcctNum();
+    console.log(acctNum);
+    this.loadAssets(acctNum);
+  }
+
+  loadAssets = id => {
     API.findClientAssets(id)
       .then(res => {
         this.setState({ assets: res.data });
         console.log(res.data);
       })
       .catch(err => console.log(err.response));
-  }
-
-  handleFormSubmit = (_id) => {
-    // event.preventDefault();    
-    API.makeRequest()
-    .then(res => {
-      this.setState({
-        pickupCurrentlyRequested: true,
-        pickupRequestedDate: this.state.pickupRequestedDate
-      });
-    }).catch(err => console.log(err));
-    console.log(this.state)
   };
-  
+
+  handleFormSubmit = event => {
+    console.log(event.target);
+    const assetId = event.target.id;
+    console.log(assetId);
+    const pickupObj = {
+      currentAsset: assetId,
+      pickupCurrentlyRequested: true,
+      pickupRequestedDate: this.state.pickupRequestedDate,
+    };
+    console.log(pickupObj);
+    API.makeRequest(pickupObj)
+      .then(
+        alert(
+          "Your pickup request is complete! \n Please note: it may take up to 24 hours for a response. \n Than you for your patience!"
+        )
+      )
+      .catch(err => console.log(err));
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
-        <form className="align-content-center">
-          <ScheduleCalendar
-            dateFromCalendar={this.dateUpdate} 
-          />
-          <br />
-          <button 
-            className="btn-light btn-block"
-          >
-            Cancel
-          </button>
-          <button
-            className="btn success btn-block"
-            onClick={this.handleFormSubmit}
-          >
-            Confirm
-          </button>
-        </form>
         <div className="container">
           <h1>Assets:</h1>
           {this.state.assets.map(asset => (
+            <div className="form-group">
             <div className="card" key={asset._id}>
               <div className="card-body">
                 <div className="col-8">
@@ -78,9 +69,22 @@ class ScheduleForm extends Component {
                   <p>Model:</p>
                   <p>{asset.description.model}</p>
                 </div>
+                <ScheduleCalendar dateFromCalendar={this.dateUpdate} />
+                <br />
+                <button className="btn-light btn-block">Cancel</button>
+                <button
+                  className="btn success btn-block"
+                  value="confirm"
+                  id={asset._id}
+                  onClick={this.handleFormSubmit}
+                  // requestedDate={this.state.pickupRequestedDate}
+                >
+                  Confirm
+                </button>
               </div>
             </div>
-         ))}
+            </div>
+          ))}
         </div>
       </div>
     );

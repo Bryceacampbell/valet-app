@@ -1,20 +1,6 @@
-/* .req:hover {
-    transform: scale(1.02);
-    background: #F7F7F7;
-}
-
-.req {
-    margin-bottom: 20px;
-}
-
-.container {
-    margin-top: 25px;
-    padding: 0px;
-} */
-
 .req-modal {
     width: 90%;
-    background: white;
+    background: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     position: fixed;
     top: 20vh;
@@ -24,8 +10,8 @@
 
 .req-modal-header {
     padding: 1rem;
-    background: #5101d1;
-    color: white;
+    background: rgb(230, 33, 33);
+    color: #ffffff;
 }
 
 .req-modal-header h1 {
@@ -34,10 +20,11 @@
 }
 
 .req-modal-content {
-    padding: 1rem;
+    padding: 0px 0px 1rem 0px;
 }
 
 .req-modal-subheader {
+    padding: 1rem;
     background-color: #EEEEEE
 }
 
@@ -47,13 +34,18 @@
     padding: 1rem;
 }
 
-.btn {
-    margin: .5rem;
+.approve-btn {
+    width: 100%;
+    float: left !important;
+}
+
+.decline-btn {
+    width: 100%;
     float: left !important;
 }
 
 .btn:hover {
-box-shadow: 5px 10px 5px #333333
+    box-shadow: 5px 10px 5px #333333
 }
 
 .btn-secondary {
@@ -61,16 +53,18 @@ box-shadow: 5px 10px 5px #333333
 }
 
 .btn-cancel {
+    margin: 0px;
     background-color: darkred !important
 }
 
 .btn-success {
-    background-color: darkgreen
+    margin: 0px;
+    background-color: darkgreen;
 }
 
 .btn-secondary:hover {
     background-color: #555555;
-    color: white
+    color: #ffffff;
 }
 
 .btn-cancel:hover {

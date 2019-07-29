@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
 .icon {
   font-family: 'Material Icons', serif;
   font-style: normal;
@@ -12,25 +11,22 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
 }
 
-
 /* VARIABLES */
 
 :root {
-  --main-color: rgb(230,33,33);
+  --main-color: rgb(230, 33, 33);
   --text-color: #4b4c4f;
   --text-color-light: #f9f9f9;
-  --border-color: rgba(0,0,0,0.125);
+  --border-color: rgba(0, 0, 0, 0.125);
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
-
 
 /* GENERAL */
 
@@ -64,9 +60,7 @@ main {
   max-width: 50em;
 }
 
-
 /* GRID */
-
 
 .row-middle {
   align-items: center;
@@ -93,14 +87,12 @@ main {
   text-align: right;
 }
 
-
 /* Calendar */
 
 .calendar {
   margin: 30px;
   display: block;
   position: relative;
-
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
 }
@@ -133,7 +125,7 @@ main {
 }
 
 .calendar .days {
-  background: rgb(230,33,33);
+  background: rgb(230, 33, 33);
   text-transform: uppercase;
   font-weight: 400;
   color: var(--text-color-light);
@@ -159,7 +151,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, rgb(230,33,33) 0%,#4b4c4f 40%);
+  border-image: linear-gradient(45deg, rgb(230, 33, 33) 0%, #4b4c4f 40%);
   border-image-slice: 1;
 }
 
@@ -202,7 +194,7 @@ main {
   letter-spacing: -.07em;
 }
 
-.calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
+.calendar .body .cell:hover .bg, .calendar .body .selected .bg {
   opacity: 0.05;
   transition: .5s ease-in;
 }
