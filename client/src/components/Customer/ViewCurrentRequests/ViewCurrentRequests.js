@@ -1,27 +1,15 @@
 import React, { Component } from "react";
+
 import API from "../../../utils/API";
-import "./style.css";
-import Modal from "../RequestModal/RequestModal";
-import RequestBackdrop from "./RequestBackdrop";
 
-const moment = require("moment");
-
-class Requests extends Component {
+class ViewCurrentRequests extends Component {
 
     state = {
-        requests: [],
-        requestFocus: false,
-        currentRequest: {}
+        requests: []
     };
 
     componentDidMount() {
         this.loadRequests();
-    };
-
-    componentDidUpdate() 
-    {
-        console.log("State after update:");
-        console.log(this.state);
     };
 
     loadRequests = () => {
@@ -33,51 +21,17 @@ class Requests extends Component {
             .catch(err => console.log(err));
     };
 
-    pickupConfirmed = (confirmed) => {
-        if (confirmed) {
-            return (<p>Yes</p>)
-        } else {
-            return (<p>No</p>)
-        }
-    };
-
-    requestClicked = (id) => {
-        // event.persist();
-        this.setState({
-            requestFocus: true,
-            currentRequest: id
-        });
-
-        console.log(id)
-
-        console.log("state from clicking request");
-        console.log(this.state);
-
-    };
-
-    handleModalClose = () => {
-        console.log("handleModalClose was called");
-        this.setState({requestFocus: false});
-    }
-
     render() {
         return (
-            <div className="container-fluid card text-center">
-
-                {this.state.requestFocus && <RequestBackdrop />}
-                {this.state.requestFocus && <Modal
-                    title="Individual Request"
-                    id={this.state.currentRequest}
-                    onCancel={this.handleModalClose}
-                />}
-
+            <div className="container card text-center">
                 <div className="card-header">
-                    <h3>View Requests</h3>
+                    <h3>Current Requests</h3>
                 </div>
 
                 <div className="card-body">
                     {this.state.requests.map(request => (
-                        <div className="card request" onClick={() => this.requestClicked(request._id)} data-id={request._id} key={request._id}>
+
+                        <div className="card request">
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-3">
@@ -86,13 +40,11 @@ class Requests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Customer Name: </p>
-                                        {/* {console.log("request in map function")}
-                                        {console.log(request)} */}
                                         <p>{request.customerId.information.firstName + " " + request.customerId.information.lastName}</p>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Date Requested:</p>
-                                        <p>{moment(request.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
+                                        <p>{request.pickupDetails.request.pickupRequestedDate}</p>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Request Status:</p>
@@ -101,11 +53,13 @@ class Requests extends Component {
                                 </div>
                             </div>
                         </div>
+
                     ))}
+
                 </div>
             </div>
         )
     }
 };
 
-export default Requests;
+export default ViewCurrentRequests;
