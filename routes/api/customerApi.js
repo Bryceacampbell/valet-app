@@ -5,12 +5,11 @@ const customerController = require("../../controllers/customerController");
 // router.route("/dashboard/schedule")
 //   .post(customerController.createSchedule);
 
-router.route("/dashboard/requests:id")
-.get(customerController.findAllRequests);
+router.route("/dashboard/requests/:id")
+.get(customerController.findOneRequest);
 
-//:id
-// router.route("/requests")
-//  .get(customerController.findAllRequests);
+// router.route("/dashboard/requests")
+// .get(customerController.findOneRequest);
 
 // router.route("/dashboard/bills")
 //   .get(customerController.findBills);

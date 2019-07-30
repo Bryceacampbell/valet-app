@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import API from "../../../utils/API";
 
+const moment = require("moment");
+
 class ViewCurrentRequests extends Component {
 
     state = {
@@ -9,11 +11,13 @@ class ViewCurrentRequests extends Component {
     };
 
     componentDidMount() {
-        this.loadRequests();
+        const acctNum = this.props.auth.getAcctNum();
+        console.log(acctNum);
+        this.loadRequests(acctNum);
     };
 
-    loadRequests = () => {
-        API.getRequests()
+    loadRequests = (id) => {
+        API.findClientAssets(id)
             .then(res => {
                 this.setState({ requests: res.data });
                 console.log(this.state.requests);
@@ -30,8 +34,7 @@ class ViewCurrentRequests extends Component {
 
                 <div className="card-body">
                     {this.state.requests.map(request => (
-
-                        <div className="card request">
+                        <div className="card request" key={request._id}>
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-3">
@@ -39,16 +42,16 @@ class ViewCurrentRequests extends Component {
                                         <p>{request.storageInfo.location}</p>
                                     </div>
                                     <div className="col-lg-3">
-                                        <p>Customer Name: </p>
-                                        <p>{request.customerId.information.firstName + " " + request.customerId.information.lastName}</p>
+                                        <p>Date Requested:</p>
+                                        <p>{moment(request.pickupDetails.request.pickupRequestedDate).format("YYYY-MM-DD")}</p>
                                     </div>
                                     <div className="col-lg-3">
-                                        <p>Date Requested:</p>
-                                        <p>{request.pickupDetails.request.pickupRequestedDate}</p>
+                                        <p>Time Requested:</p>
+                                        <p>{request.pickupDetails.request.pickupRequestedTime}</p>
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Request Status:</p>
-                                        {request.pickupDetails.request.pickupRequestStatus}
+                                        { <p>{request.pickupDetails.request.pickupRequestStatus}</p> }
                                     </div>
                                 </div>
                             </div>
