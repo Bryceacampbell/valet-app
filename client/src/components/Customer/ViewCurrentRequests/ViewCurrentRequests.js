@@ -51,7 +51,7 @@ class ViewCurrentRequests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Request Status:</p>
-                                        { <p>{request.pickupDetails.request.pickupRequestStatus}</p> }
+                                        <p>{request.pickupDetails.request.pickupRequestStatus}</p> 
                                     </div>
                                 </div>
                             </div>
