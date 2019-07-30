@@ -43,7 +43,7 @@ module.exports = {
         const connection = "Username-Password-Authentication";
         const user_metadata = {
           "role": "client",
-          "clientID": customerID
+          "acctNum": customerID
         };
         axios
           .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
