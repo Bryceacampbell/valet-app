@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SchedulePickupContainer from "../SchedulePickupContainer/SchedulePickupContainer";
 // import SideBar from "../LeftMenu";
 
+
+
 class CustomerHome extends Component {
 
   render() {
