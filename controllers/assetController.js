@@ -10,7 +10,7 @@ module.exports = {
   },
   findClientAssets: function (req, res) {
     console.log("findClientAssets has been called in assetController.js");
-    db.Asset.find({ belongsToAcctNum: req.params.id })
+    db.Asset.find({ customerId: req.params.id })
       .then(dbModel => {
         //   console.log(dbModel);
         res.json(dbModel);
