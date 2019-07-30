@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import API from "../../../utils/API";
 
-import "./style.css";
-
 const moment = require("moment");
 
 class ViewCurrentRequests extends Component {
