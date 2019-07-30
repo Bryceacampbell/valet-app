@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import API from "../../../utils/API";
 
+import "./style.css";
+
 const moment = require("moment");
 
 class ViewCurrentRequests extends Component {
@@ -51,9 +53,17 @@ class ViewCurrentRequests extends Component {
                                     </div>
                                     <div className="col-lg-3">
                                         <p>Request Status:</p>
-                                        <p>{request.pickupDetails.request.pickupRequestStatus}</p> 
+                                        <p>{request.pickupDetails.request.pickupRequestStatus}</p>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <p> <strong>Notes:</strong></p>
+                                        <hr></hr>
+                                        <p>{request.pickupDetails.request.pickupRequestNote}</p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
