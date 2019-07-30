@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../../utils/API";
 import "./style.css";
-import { Input, TextArea, FormBtn } from "../../shared/Form";
+import { TextArea, FormBtn } from "../../shared/Form";
 
 const moment = require("moment");
 

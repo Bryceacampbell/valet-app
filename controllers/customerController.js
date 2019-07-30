@@ -44,5 +44,14 @@ module.exports = {
     )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  
+  findOneRequest: function (req, res) {
+    console.log("made it to controller");
+    db.Asset
+      .findById({ _id: req.params.id })
+      .populate("customerId")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

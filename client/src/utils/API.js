@@ -23,6 +23,10 @@ export default {
     console.log("Ajax pickup request made");
     return axios.put("/api/assets/pickup", pickupData);
   },
+  findOneRequest: function (req, res) {
+    console.log("Ajax call to api")
+    return axios.get("/api/dashboard/requests/");
+  },
   // ===========Calls From Customer[END]=======
   //===========================================
   // =====================BOOKS!===============

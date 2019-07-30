@@ -6,9 +6,9 @@ import NavBar from "../../components/shared/NavBar/Navbar";
 
 import SideNav from "../../components/Customer/SideNav/SideNav";
 import Backdrop from "../../components/shared/Backdrop/Backdrop";
-import ToggleButton from "../../components/Customer/SideNav/ToggleButton";
 import CustomerHome from "../../components/Customer/CustomerHome/index";
 import Home from "../../components/Customer/Home/Home";
+import ViewCurrentRequests from "../../components/Customer/ViewCurrentRequests/ViewCurrentRequests";
 
 class DashboardPage extends Component {
 
@@ -41,9 +41,9 @@ class DashboardPage extends Component {
       <div style={{ height: "100%" }}>
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
         <SideNav show={this.state.sideNavOpen} {...this.props} />
-        
-        <Route exact path="/dashboard/schedule" render={() => <CustomerHome {...this.props} />} />
         <Route exact path="/dashboard" render={() => <Home {...this.props} />} />
+        <Route exact path="/dashboard/schedule" render={() => <CustomerHome {...this.props} />} />
+        <Route exact path="/dashboard/requests" render={() => <ViewCurrentRequests {...this.props} />} />
         {backdrop}
       </div>
     )

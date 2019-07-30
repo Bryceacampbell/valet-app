@@ -149,15 +149,4 @@ class CustomerModal extends Component {
         );
     };
 };
-{/* <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></input>
-                                <label class="form-check-label" for="defaultCheck1">  Currently Stored </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="location">Location</label>
-                                <select class="form-control form-control-sm" id="location">
-                                    <option>Valet 202</option>
-                                    <option>Other Location</option>
-                                </select>
-                            </div> */}
 export default CustomerModal;
