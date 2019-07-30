@@ -40,6 +40,14 @@ class ScheduleForm extends Component {
       currentAsset: assetId,
       pickupCurrentlyRequested: true,
       pickupRequestedDate: this.state.pickupRequestedDate,
+      pickupRequestStatus: "Pending",
+      pickupRequestedTime:  null,
+      pickupRequestedNote: "",
+      pickupConfirmDate: null,
+      pickupConfirmedBy: null,
+      pickupComplete: false,
+      pickupCompleteDate: null,
+      pickupCompleteNote: null
     };
     console.log(pickupObj);
     API.makeRequest(pickupObj)
