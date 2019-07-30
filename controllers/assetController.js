@@ -29,6 +29,22 @@ module.exports = {
         "pickupDetails.request.pickupRequestedDate":
           req.body.pickupRequestedDate,
         // {new: true}
+        "pickupDetails.request.pickupRequestStatus":
+          req.body.pickupRequestStatus,
+        "pickupDetails.request.pickupRequestedTime":
+          req.body.pickupRequestedTime,
+        "pickupDetails.request.pickupRequestedNote":
+          req.body.pickupRequestedNote,
+          "pickupDetails.confirmation.pickupConfirmDate":
+          req.body.pickupConfirmDate,
+          "pickupDetails.confirmation.pickupConfirmedBy":
+          req.body.pickupConfirmedBy,
+          "pickupDetails.completion.pickupComplete":
+          req.body.pickupComplete,
+          "pickupDetails.completion.pickupCompleteDate":
+          req.body.pickupCompleteDate,
+          "pickupDetails.completion.pickupCompleteNote":
+          req.body.pickupCompleteNote,
       }
     )
       .then(dbModel => res.json(dbModel))
