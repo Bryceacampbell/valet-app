@@ -115,21 +115,16 @@ class CustomerModal extends Component {
 
 
                                     <div class="form-group">
-                                        <label class="customerLabel" for="date">Date of Adding</label>
+                                        <label class="customerLabel" for="date">Date Added</label>
                                         <input name="date" type="date" class="form-control form-control-sm asset-form-control" id="date" placeholder="07/28/19"></input>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="customerLabel" for="location">Location</label>
-                                        <select name="location" class="form-control form-control-sm asset-form-control" id="location">
-                                            <option>202 Valet</option>
-
-                                        </select>
-                                       
-
+                                        <label class="customerLabel" for="location">Unit #</label>
+                                        <input name="location" type="location" class="form-control form-control-sm asset-form-control" id="location" placeholder="453"></input>
                                     </div>
+                                    
                                     <button onClick={this.props.onCancel} className="btn customerButton">Cancel</button>
-                                    <button  value="submit" type="submit" className="btn customerButton">Submit</button>
+                                    <button  value="submit" type="submit" className="btn btn-success customerButton">Submit</button>
                                 </form>
 
 

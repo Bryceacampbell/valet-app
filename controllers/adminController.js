@@ -51,7 +51,7 @@ module.exports = {
         const connection = "Username-Password-Authentication";
         const user_metadata = {
           "role": "client",
-          "clientID": customerID
+          "acctNum": customerID
         };
 
         axios
