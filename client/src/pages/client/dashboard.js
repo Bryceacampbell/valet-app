@@ -6,7 +6,7 @@ import NavBar from "../../components/shared/NavBar/Navbar";
 
 import SideNav from "../../components/Customer/SideNav/SideNav";
 import Backdrop from "../../components/shared/Backdrop/Backdrop";
-import CustomerHome from "../../components/Customer/CustomerHome/index";
+import CustomerHome from "../../components/Customer/RequestValet/RequestValet";
 import Home from "../../components/Customer/Home/Home";
 import ViewCurrentRequests from "../../components/Customer/ViewCurrentRequests/ViewCurrentRequests";
 

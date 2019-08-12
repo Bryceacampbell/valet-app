@@ -51,8 +51,8 @@ class RequestModal extends Component {
         console.log(action);
         let updateObj = this.state.currentRequest;
         delete updateObj.customerId;
-
-        switch (action) {
+        // eslint-disable-next-line
+        switch (action){
             case "approve":
                 updateObj.pickupDetails.request.pickupRequestStatus = "Approved";
                 updateObj.pickupDetails.confirmation.pickupConfirmDate = moment().format("YYYY-MM-DD");

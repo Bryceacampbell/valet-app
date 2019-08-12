@@ -8,6 +8,8 @@ import CallbackPage from "./pages/callback";
 import AdminPage from "./pages/admin/admin";
 import NoMatch from "./pages/nomatch";
 
+import "./style.css";
+
 class App extends Component {
   render() {
     return (

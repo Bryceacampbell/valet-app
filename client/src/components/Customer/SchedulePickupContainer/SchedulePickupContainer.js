@@ -17,9 +17,7 @@ class SchedulePickupContainer extends Component {
       <div>
         
         {isRequested ? <ScheduleForm {...this.props} /> : <div className="text-center align-content-center mt-5">
-          <button 
-            onClick={this.handleScheduleRequest} 
-            className="btn-info btn-block my-2">Request Pickup</button>
+        
         </div>}
       </div>
     );
