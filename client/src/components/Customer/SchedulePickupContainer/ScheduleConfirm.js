@@ -4,4 +4,4 @@ import "./style.css";
 class ScheduleConfirm extends Component {
 
 
-}
+};
