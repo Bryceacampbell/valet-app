@@ -32,12 +32,13 @@ class SelectAsset extends Component {
                 <div className="text-center">Select Asset</div>
                 <hr></hr>
                 {this.state.assets.map(asset => (
-                    <div className="card" 
-                    key={(asset._id)}
-                    id={(asset._id)}
-                    name="assetId"
-                    value={this.props.assetId}
-                    onClick={this.props.handleChange}
+                    <div className="card"
+                        key={(asset._id)}
+                        id={(asset._id)}
+                        onClick={() => this.props.handleChange({
+                            name: "assetId",
+                            value: asset._id
+                        })}
                     >
                         <div className="row">
                             <div className="col-lg-4">

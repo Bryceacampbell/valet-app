@@ -11,17 +11,16 @@ class RequestValet extends Component {
   state = {
     isRequested: false,
     currentStep: 1,
-    assetId: null,
     datetime: "",
     services: [],
     request: []
   };
 
   handleChange = event => {
-    const { name, value } = event.target
+    const { name, value } = event;
     this.setState({
       [name]: value
-    })
+    });
     console.log(this.state);
     };
 
@@ -104,7 +103,6 @@ class RequestValet extends Component {
                     <SelectAsset
                       currentStep={this.state.currentStep}
                       handleChange={this.handleChange}
-                      assetId={this.state.assetId}
                       {...this.props}
                     />
                     <SelectDateTime
