@@ -1,18 +1,51 @@
 .schedule-btn {
     width: 100%;
+    color: #e52d27;
     background: #ffffff;
-    border-color: rgba(0,0,0,0.125);
-    color: rgb(230,33,33);
     font-size: 60px;
     padding: 20px;
-};
+    border-color: #4b4c4f;
+    border-radius: .5rem;
+    height: 100%;
+    margin: 0px !important;
+}
 
-.btn-primary:hover {
-    background: rgb(230,33,33);
-};
+.schedule-btn:hover {
+    color: #ffffff;
+    background: #e52d27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b31217, #e52d27);
+}
+
+.schedule-btn:hover .calendar-icon {
+    color: #ffffff;
+}
+
+.card-body .row {
+    margin-bottom: 30px;
+}
 
 .calendar-icon {
-    color: #ffffff;
+    color: #e52d27;
     margin: 5px 10px 5px 5px;
-    font-size: 20px
-};
+    font-size: 60px;
+}
+
+.card .announcements {
+    height: 100%;
+}
+
+.announcements h4 {
+    margin-left: 20px;
+    color: #e52d27;
+    font-weight: bolder;
+}
+
+.announcements ul {
+    padding-left: 20px;
+}
+.announcements .card-header {
+    color: black;
+    background: rgba(0,0,0,0.03);
+    padding: 10px;
+}

@@ -6,7 +6,7 @@ import NavBar from "../../components/shared/NavBar/Navbar";
 
 import SideNav from "../../components/Customer/SideNav/SideNav";
 import Backdrop from "../../components/shared/Backdrop/Backdrop";
-import CustomerHome from "../../components/Customer/CustomerHome/index";
+import RequestValet from "../../components/Customer/RequestValet/RequestValet";
 import Home from "../../components/Customer/Home/Home";
 import ViewCurrentRequests from "../../components/Customer/ViewCurrentRequests/ViewCurrentRequests";
 
@@ -15,9 +15,7 @@ class DashboardPage extends Component {
   state = {
     sideNavOpen: false
   }
-
   
-
   sideNavToggleClickHandler = () => {
     this.setState((prevState) => {
       return { sideNavOpen: !prevState.sideNavOpen };
@@ -42,7 +40,7 @@ class DashboardPage extends Component {
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
         <SideNav show={this.state.sideNavOpen} {...this.props} />
         <Route exact path="/dashboard" render={() => <Home {...this.props} />} />
-        <Route exact path="/dashboard/schedule" render={() => <CustomerHome {...this.props} />} />
+        <Route exact path="/dashboard/schedule" render={() => <RequestValet {...this.props} />} />
         <Route exact path="/dashboard/requests" render={() => <ViewCurrentRequests {...this.props} />} />
         {backdrop}
       </div>

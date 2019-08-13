@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faWrench, faMoneyBillAlt} from "@fortawesome/free-solid-svg-icons";
+import { faHome, faWrench, faCheckSquare} from "@fortawesome/free-solid-svg-icons";
 
 const SideNav = props => {
 
@@ -21,16 +21,16 @@ const SideNav = props => {
                 </li>
                 <li className="row">
                     <FontAwesomeIcon icon={faWrench} className="nav-icons" />
-                    <a href="/dashboard/schedule">Schedule A Service</a>
+                    <a href="/dashboard/schedule">Request Valet</a>
                 </li>
                 <li className="row">
-                    <FontAwesomeIcon icon={faWrench} className="nav-icons" />
-                    <a href="/dashboard/requests">Current Requests</a>
+                    <FontAwesomeIcon icon={faCheckSquare} className="nav-icons" />
+                    <a href="/dashboard/requests">View Requests</a>
                 </li>
-                <li className="row">
+                {/* <li className="row">
                     <FontAwesomeIcon icon={faMoneyBillAlt} className="nav-icons" />
                     <a href="/dashboard/bills">View Bills</a>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )
