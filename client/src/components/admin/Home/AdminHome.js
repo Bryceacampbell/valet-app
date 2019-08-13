@@ -7,6 +7,7 @@ import {
   faCalendarCheck,
   faCheckSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import PieChart from "react-minimal-pie-chart";
 
 const moment = require("moment");
 
@@ -60,18 +61,13 @@ class AdminHome extends Component {
   };
 
   render() {
+    const currentUnits = this.state.totalUnitsUsed
     return (
       <div className="container-fluid card text-center">
         <div className="card-header">
           <h3>Welcome, {this.state.adminName}</h3>
         </div>
         <div className="row my-5">
-          {/* <div className="col-lg-6">
-            <div className="pending">
-              <h4>{this.state.requestsTotal} Pending Valet Requests</h4>
-              <p>require your attention</p>
-            </div>
-          </div> */}
           <div className="col-lg-6">
             <a href="/admin/requests">
               <div className="btn btn-primary pending-btn">
@@ -86,8 +82,43 @@ class AdminHome extends Component {
           </div>
           <div className="col-lg-6">
             <div>
-              <h4>Occupied Units: {this.state.totalUnitsUsed} </h4>
-              <p>Insert Dynamic/Fun Graph or Chart here!</p>
+              <h4>Occupied Units</h4>
+              <p></p>
+              {/* <PieChart
+                data={[
+                  {
+                    title: "Occupied",
+                    value: 3,
+                    color: "#E38627",
+                  },
+                  {
+                    title: "Vacant",
+                    value: 97,
+                    color: "#C13C37",
+                  },
+                ]}
+                style={{ height: "300px" }}
+                animate
+              /> */}
+            
+              <PieChart
+                data={[
+                  {
+                    value: currentUnits,
+                    color: "#C13C37",
+                  },
+                ]}
+                totalValue={100}
+                lineWidth={20}
+                label
+                labelStyle={{
+                  fontSize: "30px",
+                  fontFamily: "sans-serif",
+                }}
+                labelPosition={0}
+                style={{ height: "225px" }}
+                animate
+              />
             </div>
           </div>
         </div>
@@ -106,13 +137,15 @@ class AdminHome extends Component {
                 </tr>
               </thead>
               <tbody>
-              {this.state.upcomingPickups.map(upcoming => (
+                {this.state.upcomingPickups.map(upcoming => (
                   <tr key={upcoming._id}>
                     <td>{upcoming.customerId.information.lastName}</td>
                     <td>{upcoming.storageInfo.location}</td>
-                    <td>{moment(
+                    <td>
+                      {moment(
                         upcoming.pickupDetails.request.pickupRequestedDate
-                      ).format("MMM Do, YYYY - h:mm A")}</td>
+                      ).format("MMM Do, YYYY - h:mm A")}
+                    </td>
                     <td>Maybe Confirm Button Here?</td>
                   </tr>
                 ))}
