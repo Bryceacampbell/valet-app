@@ -14,6 +14,14 @@ export default {
     console.log("Ajax called being made");
     return axios.get("/api/admin/customers");
   },
+  getUpcomingPickups: function () {
+    console.log("Ajax call on getUpcomingPickups made");
+    return axios.get("/api/admin/upcomingpickups");
+  },
+  getAllAssets: function (req, res) {
+    console.log(("Ajax call to api for getAllAssets"))
+    return axios.get("/api/admin/assets")
+  },
   //============Calls From Customer=============
   findClientAssets: function(id){
     console.log("Ajax call called via Assets axios Util/API.js");
