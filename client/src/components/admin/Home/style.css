@@ -7,10 +7,6 @@
     background: #F7F7F7;
 }
 
-a {
-    
-}
-
 .upcoming {
     margin-bottom: 20px;
 }
@@ -20,53 +16,58 @@ a {
     padding: 0px;
 }
 
-/* .modal {
-    width: 90%;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    position: fixed;
-    top: 20px;
-    left: 5%
+.card .announcements {
+    height: 100%;
 }
 
-.modal-header {
-    padding: 1rem;
-    background: 5101d1;
-    color: white;
+.announcements h3 {
+    margin-left: 20px;
+    color: #e52d27;
+    font-weight: bolder;
 }
 
-.modal-header h1 {
-    margin: 0;
-    font-size: 1.25rem;
+.announcements ul {
+    padding-left: 20px;
+}
+.announcements .card-header {
+    color: black;
+    background: rgba(0,0,0,0.03);
+    padding: 10px;
 }
 
-.modal-content {
-    padding: 1rem;
-}
-
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
-}
-
-.request-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
+.pending-btn {
     width: 100%;
-    background: rgba(0, 0, 0, .75);
+    color: #e52d27;
+    background: #ffffff;
+    font-size: 60px;
+    padding: 20px;
+    border-color: #4b4c4f;
+    border-radius: .5rem;
+    height: 100%;
+    margin: 0px !important;
 }
 
-@media (min-width: 768px) {
-    .modal {
-        width: 30rem;
-        left: calc((100% - 30rem) /2);
-    }
-} */
+.pending-btn:hover {
+    color: #ffffff;
+    background: #e52d27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b31217, #e52d27);
+}
+
+.pending-btn:hover .calendar-icon {
+    color: #ffffff;
+}
+
+.card-body .row {
+    margin-bottom: 30px;
+}
+.calendar-icon {
+    color: #e52d27;
+    margin: 5px 10px 5px 5px;
+    font-size: 60px;
+}
 .container-fluid{
     margin-top: 30px;
     max-width: 80%;
     padding: 0px;
-  }
+}
