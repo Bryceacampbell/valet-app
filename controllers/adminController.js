@@ -23,7 +23,7 @@ module.exports = {
     console.log("findUpcmoingPickups called in adminController.js");
     db.Asset
       .find(req.query)
-      // .find({pickupDetails: { request: { pickupCurrentlyRequested: true } } })
+      .populate("customerId")
       .find({ "pickupDetails.completion.pickupComplete": false })
       .find({ "pickupDetails.request.pickupCurrentlyRequested": true })
       .then(dbModel => {
