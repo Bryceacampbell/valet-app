@@ -16,6 +16,12 @@ router.route("/requests")
 router.route("/requests/:id")
   .get(adminController.findOneRequest)
 
+router.route("/upcomingpickups")
+  .get(adminController.findUpcomingPickups);
+
+router.route("/assets")
+  .get(adminController.findAllAssets);
+
 // router.route("/admin/calendar")
 // .get(adminController.calendar);
 

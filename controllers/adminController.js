@@ -19,6 +19,27 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  findUpcomingPickups: function (req, res) {
+    console.log("findUpcmoingPickups called in adminController.js");
+    db.Asset
+      .find(req.query)
+      // .find({pickupDetails: { request: { pickupCurrentlyRequested: true } } })
+      .find({ "pickupDetails.completion.pickupComplete": false })
+      .find({ "pickupDetails.request.pickupCurrentlyRequested": true })
+      .then(dbModel => {
+        // console.log(dbModel);
+        res.json(dbModel)
+      })
+      .catch(err => res.status(422).json(err));
+  },
+  findAllAssets: function (req, res) {
+    console.log("findAllAssets was called in adminController.js");
+    db.Asset
+      .find(req.query)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
   createUser: function (req, res) {
     const body = req.body;
     let customerObj = {
