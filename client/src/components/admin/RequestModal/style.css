@@ -8,6 +8,16 @@
     z-index: 100;
 }
 
+.conf-modal {
+    width: 70%;
+    background: #aaaaaa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    position: fixed;
+    top: 30vh;
+    left: 10%;
+    z-index: 200;
+}
+
 .req-modal-header {
     padding: 1rem;
     background: rgb(230, 33, 33);

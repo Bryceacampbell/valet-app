@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../../../utils/API";
 import "./style.css";
 import { TextArea, FormBtn } from "../../shared/Form";
+import ConfirmModal from "./ConfirmModal"
+import { throws } from "assert";
 
 const moment = require("moment");
 
@@ -12,7 +14,9 @@ class RequestModal extends Component {
         this.state = {
             currentRequest: {},
             pickupRequestNote: "",
-            pickupCompleteNote: ""
+            pickupCompleteNote: "",
+            confirmModal: false,
+            action: ""
         };
         this.loadRequest = this.loadRequest.bind(this);
     };
@@ -54,23 +58,27 @@ class RequestModal extends Component {
 
         switch (action) {
             case "approve":
+                this.state.action = "Approved";
                 updateObj.pickupDetails.request.pickupRequestStatus = "Approved";
                 updateObj.pickupDetails.confirmation.pickupConfirmDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 console.log(updateObj);
                 break;
             case "decline":
+                this.state.action = "Declined";
                 updateObj.pickupDetails.request.pickupRequestStatus = "Declined";
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 break;
             case "complete":
                 console.log("complete was clicked");
+                this.state.action = "Completed";
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = true;
                 updateObj.pickupDetails.completion.pickupCompleteDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
                 break;
             case "cancel":
+                this.state.action = "Cancelled";
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = false;
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
@@ -79,7 +87,8 @@ class RequestModal extends Component {
 
         API.updateRequest(updateObj)
             .then(res => {
-                alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
+                // alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
+                this.state.confirmModal = true;
                 this.handleClose();
             })
             .catch(err => console.log(err));
@@ -89,6 +98,11 @@ class RequestModal extends Component {
         this.props.onUpdate();
         this.props.onCancel();
     }
+
+    handleConfirmModalClose = () => {
+        this.state.confirmModal = false;
+    }
+
 
     render() {
         return (
@@ -202,6 +216,14 @@ class RequestModal extends Component {
                         </FormBtn>
                     </React.Fragment>
                 }
+                {this.state.confirmModal && <ConfirmModal
+                    name={this.state.currentRequest.firstName + " " + this.state.lastName}
+                    date={this.state.currentRequest.pickupDetails.request.pickupRequestedDate}
+                    action={this.state.action}
+                    closeConfirmMod = {this.handleConfirmModalClose}
+                >
+
+                </ConfirmModal>}
             </div>
         );
     };
