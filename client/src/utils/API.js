@@ -19,7 +19,7 @@ export default {
     return axios.get("/api/admin/upcomingpickups");
   },
   getAllAssets: function (req, res) {
-    console.log(("Ajax call to api for getAllAssets"))
+    console.log(("Ajax call on getAllAssets made"))
     return axios.get("/api/admin/assets")
   },
   //============Calls From Customer=============

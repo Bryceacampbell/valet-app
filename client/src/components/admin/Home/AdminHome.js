@@ -5,7 +5,6 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarCheck,
-  faCheckSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import PieChart from "react-minimal-pie-chart";
 
@@ -17,19 +16,20 @@ class AdminHome extends Component {
     upcomingPickups: [],
     adminName: "",
     requestsTotal: 0,
-    // assets: [],
-    totalUnitsUsed: "",
+    totalUnitsUsed: 0,
   };
 
   componentDidMount() {
     const adminName = this.props.user.given_name;
     this.setState({ adminName: adminName });
-    console.log(this.state.requests);
+    // console.log(this.state.requests);
     this.loadRequests();
     this.loadUpcomingPickups();
     this.loadTotalAssets();
   }
 
+
+  // Loads all Requests to display on the dashboard
   loadRequests = () => {
     API.getRequests()
       .then(res => {
@@ -39,19 +39,21 @@ class AdminHome extends Component {
       .catch(err => console.log(err));
   };
 
+  // Loads all upcoming pickups for Admin to See (& Confirm?)
   loadUpcomingPickups = () => {
     API.getUpcomingPickups()
       .then(res => {
         this.setState({ upcomingPickups: res.data });
-        console.log(
-          "C'logged upcoming pickups data: " +
-            this.state.upcomingPickups[0].pickupDetails.request
-              .pickupRequestedDate
-        );
+        // console.log(
+        //   "C'logged upcoming pickups data: " +
+        //     this.state.upcomingPickups[0].pickupDetails.request
+        //       .pickupRequestedDate
+        // );
       })
       .catch(err => console.log(err));
   };
 
+  // Loads Assets to list the number of current assets stored in the DB for chart info
   loadTotalAssets = () => {
     API.getAllAssets()
       .then(res => {
@@ -61,7 +63,9 @@ class AdminHome extends Component {
   };
 
   render() {
-    const currentUnits = this.state.totalUnitsUsed
+    // currentUnits pulls from the total number of Assets listed in the DB to use variable in chart
+    const currentUnits = this.state.totalUnitsUsed;
+
     return (
       <div className="container-fluid card text-center">
         <div className="card-header">
@@ -83,7 +87,7 @@ class AdminHome extends Component {
           <div className="col-lg-6">
             <div>
               <h4>Occupied Units</h4>
-              <p></p>
+              {/* the initial-traditional pie chart */}
               {/* <PieChart
                 data={[
                   {
