@@ -17,17 +17,23 @@ class ConfirmModal extends Component {
 
     render() {
         return (
-
             <div className="conf-modal">
-                Request for {this.props.name} on {this.props.date} {this.props.action}.
-                <FormBtn
-                    className="btn btn-secondary close-button"
-                    onClick={this.props.onClose}
-                >
-                    Close
+                <React.Fragment>
+                    <header className="req-modal-header">
+                    </header>
+                    <section className="row m-auto req-modal-content align-middle">
+                            <h3>Request for {this.props.name} on {moment(this.props.date).format("YYYY-MM-DD")} was {this.props.action}.</h3>
+                    </section>
+                    <FormBtn
+                        className="btn btn-secondary close-button"
+                        onClick={this.props.closeConfirmMod}
+                    >
+                        Close
                 </FormBtn>
 
-            </div >
+
+                </React.Fragment>
+            </div>
         );
     };
 };

@@ -53,32 +53,32 @@ class RequestModal extends Component {
         event.preventDefault();
         const action = event.target.value;
         console.log(action);
-        let updateObj = this.state.currentRequest;
+        let updateObj = {...this.state.currentRequest};
         delete updateObj.customerId;
         // eslint-disable-next-line
         switch (action){
             case "approve":
-                this.state.action = "Approved";
+                this.setState({action: "approved"});
                 updateObj.pickupDetails.request.pickupRequestStatus = "Approved";
                 updateObj.pickupDetails.confirmation.pickupConfirmDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 console.log(updateObj);
                 break;
             case "decline":
-                this.state.action = "Declined";
+                this.setState({action: "declined"});
                 updateObj.pickupDetails.request.pickupRequestStatus = "Declined";
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 break;
             case "complete":
                 console.log("complete was clicked");
-                this.state.action = "Completed";
+                this.setState({action: "completed"});
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = true;
                 updateObj.pickupDetails.completion.pickupCompleteDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
                 break;
             case "cancel":
-                this.state.action = "Cancelled";
+                this.setState({action: "cancelled"});
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = false;
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
@@ -88,8 +88,10 @@ class RequestModal extends Component {
         API.updateRequest(updateObj)
             .then(res => {
                 // alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
-                this.state.confirmModal = true;
-                this.handleClose();
+                this.setState({confirmModal: true})
+                // this.handleClose();
+                console.log(this.state);
+                
             })
             .catch(err => console.log(err));
     };
@@ -100,7 +102,8 @@ class RequestModal extends Component {
     }
 
     handleConfirmModalClose = () => {
-        this.state.confirmModal = false;
+        this.setState({confirmModal: false});
+        this.handleClose();
     }
 
 
@@ -217,13 +220,11 @@ class RequestModal extends Component {
                     </React.Fragment>
                 }
                 {this.state.confirmModal && <ConfirmModal
-                    name={this.state.currentRequest.firstName + " " + this.state.lastName}
+                    name={this.state.currentRequest.customerId.information.firstName + " " + this.state.currentRequest.customerId.information.lastName}
                     date={this.state.currentRequest.pickupDetails.request.pickupRequestedDate}
                     action={this.state.action}
                     closeConfirmMod = {this.handleConfirmModalClose}
-                >
-
-                </ConfirmModal>}
+                />}
             </div>
         );
     };
