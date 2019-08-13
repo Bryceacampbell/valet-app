@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../../../utils/API";
 import "./style.css";
 import { TextArea, FormBtn } from "../../shared/Form";
+import ConfirmModal from "./ConfirmModal"
+import { throws } from "assert";
 
 const moment = require("moment");
 
@@ -12,7 +14,9 @@ class RequestModal extends Component {
         this.state = {
             currentRequest: {},
             pickupRequestNote: "",
-            pickupCompleteNote: ""
+            pickupCompleteNote: "",
+            confirmModal: false,
+            action: ""
         };
         this.loadRequest = this.loadRequest.bind(this);
     };
@@ -49,28 +53,32 @@ class RequestModal extends Component {
         event.preventDefault();
         const action = event.target.value;
         console.log(action);
-        let updateObj = this.state.currentRequest;
+        let updateObj = {...this.state.currentRequest};
         delete updateObj.customerId;
         // eslint-disable-next-line
         switch (action){
             case "approve":
+                this.setState({action: "approved"});
                 updateObj.pickupDetails.request.pickupRequestStatus = "Approved";
                 updateObj.pickupDetails.confirmation.pickupConfirmDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 console.log(updateObj);
                 break;
             case "decline":
+                this.setState({action: "declined"});
                 updateObj.pickupDetails.request.pickupRequestStatus = "Declined";
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 break;
             case "complete":
                 console.log("complete was clicked");
+                this.setState({action: "completed"});
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = true;
                 updateObj.pickupDetails.completion.pickupCompleteDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
                 break;
             case "cancel":
+                this.setState({action: "cancelled"});
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = false;
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
@@ -79,8 +87,11 @@ class RequestModal extends Component {
 
         API.updateRequest(updateObj)
             .then(res => {
-                alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
-                this.handleClose();
+                // alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
+                this.setState({confirmModal: true})
+                // this.handleClose();
+                console.log(this.state);
+                
             })
             .catch(err => console.log(err));
     };
@@ -89,6 +100,12 @@ class RequestModal extends Component {
         this.props.onUpdate();
         this.props.onCancel();
     }
+
+    handleConfirmModalClose = () => {
+        this.setState({confirmModal: false});
+        this.handleClose();
+    }
+
 
     render() {
         return (
@@ -202,6 +219,12 @@ class RequestModal extends Component {
                         </FormBtn>
                     </React.Fragment>
                 }
+                {this.state.confirmModal && <ConfirmModal
+                    name={this.state.currentRequest.customerId.information.firstName + " " + this.state.currentRequest.customerId.information.lastName}
+                    date={this.state.currentRequest.pickupDetails.request.pickupRequestedDate}
+                    action={this.state.action}
+                    closeConfirmMod = {this.handleConfirmModalClose}
+                />}
             </div>
         );
     };
