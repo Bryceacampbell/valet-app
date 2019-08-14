@@ -31,14 +31,16 @@ const assetSchema = new Schema({
             pickupRequestStatus: { type: String, default: "" },
             // Reason for Approval/Denial
             pickupRequestNote: { type: String },
+            // Services requested with pickup
+            selectedServices: []
         },
-        services: {
-            quickWash: { type: Boolean, default: false },
-            fullDetail: { type: Boolean, default: false },
-            fuelingService: { type: Boolean, default: false },
-            delivery: { type: Boolean, default: false },
-            dump: { type: Boolean, default: false },
-        },
+        // services: {
+        //     quickWash: { type: Boolean, default: false },
+        //     fullDetail: { type: Boolean, default: false },
+        //     fuelingService: { type: Boolean, default: false },
+        //     delivery: { type: Boolean, default: false },
+        //     dump: { type: Boolean, default: false },
+        // },
         confirmation: {
             // name/_id of admin who approved/denied the request... just the name for now
             pickupConfirmedBy: { type: String, trim: true },
