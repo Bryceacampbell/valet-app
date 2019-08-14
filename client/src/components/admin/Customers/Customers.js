@@ -10,10 +10,12 @@ class Customers extends Component {
     state = {
         customers: [],
         modalSwitch: false,
-        targetUser: {}
+        targetCustomer: {}
     };
     componentDidMount() {
         this.loadCustomers();
+
+        console.log(this.state.customers);
     };
     loadCustomers = () => {
         API.getAllCustomers()
@@ -25,15 +27,19 @@ class Customers extends Component {
             })
             .catch(err => console.log(err.response));
     };
-    customerClicked = (id, name) => {
+    customerClicked = (customer, id, name) => {
+
+        console.log(customer);
+        console.log("customer clicked");
+        console.log(customer._id);
+        console.log(customer.information.firstName);
+        
+        
+        
         // event.persist();
         this.setState({
             modalSwitch: true,
-            targetUser: {
-                id : id,
-                name : name
-
-            }
+            targetCustomer: customer
         });
 
 
@@ -51,10 +57,11 @@ class Customers extends Component {
                 {this.state.modalSwitch && <CustomerBackdrop />}
                 {this.state.modalSwitch && <CustomerModal
 
-                    title="Target User"
-                    id={this.state.targetUser.id}
-                    name={this.state.targetUser.name}
+                    
+                    id={this.state.targetCustomer._id}
+                    firstName={this.state.targetCustomer.information.firstName}
                     onCancel={this.handleModalClose}
+                    customer={this.state.targetCustomer}
 
                 />}
 
@@ -91,7 +98,7 @@ class Customers extends Component {
                         </thead>
                         <tbody>
                             {this.state.customers.map(customer => (
-                                <tr onClick={() => this.customerClicked(customer._id, customer.information.firstName)} data-id={customer._id} key={customer._id}>
+                                <tr onClick={() => this.customerClicked(customer, customer.information, customer._id, customer.information.firstName)} data-id={customer._id} key={customer._id}>
                                     <td>{customer.information.firstName}</td>
                                     <td>{customer.information.lastName}</td>
                                     <td>{customer.information.phoneNumber}</td>

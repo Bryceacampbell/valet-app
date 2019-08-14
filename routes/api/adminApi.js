@@ -10,6 +10,9 @@ router.route("/customers")
 router.route("/customers/add")
   .post(adminController.createUser);
 
+router.route("/customers/:id")
+  .post(adminController.updateCustomer);
+
 router.route("/requests")
   .get(adminController.findAllRequests);
 
