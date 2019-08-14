@@ -20,7 +20,9 @@ class Customers extends Component {
     loadCustomers = () => {
         API.getAllCustomers()
             .then(res => {
+                
                 this.setState({ customers: res.data });
+
                 console.log(this.state.customers);
                 
                 
@@ -47,8 +49,21 @@ class Customers extends Component {
 
     handleModalClose = () => {
         console.log("handleModalClose was called");
+         this.setState({modalSwitch: false});
+    }
+
+    turnOff = () => {
+
         this.setState({modalSwitch: false});
     }
+
+    // handleModalSubmit = () => {
+    //     console.log("handleModalsubmit was called");
+
+    //     API.updateCustomer(this.state.targetCustomer._id);
+        
+    //     //  this.setState({modalSwitch: false});
+    // }
 
 
     render() {
@@ -61,6 +76,8 @@ class Customers extends Component {
                     id={this.state.targetCustomer._id}
                     firstName={this.state.targetCustomer.information.firstName}
                     onCancel={this.handleModalClose}
+                    turnOff={this.turnOff}
+                    load={this.loadCustomers}
                     customer={this.state.targetCustomer}
 
                 />}

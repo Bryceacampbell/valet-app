@@ -137,31 +137,32 @@ module.exports = {
 
   updateCustomer: function (req, res) {
 
-    console.log(req.body);
-
     let userID = mongoose.Types.ObjectId(req.params.id)
 
-    console.log(req.params.id);
+
+    let customerObj = {
+
+      _id: userID,
+
+      information: {
+
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        userName: req.body.userName,
+        phoneNumber: req.body.phone,
+        address: req.body.address,
+        email: req.body.email
+
+      }
 
 
-    console.log(userID);
-    
-    const filter = { name: 'Jean-Luc Picard' };
-    const update = { age: 59 };
-
-    // `doc` is the document _after_ `update` was applied because of
-    // `new: true`
-    let doc = await Character.findOneAndUpdate(filter, update, {
-      new: true
-    });
-    doc.name; // 'Jean-Luc Picard'
-    doc.age; // 59
+    }
 
 
     db.Customer
       .findByIdAndUpdate(
         req.params.id,
-        req.body,
+        customerObj,
         { new: true },
         (err, customer) => {
           if (err) return res.status(500).send(err);
@@ -169,7 +170,7 @@ module.exports = {
         }
       )
 
-    res.redirect('/admin/customers');
+
 
   }
 
