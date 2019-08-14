@@ -6,14 +6,12 @@ var styles = {
 
     selected: {
         border: "2px solid green",
-        "border-radius": ".5rem" 
+        borderRadius: ".5rem"
     },
 
     notSelected: {
         border: "transparent"
     }
-
-
 };
 
 class SelectAsset extends Component {
@@ -26,7 +24,6 @@ class SelectAsset extends Component {
     componentDidMount() {
         const acctNum = this.props.auth.getAcctNum();
         this.loadAssets(acctNum);
-
     };
 
     loadAssets = id => {
@@ -39,16 +36,12 @@ class SelectAsset extends Component {
     };
 
     handleSelect = ({ name, value }) => {
-        // console.log(name, value);
         this.props.handleChange({ name, value });
-
         this.setState({
             [value]: !this.state[value] ? true : false
         });
 
     };
-
-
 
     render() {
         if (this.props.currentStep !== 1) {
@@ -58,7 +51,6 @@ class SelectAsset extends Component {
             <div>
                 <div className="text-center"><strong>Step 1:</strong> Select An Asset</div>
                 <hr></hr>
-
 
                 {this.state.assets.map(asset => {
                     const selected = this.state[asset._id];

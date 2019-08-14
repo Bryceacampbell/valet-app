@@ -11,7 +11,6 @@ class RequestValet extends Component {
   state = {
     isRequested: false,
     currentStep: 1,
-    datetime: "",
     services: [],
     request: []
   };
@@ -28,9 +27,9 @@ class RequestValet extends Component {
     event.preventDefault()
     const { asset, datetime, services } = this.state
     alert(`Your request detail: \n 
-           Email: ${asset} \n 
-           Username: ${datetime} \n
-           Password: ${services}`) //ajax call to submit request
+           Asset: ${asset} \n 
+           date and time: ${datetime} \n
+           services: ${services}`) //ajax call to submit request goes here
   };
 
   _next = () => {
@@ -108,7 +107,6 @@ class RequestValet extends Component {
                     <SelectDateTime
                       currentStep={this.state.currentStep}
                       handleChange={this.handleChange}
-                      datetime={this.state.datetime}
                     />
                     <SelectServices
                       currentStep={this.state.currentStep}
