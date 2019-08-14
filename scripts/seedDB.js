@@ -74,6 +74,13 @@ const assetSeed = [
         pickupRequestStatus: "",
         pickupRequestNote: "",
       },
+      services: {
+        quickWash: false,
+        fullDetail: false,
+        fuelingService: false,
+        delivery: false,
+        dump: false,
+      },
       confirmation: {
         pickupConfirmedBy: "AdminAngie",
         pickupConfirmDate: null
@@ -107,6 +114,13 @@ const assetSeed = [
         pickupRequestedTime: moment("10:00 AM", "hh:mm A").creationData().input,
         pickupRequestStatus: "Pending",
         pickupRequestNote: "",
+      },
+      services: {
+        quickWash: false,
+        fullDetail: true,
+        fuelingService: false,
+        delivery: false,
+        dump: true,
       },
       confirmation: {
         pickupConfirmedBy: "AdminTommy",

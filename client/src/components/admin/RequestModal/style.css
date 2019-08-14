@@ -47,6 +47,28 @@
     background-color: #EEEEEE
 }
 
+.req-modal-subheader2 {
+    padding: 1rem;
+    background-color: #FFEEEE;
+    font-size: 1.5rem;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #555555;
+}
+
+.selected {
+    color: rgb(230, 33, 33);
+    background-color: #555555;
+    font-weight: bolder;
+    box-shadow: 5px 5px 5px #333333
+}
+
+.declined {
+    color: #AAAAAA;
+    background-color: #999999;
+    font-weight: bold;
+}
+
 .req-modal-actions {
     display: flex;
     justify-content: flex-end;

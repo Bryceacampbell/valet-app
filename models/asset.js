@@ -30,7 +30,14 @@ const assetSchema = new Schema({
             // Is the pickup request Pending/Approved/Denied?
             pickupRequestStatus: { type: String, default: "" },
             // Reason for Approval/Denial
-            pickupRequestNote: { type: String},
+            pickupRequestNote: { type: String },
+        },
+        services: {
+            quickWash: { type: Boolean, default: false },
+            fullDetail: { type: Boolean, default: false },
+            fuelingService: { type: Boolean, default: false },
+            delivery: { type: Boolean, default: false },
+            dump: { type: Boolean, default: false },
         },
         confirmation: {
             // name/_id of admin who approved/denied the request... just the name for now
@@ -44,7 +51,7 @@ const assetSchema = new Schema({
             // Records the date of the pickup
             pickupCompleteDate: { type: Date },
             // Notation of pickup completed
-            pickupCompleteNote: { type: String}
+            pickupCompleteNote: { type: String }
         }
     },
 

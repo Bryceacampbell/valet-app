@@ -53,45 +53,55 @@ class RequestModal extends Component {
         event.preventDefault();
         const action = event.target.value;
         console.log(action);
-        let updateObj = {...this.state.currentRequest};
+        let updateObj = { ...this.state.currentRequest };
         delete updateObj.customerId;
         // eslint-disable-next-line
-        switch (action){
+        switch (action) {
             case "approve":
-                this.setState({action: "approved"});
+                this.setState({ action: "approved" });
                 updateObj.pickupDetails.request.pickupRequestStatus = "Approved";
                 updateObj.pickupDetails.confirmation.pickupConfirmDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 console.log(updateObj);
                 break;
             case "decline":
-                this.setState({action: "declined"});
+                this.setState({ action: "declined" });
                 updateObj.pickupDetails.request.pickupRequestStatus = "Declined";
                 updateObj.pickupDetails.request.pickupRequestNote = this.state.pickupRequestNote;
                 break;
             case "complete":
                 console.log("complete was clicked");
-                this.setState({action: "completed"});
+                this.setState({ action: "completed" });
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = true;
                 updateObj.pickupDetails.completion.pickupCompleteDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
+                updateObj.pickupDetails.services.quickWash = false;
+                updateObj.pickupDetails.services.fullDetail = false;
+                updateObj.pickupDetails.services.fuelingService = false;
+                updateObj.pickupDetails.services.delivery = false;
+                updateObj.pickupDetails.services.dump = false;
                 break;
             case "cancel":
-                this.setState({action: "cancelled"});
+                this.setState({ action: "cancelled" });
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = false;
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
+                updateObj.pickupDetails.services.quickWash = false;
+                updateObj.pickupDetails.services.fullDetail = false;
+                updateObj.pickupDetails.services.fuelingService = false;
+                updateObj.pickupDetails.services.delivery = false;
+                updateObj.pickupDetails.services.dump = false;
                 break;
         };
 
         API.updateRequest(updateObj)
             .then(res => {
                 // alert("Your request has been updated. \n\r Click OK to return to Requests screen.");
-                this.setState({confirmModal: true})
+                this.setState({ confirmModal: true })
                 // this.handleClose();
                 console.log(this.state);
-                
+
             })
             .catch(err => console.log(err));
     };
@@ -102,7 +112,7 @@ class RequestModal extends Component {
     }
 
     handleConfirmModalClose = () => {
-        this.setState({confirmModal: false});
+        this.setState({ confirmModal: false });
         this.handleClose();
     }
 
@@ -134,6 +144,35 @@ class RequestModal extends Component {
                                     <p>Request Status:</p>
                                     <h4>{this.state.currentRequest.pickupDetails.request.pickupRequestStatus}</h4>
                                 </div>
+                            </div>
+                            <div className="row req-modal-subheader2">
+                                <div className="col-1" />
+                                <div className="col-2">
+                                    <div className={this.state.currentRequest.pickupDetails.services.quickWash ? "selected" : "declined"} >
+                                        Quick Wash
+                                    </div>
+                                </div>
+                                <div className="col-2">
+                                    <div className={this.state.currentRequest.pickupDetails.services.fullDetail ? "selected" : "declined"} >
+                                        Full Detail
+                                    </div>
+                                </div>
+                                <div className="col-2">
+                                    <div className={this.state.currentRequest.pickupDetails.services.fuelingService ? "selected" : "declined"} >
+                                        Fueling Service
+                                    </div>
+                                </div>
+                                <div className="col-2">
+                                    <div className={this.state.currentRequest.pickupDetails.services.delivery ? "selected" : "declined"} >
+                                        Delivery
+                                    </div>
+                                </div>
+                                <div className="col-2">
+                                    <div className={this.state.currentRequest.pickupDetails.services.dump ? "selected" : "declined"} >
+                                        Septic Dump
+                                    </div>
+                                </div>
+                                <div className="col-1" />
                             </div>
                             <div className="row m-6 modal-row">
                                 <div className="col-1" />
@@ -208,7 +247,7 @@ class RequestModal extends Component {
                                         </div>
                                     </form>
                                 </div>
-                                <div className="col-1" />
+                                {/* <div className="col-1" /> */}
                             </div>
                         </section>
                         <FormBtn
@@ -223,7 +262,7 @@ class RequestModal extends Component {
                     name={this.state.currentRequest.customerId.information.firstName + " " + this.state.currentRequest.customerId.information.lastName}
                     date={this.state.currentRequest.pickupDetails.request.pickupRequestedDate}
                     action={this.state.action}
-                    closeConfirmMod = {this.handleConfirmModalClose}
+                    closeConfirmMod={this.handleConfirmModalClose}
                 />}
             </div>
         );
