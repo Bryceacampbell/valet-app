@@ -15,7 +15,7 @@ class Customers extends Component {
     componentDidMount() {
         this.loadCustomers();
 
-        console.log(this.state.customers);
+        
     };
     loadCustomers = () => {
         API.getAllCustomers()
@@ -23,7 +23,7 @@ class Customers extends Component {
                 
                 this.setState({ customers: res.data });
 
-                console.log(this.state.customers);
+               
                 
                 
             })
@@ -31,11 +31,7 @@ class Customers extends Component {
     };
     customerClicked = (customer, id, name) => {
 
-        console.log(customer);
-        console.log("customer clicked");
-        console.log(customer._id);
-        console.log(customer.information.firstName);
-        
+ 
         
         
         // event.persist();
@@ -48,7 +44,7 @@ class Customers extends Component {
     }
 
     handleModalClose = () => {
-        console.log("handleModalClose was called");
+        
          this.setState({modalSwitch: false});
     }
 
@@ -57,13 +53,7 @@ class Customers extends Component {
         this.setState({modalSwitch: false});
     }
 
-    // handleModalSubmit = () => {
-    //     console.log("handleModalsubmit was called");
-
-    //     API.updateCustomer(this.state.targetCustomer._id);
-        
-    //     //  this.setState({modalSwitch: false});
-    // }
+ 
 
 
     render() {
