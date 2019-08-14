@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import ScheduleForm from "../SchedulePickupContainer/ScheduleForm";
 import { ProgressBar } from "react-bootstrap";
+import API from "../../../utils/API";
 
 import SelectAsset from "./SelectAsset";
 import SelectDateTime from "./SelectDateTime";
@@ -11,8 +12,6 @@ class RequestValet extends Component {
   state = {
     isRequested: false,
     currentStep: 1,
-    services: [],
-    request: []
   };
 
   handleChange = event => {
@@ -20,16 +19,34 @@ class RequestValet extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
-    };
+  };
 
   handleSubmit = event => {
     event.preventDefault()
-    const { asset, datetime, services } = this.state
-    alert(`Your request detail: \n 
-           Asset: ${asset} \n 
-           date and time: ${datetime} \n
-           services: ${services}`) //ajax call to submit request goes here
+    const { assetId, pickupRequestedDate, selectedServices } = this.state
+
+    const pickupObj = {
+      currentAsset: assetId,
+      pickupCurrentlyRequested: true,
+      pickupRequestedDate: pickupRequestedDate,
+      pickupRequestStatus: "Pending",
+      selectedServices: selectedServices,
+      pickupRequestedTime: null,
+      pickupRequestedNote: "",
+      pickupConfirmDate: null,
+      pickupConfirmedBy: null,
+      pickupComplete: false,
+      pickupCompleteDate: null,
+      pickupCompleteNote: null
+    };
+    console.log(pickupObj);
+    API.makeRequest(pickupObj)
+      .then(
+        alert(
+          "Your pickup request is complete! \n Please note: it may take up to 24 hours for a response. \n Than you for your patience!"
+        )
+      )
+      .catch(err => console.log(err));
   };
 
   _next = () => {

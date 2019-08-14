@@ -18,7 +18,6 @@ class SelectAsset extends Component {
 
     state = {
         assets: [],
-
     };
 
     componentDidMount() {
@@ -37,6 +36,7 @@ class SelectAsset extends Component {
 
     handleSelect = ({ name, value }) => {
         this.props.handleChange({ name, value });
+        
         this.setState({
             [value]: !this.state[value] ? true : false
         });
