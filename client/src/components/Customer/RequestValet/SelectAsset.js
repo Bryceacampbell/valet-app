@@ -29,7 +29,6 @@ class SelectAsset extends Component {
         API.findClientAssets(id)
             .then(res => {
                 this.setState({ assets: res.data });
-                console.log(this.state.assets);
             })
             .catch(err => console.log(err.response));
     };

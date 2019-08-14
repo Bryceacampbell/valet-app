@@ -50,7 +50,7 @@ class Home extends Component {
                                     <ul>
                                         <li>New to 202 valet storage? First off, congratulations on being apart of this revolutionary
                                             storage valet service. Our goal is to simply make your life easier by allowing you to submit valet requests and 
-                                            pick up your unit stress free. To submit requests, please click on the "Schedule Valet Services" button above! 
+                                            pick up your unit stress free. To submit requests, please click on the "Request Valet Services" button above! 
                                         </li>
                                     </ul>
                                 </div>
