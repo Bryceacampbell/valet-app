@@ -82,21 +82,16 @@ class AssetForm extends Component {
                 </div>
                 <div class="form-group">
                     <label class="customerLabel" for="make">Asset Make</label>
-                    <select name="make" class="form-control form-control-sm asset-form-control" id="make">
-                        <option>Boat Make 1</option>
-                        <option>Boat Make 2</option>
-                    </select>
+                    <input name="make" type="make" class="form-control asset-form-control" id="make" placeholder="Coachmen"></input>
                 </div>
+                
                 <div class="form-group">
-                    <label class="customerLabel" for="make">Asset Model</label>
-                    <select name="model" class="form-control form-control-sm asset-form-control" id="model">
-                        <option>Boat Model 1</option>
-                        <option>Boat Model 2</option>
-                    </select>
+                    <label class="customerLabel" for="model">Asset Model</label>
+                    <input name="model" type="model" class="form-control  asset-form-control" id="model" placeholder="Freelander"></input>
                 </div>
                 <div class="form-group">
                     <label class="customerLabel" for="hullID">Hull ID</label>
-                    <input name="hullID" type="hullID" class="form-control form-control-sm asset-form-control" id="hullID" placeholder="12344563"></input>
+                    <input name="hullID" type="hullID" class="form-control  asset-form-control" id="hullID" placeholder="12344563"></input>
                 </div>
                 <div class="form-group">
                     <label class="customerLabel">Notes</label>

@@ -58,9 +58,9 @@ class CustomerModal extends Component {
             <div className="customer-modal">
                 <header className="customer-modal-header row">
 
-                <div className="col-lg-6"> <a onClick={() => this.handleAssetClick()}>  <FontAwesomeIcon icon={faPlusCircle} className="add-btn" /> </a> Add Asset for {this.props.customer.information.firstName}  </div>
-                    {/* <div className="col-lg-6"></div> */}
-                    <div className="col-lg-6"> <a  onClick={() => this.handleCustomerClick()}> <FontAwesomeIcon icon={faEdit} className="add-btn" /></a> {this.props.firstName}'s information </div>
+                <div className="col-lg-6 custHeader"> <a onClick={() => this.handleAssetClick()}>  <FontAwesomeIcon icon={faPlusCircle} className="add-btn" /> </a> Add Asset for {this.props.customer.information.firstName}  </div>
+                   
+                    <div className="col-lg-6 custHeader"> <a  onClick={() => this.handleCustomerClick()}> <FontAwesomeIcon icon={faEdit} className="add-btn" /></a> {this.props.firstName}'s information </div>
                 </header>
                 <section className="customer-modal-content">
                     <div className="card-body">

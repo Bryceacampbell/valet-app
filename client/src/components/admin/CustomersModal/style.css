@@ -9,26 +9,16 @@
     z-index: 100;
  }
 
- .rightHeader {
+ .custHeader {
 
-   position: absolute;
-   right: 150px;
+   
    font-size: 25px;
-   top: 10px;
-   cursor: pointer;
+  
    
 
  }
 
- .leftHeader {
 
-   position: absolute;
-   left: 150px;
-   font-size: 25px;
-   top: 10px;
-   cursor: pointer;
-   
- }
  .customer-modal-header {
     
     background:rgb(230, 33, 33);

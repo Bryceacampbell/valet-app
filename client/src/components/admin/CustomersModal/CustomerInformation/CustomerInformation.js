@@ -15,8 +15,8 @@ class CustomerInformation extends Component {
             lastName: this.props.customer.information.lastName,
             phone: this.props.customer.information.phoneNumber,
             email: this.props.customer.information.email,
-            address: this.props.customer.information.address,
-            username: this.props.customer.information.username,
+            address: this.props.customer.information.address
+            
             
         };
 
@@ -87,10 +87,7 @@ class CustomerInformation extends Component {
                     <label class="customerLabel">Address</label>
                     <input value={this.state.address} onChange={this.handleChange} name="address"  class="form-control"></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel">Username</label>
-                    <input value={this.state.username} onChange={this.handleChange} name="username"  class="form-control"></input>
-                </div>
+               
                
 
                 <button onClick={this.props.onCancel} className="btn customerButton">Cancel</button>

@@ -15,7 +15,7 @@ export default {
 
     
 
-    console.log(customer);
+    
     
     
 

@@ -148,7 +148,7 @@ module.exports = {
 
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userName: req.body.userName,
+        userName: req.body.username,
         phoneNumber: req.body.phone,
         address: req.body.address,
         email: req.body.email
