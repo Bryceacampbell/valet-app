@@ -7,9 +7,14 @@ class SelectDateTime extends Component {
         pickupRequestedDate: ""
     };
 
-    // Uses call-B func to retrieve selected date from date-picker component
     dateUpdate = dateInfo => {
         this.setState({ pickupRequestedDate: dateInfo });
+        console.log(dateInfo)
+        this.handleChange({name: "pickupRequestedDate", value: dateInfo});
+    };
+
+    handleChange = ({name, value}) => {
+        this.props.handleChange({ name, value });
     };
 
     render() {
@@ -18,8 +23,11 @@ class SelectDateTime extends Component {
         }
         return (
             <div>
-                <div className="text-center">Select Date Time</div>
-                <ScheduleCalendar dateFromCalendar={this.dateUpdate} />
+                <div className="text-center"><strong>Step 2:</strong> Select Date and Time</div>
+                <hr></hr>
+                <ScheduleCalendar
+                    dateFromCalendar={this.dateUpdate}
+                />
             </div>
         )
     }

@@ -19,9 +19,9 @@ const checkboxes = [
     },
     {
         id: "4",
-        name: "Curb Side Service",
-        key: "CurbSideService",
-        label: "Curb Side Service",
+        name: "Delivery",
+        key: "Delivery",
+        label: "Delivery",
     },
     {
         id: "5",

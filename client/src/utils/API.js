@@ -24,7 +24,6 @@ export default {
   },
   //============Calls From Customer=============
   findClientAssets: function(id){
-    console.log("Ajax call called via Assets axios Util/API.js");
     return axios.get("/api/assets/findassets/" + id);
   },
   makeRequest: function (pickupData) {

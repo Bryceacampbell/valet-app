@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import ScheduleForm from "../SchedulePickupContainer/ScheduleForm";
 import { ProgressBar } from "react-bootstrap";
+import API from "../../../utils/API";
 
 import SelectAsset from "./SelectAsset";
 import SelectDateTime from "./SelectDateTime";
@@ -11,27 +12,41 @@ class RequestValet extends Component {
   state = {
     isRequested: false,
     currentStep: 1,
-    assetId: null,
-    datetime: "",
-    services: [],
-    request: []
   };
 
   handleChange = event => {
-    const { name, value } = event.target
+    const { name, value } = event;
     this.setState({
       [name]: value
-    })
-    console.log(this.state);
-    };
+    });
+  };
 
   handleSubmit = event => {
     event.preventDefault()
-    const { asset, datetime, services } = this.state
-    alert(`Your request detail: \n 
-           Email: ${asset} \n 
-           Username: ${datetime} \n
-           Password: ${services}`) //ajax call to submit request
+    const { assetId, pickupRequestedDate, selectedServices } = this.state
+
+    const pickupObj = {
+      currentAsset: assetId,
+      pickupCurrentlyRequested: true,
+      pickupRequestedDate: pickupRequestedDate,
+      pickupRequestStatus: "Pending",
+      selectedServices: selectedServices,
+      pickupRequestedTime: null,
+      pickupRequestedNote: "",
+      pickupConfirmDate: null,
+      pickupConfirmedBy: null,
+      pickupComplete: false,
+      pickupCompleteDate: null,
+      pickupCompleteNote: null
+    };
+    console.log(pickupObj);
+    API.makeRequest(pickupObj)
+      .then(
+        alert(
+          "Your pickup request is complete! \n Please note: it may take up to 24 hours for a response. \n Than you for your patience!"
+        )
+      )
+      .catch(err => console.log(err));
   };
 
   _next = () => {
@@ -104,13 +119,11 @@ class RequestValet extends Component {
                     <SelectAsset
                       currentStep={this.state.currentStep}
                       handleChange={this.handleChange}
-                      assetId={this.state.assetId}
                       {...this.props}
                     />
                     <SelectDateTime
                       currentStep={this.state.currentStep}
                       handleChange={this.handleChange}
-                      datetime={this.state.datetime}
                     />
                     <SelectServices
                       currentStep={this.state.currentStep}
