@@ -43,7 +43,9 @@ class RequestValet extends Component {
     };
 
     API.makeRequest(pickupObj)
-    .then()
+    .then(
+      alert("Thank you for your Valet request! Please check back within 2 hours to see that your request has been approved! If your request is initiated after regular business hours, please note that your request will be addressed the next morning at the beginning of business hours In order to avoid cancellation penalties, please make any necessary changes or cancellations to your Valet request at least 24 hours before your requested time")
+    )
       .catch(err => console.log(err));
   };
 
