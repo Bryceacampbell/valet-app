@@ -1,0 +1,73 @@
+.upcoming:hover {
+    transform: scale(1.02);
+    background: #F7F7F7;
+}
+.pending:hover {
+    transform: scale(1.02);
+    background: #F7F7F7;
+}
+
+.upcoming {
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-top: 25px;
+    padding: 0px;
+}
+
+.card .announcements {
+    height: 100%;
+}
+
+.announcements h3 {
+    margin-left: 20px;
+    color: #e52d27;
+    font-weight: bolder;
+}
+
+.announcements ul {
+    padding-left: 20px;
+}
+.announcements .card-header {
+    color: black;
+    background: rgba(0,0,0,0.03);
+    padding: 10px;
+}
+
+.pending-btn {
+    width: 100%;
+    color: #e52d27;
+    background: #ffffff;
+    font-size: 60px;
+    padding: 20px;
+    border-color: #4b4c4f;
+    border-radius: .5rem;
+    height: 100%;
+    margin: 0px !important;
+}
+
+.pending-btn:hover {
+    color: #ffffff;
+    background: #e52d27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #b31217, #e52d27);
+}
+
+.pending-btn:hover .calendar-icon {
+    color: #ffffff;
+}
+
+.card-body .row {
+    margin-bottom: 30px;
+}
+.calendar-icon {
+    color: #e52d27;
+    margin: 5px 10px 5px 5px;
+    font-size: 60px;
+}
+.container-fluid{
+    margin-top: 30px;
+    max-width: 80%;
+    padding: 0px;
+}

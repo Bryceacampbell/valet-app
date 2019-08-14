@@ -8,6 +8,7 @@ import SideNav from "../../components/admin/SideNav/SideNav";
 import Requests from "../../components/admin/Requests/Requests";
 import NewUser from "../../components/admin/NewUser/NewUser";
 import Calendar from "../../components/admin/Calendar/Calendar";
+import AdminHome from "../../components/admin/Home";
 
 class AdminPage extends Component {
   state = {
@@ -36,7 +37,8 @@ class AdminPage extends Component {
     return (
       <div style={{ height: "100%" }}>
         <NavBar {...this.props} navClickHandler={this.sideNavToggleClickHandler} />
-        <SideNav show={this.state.sideNavOpen} />
+        <SideNav show={this.state.sideNavOpen} {...this.props} />
+        <Route exact path="/admin/" render={() => <AdminHome {...this.props} />} />
         <Route exact path="/admin/requests" render={() => <Requests {...this.props} />} />
         <Route exact path="/admin/customers" render={() => <Customers {...this.props} />} />
         <Route exact path="/admin/newUser" render={() => <NewUser {...this.props} />} />

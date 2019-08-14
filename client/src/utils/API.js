@@ -14,6 +14,14 @@ export default {
     console.log("Ajax called being made");
     return axios.get("/api/admin/customers");
   },
+  getUpcomingPickups: function () {
+    console.log("Ajax call on getUpcomingPickups made");
+    return axios.get("/api/admin/upcomingpickups");
+  },
+  getAllAssets: function (req, res) {
+    console.log(("Ajax call on getAllAssets made"))
+    return axios.get("/api/admin/assets")
+  },
   //============Calls From Customer=============
   findClientAssets: function(id){
     return axios.get("/api/assets/findassets/" + id);

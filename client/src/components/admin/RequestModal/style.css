@@ -8,6 +8,25 @@
     z-index: 100;
 }
 
+.conf-modal {
+    width: 80%;
+    height: 20rem;
+    background: #aaaaaa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    position: fixed;
+    top: 30vh;
+    left: 10%;
+    z-index: 200;
+}
+
+.conf-modal header {
+    height: 20%
+}
+
+.conf-modal section {
+    height: 80%
+}
+
 .req-modal-header {
     padding: 1rem;
     background: rgb(230, 33, 33);
@@ -26,6 +45,28 @@
 .req-modal-subheader {
     padding: 1rem;
     background-color: #EEEEEE
+}
+
+.req-modal-subheader2 {
+    padding: 1rem;
+    background-color: #FFEEEE;
+    font-size: 1.5rem;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #555555;
+}
+
+.selected {
+    color: rgb(230, 33, 33);
+    background-color: #555555;
+    font-weight: bolder;
+    box-shadow: 5px 5px 5px #333333
+}
+
+.declined {
+    color: #AAAAAA;
+    background-color: #999999;
+    font-weight: bold;
 }
 
 .req-modal-actions {
@@ -82,6 +123,7 @@
     height: 100vh;
     width: 100%;
     background: rgba(0, 0, 0, .75);
+    z-index: 10;
 }
 
 .modal-row {
