@@ -7,40 +7,31 @@
     top: 20vh;
     left: 5%;
     z-index: 100;
- }
-
- .custHeader {
-
-   
-   font-size: 25px;
-  
-   
-
- }
-
-
+ };
  .customer-modal-header {
-    
-    background:rgb(230, 33, 33);
+    padding: 1rem;
+    background: rgb(230, 33, 33);
     color: white;
- }
- 
- 
+ };
+ .customer-modal-header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+ };
  .customer-modal-content {
     padding: 1rem;
- }
+ };
  .customer-modal-actions {
     display: flex;
     justify-content: flex-end;
     padding: 1rem;
- }
+ };
  .btn {
     margin: .5rem;
- }
+ };
  .customerLabel {
     display: flex;
     justify-content: left;
- }
+ };
  .customerbackdrop {
     position: fixed;
     top: 0;
@@ -48,7 +39,7 @@
     height: 100vh;
     width: 100%;
     background: rgba(0, 0, 0, .75);
- }
+ };
  /* .form-group {
     font-size: 15px;
     font-weight: bold;
@@ -60,12 +51,12 @@
     font-weight: bold;
     height: 20px;
     
- }
+ };
  .formheader {
     display: flex;
     justify-content: left;
     font-style: oblique;
- }
+ };
  
  .button {
     position:relative;

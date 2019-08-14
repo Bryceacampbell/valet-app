@@ -10,6 +10,17 @@ export default {
   updateRequest: function (requestData) {
     return axios.put("/api/admin/requests/", requestData)
   },
+
+  updateCustomer : function (id, customer) {
+
+    
+
+    
+    
+    
+
+    return axios.post("/api/admin/customers/" + id, customer)
+  },
   getAllCustomers: function () {
     console.log("Ajax called being made");
     return axios.get("/api/admin/customers");

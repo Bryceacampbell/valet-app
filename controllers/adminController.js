@@ -1,9 +1,10 @@
 const db = require("../models");
 const axios = require("axios");
+const mongoose = require("mongoose");
 
 // Defining methods for the adminController
 module.exports = {
-  
+
   findAllUsers: function (req, res) {
     console.log("findAllUsers was called in adminController.js");
     db.Customer
@@ -134,32 +135,44 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  auth0Creation: function (customerID) {
-    const client_id = "b3MTC80Frslwa1jungIpq65noxzGJ22B";
-    const connection = "Username-Password-Authentication";
-    const user_metadata = {
-      "role": "writer",
-      "clientID": clientID
-    };
-    axios
-      .post('https://dev-23nqtwhs.auth0.com/dbconnections/signup',
-        {
-          client_id: client_id,
-          email: req.body.email,
-          password: req.body.pass,
-          connection: connection,
-          given_name: req.body.firstName,
-          family_name: req.body.lastName,
-          username: req.body.username,
-          address: req.body.address,
-          phoneNumber: req.body.phoneNumber,
-          user_metadata: user_metadata
-        })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  updateCustomer: function (req, res) {
+
+    let userID = mongoose.Types.ObjectId(req.params.id)
+
+
+    let customerObj = {
+
+      _id: userID,
+
+      information: {
+
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        userName: req.body.username,
+        phoneNumber: req.body.phone,
+        address: req.body.address,
+        email: req.body.email
+
+      }
+
+
+    }
+
+
+    db.Customer
+      .findByIdAndUpdate(
+        req.params.id,
+        customerObj,
+        { new: true },
+        (err, customer) => {
+          if (err) return res.status(500).send(err);
+          return res.send(customer);
+        }
+      )
+
+
+
   }
+
+
 };
