@@ -1,5 +1,6 @@
 .hero {
     background-color: #2c323c;
+    background-image: url("https://rnl-ww-uploads.s3.amazonaws.com/rvvalet/wr_template_images/fluid_custom_banner_img-5d4af39eb4c720.36488313--artboard-1-100.jpg");
     color: #fff;
     min-height: 400px;
     padding: 180px 20px;
@@ -11,4 +12,9 @@
     margin: 0;
     margin-bottom: 30px;
     font-size: 4rem;
+}
+
+.invis{
+
+    opacity: 0;
 }

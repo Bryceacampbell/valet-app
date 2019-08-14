@@ -45,11 +45,7 @@ class CustomerInformation extends Component {
     handleModalSubmit = (event) => {
 
         event.preventDefault();
-
-       
-        console.log(this.props.id);
         
-
         API.updateCustomer(this.props.id, this.state);
 
         this.props.turnOff();
@@ -67,25 +63,25 @@ class CustomerInformation extends Component {
 
             <form>
 
-                <div class="form-group">
-                    <label class="customerLabel">Customer First Name</label>
-                    <input value={this.state.firstName} onChange={this.handleChange} name="firstName"  class="form-control" ></input>
+                <div className="form-group">
+                    <label className="customerLabel">Customer First Name</label>
+                    <input value={this.state.firstName} onChange={this.handleChange} name="firstName"  className="form-control" ></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel">Customer Last Name</label>
-                    <input value={this.state.lastName} onChange={this.handleChange} name="lastName"  class="form-control"></input>
+                <div className="form-group">
+                    <label className="customerLabel">Customer Last Name</label>
+                    <input value={this.state.lastName} onChange={this.handleChange} name="lastName"  className="form-control"></input>
                 </div>
-                 <div class="form-group">
-                    <label class="customerLabel">Phone Number</label>
-                    <input value={this.state.phone} onChange={this.handleChange} name="phone"  class="form-control"></input>
+                 <div className="form-group">
+                    <label className="customerLabel">Phone Number</label>
+                    <input value={this.state.phone} onChange={this.handleChange} name="phone"  className="form-control"></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel">Email</label>
-                    <input value={this.state.email} onChange={this.handleChange} name="email"  class="form-control"></input>
+                <div className="form-group">
+                    <label className="customerLabel">Email</label>
+                    <input value={this.state.email} onChange={this.handleChange} name="email"  className="form-control"></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel">Address</label>
-                    <input value={this.state.address} onChange={this.handleChange} name="address"  class="form-control"></input>
+                <div className="form-group">
+                    <label className="customerLabel">Address</label>
+                    <input value={this.state.address} onChange={this.handleChange} name="address"  className="form-control"></input>
                 </div>
                
                

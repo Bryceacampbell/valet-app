@@ -15,9 +15,9 @@ class AssetForm extends Component {
         return (
 
             <form method="post" action={"/api/assets/add/" + this.props.id}>
-                <div class="form-group">
-                    <label class="customerLabel" for="year">Asset Year</label>
-                    <select name="year" class="form-control form-control-sm asset-form-control" id="year">
+                <div className="form-group">
+                    <label className="customerLabel" htmlFor="year">Asset Year</label>
+                    <select name="year" className="form-control form-control-sm asset-form-control" id="year">
                         <option>2019</option>
                         <option>2018</option>
                         <option>2017</option>
@@ -80,30 +80,30 @@ class AssetForm extends Component {
                         <option>1960</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel" for="make">Asset Make</label>
-                    <input name="make" type="make" class="form-control asset-form-control" id="make" placeholder="Coachmen"></input>
+                <div className="form-group">
+                    <label className="customerLabel" htmlFor="make">Asset Make</label>
+                    <input name="make" type="make" className="form-control asset-form-control" id="make" placeholder="Coachmen"></input>
                 </div>
                 
-                <div class="form-group">
-                    <label class="customerLabel" for="model">Asset Model</label>
-                    <input name="model" type="model" class="form-control  asset-form-control" id="model" placeholder="Freelander"></input>
+                <div className="form-group">
+                    <label className="customerLabel" htmlFor="model">Asset Model</label>
+                    <input name="model" type="model" className="form-control  asset-form-control" id="model" placeholder="Freelander"></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel" for="hullID">Hull ID</label>
-                    <input name="hullID" type="hullID" class="form-control  asset-form-control" id="hullID" placeholder="12344563"></input>
+                <div className="form-group">
+                    <label className="customerLabel" htmlFor="hullID">Hull ID</label>
+                    <input name="hullID" type="hullID" className="form-control form-control-sm asset-form-control" id="hullID" placeholder="12344563"></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel">Notes</label>
-                    <textarea name="notes" class="form-control form-control-sm asset-form-control" rows="1"></textarea>
+                <div className="form-group">
+                    <label className="customerLabel">Notes</label>
+                    <textarea name="notes" className="form-control form-control-sm asset-form-control" rows="1"></textarea>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel" for="date">Date Added</label>
-                    <input name="date" type="date" class="form-control form-control-sm asset-form-control" id="date" placeholder="07/28/19"></input>
+                <div className="form-group">
+                    <label className="customerLabel" htmlFor="date">Date Added</label>
+                    <input name="date" type="date" className="form-control form-control-sm asset-form-control" id="date" placeholder="07/28/19"></input>
                 </div>
-                <div class="form-group">
-                    <label class="customerLabel" for="location">Unit #</label>
-                    <input name="location" type="location" class="form-control form-control-sm asset-form-control" id="location" placeholder="453"></input>
+                <div className="form-group">
+                    <label className="customerLabel" htmlFor="location">Unit #</label>
+                    <input name="location" type="location" className="form-control form-control-sm asset-form-control" id="location" placeholder="453"></input>
                 </div>
 
                 <button onClick={this.props.onCancel} className="btn customerButton">Cancel</button>
