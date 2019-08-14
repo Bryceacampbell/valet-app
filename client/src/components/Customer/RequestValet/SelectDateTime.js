@@ -9,11 +9,10 @@ class SelectDateTime extends Component {
 
     dateUpdate = dateInfo => {
         this.setState({ pickupRequestedDate: dateInfo });
-        console.log(dateInfo)
-        this.handleChange({name: "pickupRequestedDate", value: dateInfo});
+        this.handleChange({ name: "pickupRequestedDate", value: dateInfo });
     };
 
-    handleChange = ({name, value}) => {
+    handleChange = ({ name, value }) => {
         this.props.handleChange({ name, value });
     };
 
@@ -25,9 +24,11 @@ class SelectDateTime extends Component {
             <div>
                 <div className="text-center"><strong>Step 2:</strong> Select Date and Time</div>
                 <hr></hr>
-                <ScheduleCalendar
-                    dateFromCalendar={this.dateUpdate}
-                />
+                <div className="text-center">
+                    <ScheduleCalendar
+                        dateFromCalendar={this.dateUpdate}
+                    />
+                </div>
             </div>
         )
     }

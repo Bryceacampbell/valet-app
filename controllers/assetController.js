@@ -18,8 +18,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   makeRequest: function (req, res) {
-    console.log("makeRequest has been called via assetController.js");
-    console.log(req.body);
+
     db.Asset.findByIdAndUpdate(
       { _id: req.body.currentAsset },
       {
@@ -35,16 +34,18 @@ module.exports = {
           req.body.pickupRequestedTime,
         "pickupDetails.request.pickupRequestedNote":
           req.body.pickupRequestedNote,
-          "pickupDetails.confirmation.pickupConfirmDate":
+        "pickupDetails.confirmation.pickupConfirmDate":
           req.body.pickupConfirmDate,
-          "pickupDetails.confirmation.pickupConfirmedBy":
+        "pickupDetails.confirmation.pickupConfirmedBy":
           req.body.pickupConfirmedBy,
-          "pickupDetails.completion.pickupComplete":
+        "pickupDetails.completion.pickupComplete":
           req.body.pickupComplete,
-          "pickupDetails.completion.pickupCompleteDate":
+        "pickupDetails.completion.pickupCompleteDate":
           req.body.pickupCompleteDate,
-          "pickupDetails.completion.pickupCompleteNote":
+        "pickupDetails.completion.pickupCompleteNote":
           req.body.pickupCompleteNote,
+        "pickupDetails.request.selectedServices":
+          req.body.selectedServices
       }
     )
       .then(dbModel => res.json(dbModel))

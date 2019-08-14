@@ -38,7 +38,6 @@ export default {
     return axios.get("/api/assets/findassets/" + id);
   },
   makeRequest: function (pickupData) {
-    console.log("Ajax pickup request made");
     return axios.put("/api/assets/pickup", pickupData);
   },
   findOneRequest: function (req, res) {

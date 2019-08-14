@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-// import ScheduleForm from "../SchedulePickupContainer/ScheduleForm";
+import { Redirect } from "react-router-dom";
 import { ProgressBar } from "react-bootstrap";
 import API from "../../../utils/API";
-
 import SelectAsset from "./SelectAsset";
 import SelectDateTime from "./SelectDateTime";
 import SelectServices from "./SelectServices";
+
+var now = 33;
 
 class RequestValet extends Component {
 
@@ -23,6 +24,7 @@ class RequestValet extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+
     const { assetId, pickupRequestedDate, selectedServices } = this.state
 
     const pickupObj = {
@@ -39,13 +41,9 @@ class RequestValet extends Component {
       pickupCompleteDate: null,
       pickupCompleteNote: null
     };
-    console.log(pickupObj);
+
     API.makeRequest(pickupObj)
-      .then(
-        alert(
-          "Your pickup request is complete! \n Please note: it may take up to 24 hours for a response. \n Than you for your patience!"
-        )
-      )
+    .then()
       .catch(err => console.log(err));
   };
 
@@ -55,6 +53,7 @@ class RequestValet extends Component {
     this.setState({
       currentStep: currentStep
     })
+    this.checkStep(currentStep);
   };
 
   _prev = () => {
@@ -63,6 +62,19 @@ class RequestValet extends Component {
     this.setState({
       currentStep: currentStep
     })
+    this.checkStep(currentStep);
+  };
+
+  checkStep = (currentStep) => {
+    if (currentStep === 2) {
+      now = 66;
+    }
+    else if (currentStep === 3) {
+      now = 100;
+    }
+    else {
+      now = 33;
+    }
   };
 
   previousButton() {
@@ -93,12 +105,7 @@ class RequestValet extends Component {
     return null;
   };
 
-  handleScheduleRequest = () => {
-    this.setState({ isRequested: true })
-  };
-
   render() {
-    const now = 25;
 
     return (
       <div>
@@ -109,7 +116,7 @@ class RequestValet extends Component {
           <div className="card-body">
             <div className="row">
               <div className="col-lg-12">
-                <ProgressBar now={now} label={`${now}%`} srOnly />
+                <ProgressBar now={now} srOnly />
               </div>
             </div>
             <div className="container">
