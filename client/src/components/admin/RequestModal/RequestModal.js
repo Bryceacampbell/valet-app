@@ -76,22 +76,15 @@ class RequestModal extends Component {
                 updateObj.pickupDetails.completion.pickupComplete = true;
                 updateObj.pickupDetails.completion.pickupCompleteDate = moment().format("YYYY-MM-DD");
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
-                updateObj.pickupDetails.services.quickWash = false;
-                updateObj.pickupDetails.services.fullDetail = false;
-                updateObj.pickupDetails.services.fuelingService = false;
-                updateObj.pickupDetails.services.delivery = false;
-                updateObj.pickupDetails.services.dump = false;
+                updateObj.pickupDetails.request.selectedServices = [];
                 break;
             case "cancel":
                 this.setState({ action: "cancelled" });
                 updateObj.pickupDetails.request.pickupCurrentlyRequested = false;
                 updateObj.pickupDetails.completion.pickupComplete = false;
                 updateObj.pickupDetails.completion.pickupCompleteNote = this.state.pickupCompleteNote;
-                updateObj.pickupDetails.services.quickWash = false;
-                updateObj.pickupDetails.services.fullDetail = false;
-                updateObj.pickupDetails.services.fuelingService = false;
-                updateObj.pickupDetails.services.delivery = false;
-                updateObj.pickupDetails.services.dump = false;
+                updateObj.pickupDetails.request.selectedServices = [];
+
                 break;
         };
 
@@ -148,27 +141,38 @@ class RequestModal extends Component {
                             <div className="row req-modal-subheader2">
                                 <div className="col-1" />
                                 <div className="col-2">
-                                    <div className={this.state.currentRequest.pickupDetails.services.quickWash ? "selected" : "declined"} >
+                                    <div
+                                        className={this.state.currentRequest.pickupDetails.request.selectedServices.indexOf("Quick Wash") > -1 ? "selected" : "declined"}
+                                    >
                                         Quick Wash
                                     </div>
                                 </div>
                                 <div className="col-2">
-                                    <div className={this.state.currentRequest.pickupDetails.services.fullDetail ? "selected" : "declined"} >
+                                    <div
+                                        className={this.state.currentRequest.pickupDetails.request.selectedServices.indexOf("Full Detail") > -1 ? "selected" : "declined"}
+                                    >
                                         Full Detail
                                     </div>
                                 </div>
                                 <div className="col-2">
-                                    <div className={this.state.currentRequest.pickupDetails.services.fuelingService ? "selected" : "declined"} >
+                                    <div
+                                        className={this.state.currentRequest.pickupDetails.request.selectedServices.indexOf("Fueling Service") > -1 ? "selected" : "declined"}
+                                    >
                                         Fueling Service
                                     </div>
                                 </div>
                                 <div className="col-2">
-                                    <div className={this.state.currentRequest.pickupDetails.services.delivery ? "selected" : "declined"} >
+                                    <div
+                                        className={this.state.currentRequest.pickupDetails.request.selectedServices.indexOf("Delivery") > -1 ? "selected" : "declined"}
+                                    >
                                         Delivery
                                     </div>
                                 </div>
-                                <div className="col-2">
-                                    <div className={this.state.currentRequest.pickupDetails.services.dump ? "selected" : "declined"} >
+                                <div
+                                    className="col-2">
+                                    <div
+                                        className={this.state.currentRequest.pickupDetails.request.selectedServices.indexOf("Dump") > -1 ? "selected" : "declined"}
+                                    >
                                         Septic Dump
                                     </div>
                                 </div>
