@@ -137,7 +137,6 @@ class AdminHome extends Component {
                   <th>Last Name</th>
                   <th>Location</th>
                   <th>Scheduled Date</th>
-                  <th>Confirmation</th>
                 </tr>
               </thead>
               <tbody>
@@ -150,7 +149,6 @@ class AdminHome extends Component {
                         upcoming.pickupDetails.request.pickupRequestedDate
                       ).format("MMM Do, YYYY - h:mm A")}
                     </td>
-                    <td>Maybe Confirm Button Here?</td>
                   </tr>
                 ))}
               </tbody>
